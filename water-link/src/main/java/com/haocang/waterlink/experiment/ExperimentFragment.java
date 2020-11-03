@@ -49,7 +49,6 @@ public class ExperimentFragment extends Fragment implements View.OnClickListener
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         View view = inflater.from(getActivity()).inflate(R.layout.fragment_experiment, null);
         initView(view);
         return view;
@@ -57,7 +56,6 @@ public class ExperimentFragment extends Fragment implements View.OnClickListener
     }
 
     private void initView(View view) {
-
         titleNameTv = view.findViewById(R.id.title_common_tv);
         titleNameTv.setText("人工实验抄录");
         queryEdt = view.findViewById(R.id.query_et);
