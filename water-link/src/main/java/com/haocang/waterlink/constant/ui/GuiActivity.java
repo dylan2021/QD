@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.MenuItem;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -85,9 +84,10 @@ public class GuiActivity extends Activity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (AppApplication.isNetWord) {//todo 没网的情况下 进入登录页面
+                if (AppApplication.isNetWord) {
                     login();
                 } else {
+                    //todo 没网的情况下 进入登录页面
                     toFragment();
                 }
 
@@ -99,25 +99,26 @@ public class GuiActivity extends Activity {
         List<OffLineUserEntity> list = OffLineOutApiUtil.getUserList();
         if (list != null && list.size() > 0) {
             OffLineUserEntity entity = list.get(list.size() - 1);
-            automaticLogoin(entity);
+            autoMaticLogin(entity);
         } else {
             toFragment();
         }
     }
 
     /**
-     * todo 如果本地数据库里 存在登录记录 直接尝试登录，非登录成功 需要进入到登录页面
+     * todo 如果本地数据库里 存在登录记录 直接尝试登录;
+     * 登录失败->需要进入到登录页面
      *
      * @param entity
      */
-    private void automaticLogoin(final OffLineUserEntity entity) {
+    private void autoMaticLogin(final OffLineUserEntity entity) {
         new AutomaticLogonUtils(this).setUserEntity(entity)
                 .setAutomaticLogon(new AutomaticLogonUtils.AutomaticLogonInterface() {
                     @Override
                     public void loginSuccess() {
-                        setConfiguration(entity.getTel(), entity.getPassword());
+                        //登录成功
+                        saveSP(entity.getTel(), entity.getPassword());
                         Intent intent = new Intent(GuiActivity.this, NavigationActivity.class);
-//                        intent.putExtra("fragmentName", HomeFragment.class.getName());
                         startActivity(intent);
                         finish();
                     }
@@ -146,7 +147,7 @@ public class GuiActivity extends Activity {
     /**
      * todo 每次登陆成功后 刷新用户名和密码.
      */
-    private void setConfiguration(String userName, String passWord) {
+    private void saveSP(String userName, String passWord) {
         try {
             sp = getSharedPreferences(LibConfig.CHECK, Context.MODE_PRIVATE);
             SharedPreferences.Editor edit = sp.edit();

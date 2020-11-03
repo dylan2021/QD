@@ -61,8 +61,8 @@ import okhttp3.Response;
  */
 
 @Route(path = LibConfig.AROUTE_LOGIN)
-public class LoginFragment extends Fragment
-        implements LoginView, View.OnClickListener, UserInfoView, PermissionsProcessingUtil.OnPermissionsCallback {
+public class LoginFragment extends Fragment implements LoginView, View.OnClickListener,
+        UserInfoView, PermissionsProcessingUtil.OnPermissionsCallback {
 
     /**
      * 控制层.
