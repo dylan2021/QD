@@ -30,7 +30,7 @@
             <EditText
                 android:id="@+id/userame_et"
                 style="@style/login_editext_box"
-                android:hint="@string/system_phone_number"/>
+                android:hint="@string/hint_login_account"/>
 
             <!--android:inputType="number"-->
             <!--android:maxLength="11"-->

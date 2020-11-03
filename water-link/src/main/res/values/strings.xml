@@ -6,6 +6,7 @@
     <string name="forget_passwords">忘记密码?</string>
     <string name="sign_in">登　录</string>
     <string name="system_phone_number">请输入手机号</string>
+
     <string name="system_pwd">请输入密码</string>
     <string name="remember_pwd">记住密码</string>
     <string name="title_activity_buss">BussActivity</string>
@@ -133,4 +134,6 @@
     <string name="follow_fault_person">处理人：</string>
     <string name="title_activity_navigation">NavigationActivity</string>
     <string name="home_menu_cancle">取消</string>
+
+    <string name="hint_login_account">请输入用户名</string>
 </resources>
