@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="147dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/follow_rectangle_big"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <LinearLayout style="@style/follow_equipment_ll">
+
+            <TextView
+                android:id="@+id/equipment_name_tv"
+                style="@style/follow_equipment_tv2"
+                android:textColor="#ff3c3c3c"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/follow_equipment_ll">
+
+
+            <TextView
+                android:id="@+id/equipment_code_tv"
+                style="@style/follow_equipment_tv2"
+                android:maxLength="14"
+                android:textColor="#ff9b9b9b"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/follow_equipment_ll"
+            android:gravity="center_vertical">
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="12dp"
+                android:background="@drawable/icon_follow_location" />
+
+            <TextView
+                android:id="@+id/equipment_process_tv"
+                style="@style/follow_equipment_tv2"
+                android:layout_marginLeft="4dp"
+                android:maxLength="14"
+                android:textColor="#ff9b9b9b"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            style="@style/follow_equipment_ll"
+            android:gravity="center_vertical">
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="11dp"
+                android:layout_marginTop="1dp"
+                android:background="@drawable/icon_follow_house" />
+
+            <TextView
+                android:id="@+id/org_tv"
+                style="@style/follow_equipment_tv2"
+                android:layout_marginLeft="4dp"
+                android:maxLength="14"
+                android:textColor="#ff9b9b9b"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <com.haocang.equiment.ar.ui.RoundArImageView
+        android:id="@+id/equipment_iv"
+        android:layout_width="105dp"
+        android:layout_height="97dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:scaleType="fitXY" />
+
+    <ImageButton
+        android:id="@+id/follow_ibt"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_gravity="right"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="18dp"
+        android:background="@drawable/icon_follow_stars" />
+
+</FrameLayout>

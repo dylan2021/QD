@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_common" />
+
+    <LinearLayout
+        android:id="@+id/set_up_ll"
+        style="@style/self_ll">
+
+        <View
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:background="@mipmap/department" />
+
+        <TextView
+            style="@style/self_tv"
+            android:text="@string/set_up" />
+    </LinearLayout>
+
+    <View style="@style/self_v" />
+</LinearLayout>

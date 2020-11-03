@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/curve_collect"
+        android:orderInCategory="100"
+        android:title="@string/curve_collect" />
+    <item
+        android:id="@+id/curve_share"
+        android:orderInCategory="200"
+        android:title="@string/curve_share" />
+    <item
+        android:id="@+id/curve_more"
+        android:orderInCategory="300"
+        android:title="@string/curve_more" />
+</menu>

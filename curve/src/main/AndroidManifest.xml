@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.haocang.curve">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_mango"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".main.ui.CurveActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+        <activity
+            android:name=".more.ui.PointScreePopupWindowActivity"
+            android:label="@string/title_activity_point_scree_popup_window"
+            android:theme="@style/MyDialogStyleBottom" />
+        <activity
+            android:name=".share.ui.CurveShareActivity"
+            android:label="@string/title_activity_curve_share"
+            android:screenOrientation="landscape"
+            android:theme="@style/MyDialogStyleBottom"></activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_primary">#3F51B5</color>
+    <color name="color_primarydark">#303F9F</color>
+    <color name="color_accent">#FF4081</color>
+
+
+    <color name="color_gray_3">#ff666666</color>
+
+    <color name="color_gray">#f2f2f2</color>
+
+    <color name="color_task_green">#76BA67</color>
+
+    <color name="color_nav_light">#F56917</color>
+
+    <color name="color_home_time_bg">#fff9f9fb</color>
+
+
+    <color name="color_home_kpi_ft">#4cc946</color>
+
+    <color name="color_underline_bg2">#F1F1F1</color>
+
+    <color name="color_my_ft">#212121</color>
+    <color name="color_my_ft2">#7E7E7E</color>
+    <color name="home_kpi_bg">#7ff3f3f7</color>
+    
+    <color name="homehead_note_textcolor">#ff365662</color>
+</resources>

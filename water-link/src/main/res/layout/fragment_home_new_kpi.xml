@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/jump_ll"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="3dp"
+            android:layout_height="17dp"
+            android:layout_marginLeft="15dip"
+            android:background="@drawable/icon_home_gradientblue" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:text="@string/kpi"
+            android:textColor="@color/color_back"
+            android:textSize="20sp" />
+
+
+        <LinearLayout
+            android:id="@+id/home_kpi_more_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right">
+
+            <TextView
+                android:layout_width="80dip"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:gravity="right"
+                android:text="@string/home_more"
+                android:textColor="#ff0cabdf"
+                android:textSize="@dimen/fs13"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="14dp"
+            android:layout_height="16dp"
+            android:background="@mipmap/icon_kpi_locationgrey" />
+
+        <TextView
+            android:id="@+id/site_name_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:paddingLeft="7dp"
+            android:textColor="#ff9b9b9b"
+            android:textSize="15sp" />
+
+
+        <Button
+            android:id="@+id/last_v"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:background="@mipmap/icon_leftarrow"
+            android:padding="12dp" />
+
+
+        <TextView
+            android:id="@+id/time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:gravity="center"
+            android:textColor="#ff3c3c3c"
+            android:textSize="@dimen/fs15" />
+
+
+        <Button
+            android:id="@+id/next_v"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginRight="15dp"
+            android:background="@mipmap/icon_rightarrow"
+            android:padding="12dp" />
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginBottom="10dp"
+        android:focusable="false"
+        android:nestedScrollingEnabled="false"
+        android:overScrollMode="never" />
+
+    <TextView
+        android:id="@+id/nodata_tv"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:text="暂无数据"
+        android:textColor="#c8c7c7"
+        android:textSize="15sp"
+        android:visibility="gone" />
+
+</LinearLayout>

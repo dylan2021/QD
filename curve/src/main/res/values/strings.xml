@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_names">curve</string>
+    <string name="curve_muti">数据组合曲线</string>
+    <string name="curve_signle">单数据曲线</string>
+    <string name="curve_collection">收藏曲线</string>
+    <string name="curve_pick_more">曲线选择</string>
+    <string name="curve_name">请输入名称</string>
+    <string name="curve_title">数据曲线分析</string>
+    <string name="curve_pick_collection">我的收藏</string>
+    <string name="curve_refresh">刷新</string>
+    <string name="curve_back_to_current">返回当前</string>
+    <string name="curve_collect">添加收藏</string>
+    <string name="curve_share">分享曲线</string>
+    <string name="curve_more">选择更多</string>
+    <string name="curve_more_select">更多</string>
+    <string name="curve_pick_point">点击添加测点</string>
+    <string name="day">天</string>
+    <string name="week">周</string>
+    <string name="month">月</string>
+    <string name="curve_cancel">取消</string>
+    <string name="curve_selected">已选曲线</string>
+    <string name="curve_no_data">无数据</string>
+    <string name="curve_add_singlecollection">添加单数据</string>
+    <string name="curve_add_multicollection">添加数据组合</string>
+    <string name="title_activity_point_scree_popup_window">PointScreePopupWindowActivity</string>
+    <string name="curve_region_selection">区域选择</string>
+    <string name="curve_multi_tip">请输入组合名称</string>
+    <string name="multi_curve_notnull_tip">请输入组合名称</string>
+    <string name="curve_collect_success">收藏成功</string>
+    <string name="curve_collect_failed">组合名称重复，收藏失败</string>
+    <string name="curve_more_curve">更多曲线</string>
+    <string name="curve_look_curve">查看曲线</string>
+    <string name="title_activity_curve_share">CurveShareActivity</string>
+    <string name="curve_time_beyond_tip">已经是最新时间</string>
+    <string name="curve_max_limit_tip">最多只能选择8条曲线</string>
+    <string name="curve_is_already_combine">不能重复添加组合</string>
+</resources>

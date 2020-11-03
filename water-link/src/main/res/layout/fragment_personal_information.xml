@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_common" />
+
+
+    <LinearLayout
+        android:id="@+id/username_ll"
+        style="@style/self_ll"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp">
+
+        <View
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:background="@mipmap/user" />
+
+        <TextView
+            android:id="@+id/username_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:text="张三"
+            android:textColor="#282828"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/head_iv"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@mipmap/userhead" />
+
+        <View
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="30dp"
+            android:background="@mipmap/right_icon" />
+
+    </LinearLayout>
+
+    <View style="@style/self_v" />
+
+    <LinearLayout style="@style/self_ll">
+
+        <View
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:background="@mipmap/company" />
+
+        <TextView
+            android:id="@+id/company_tv"
+            style="@style/self_tv"
+            android:text="上海昊沧" />
+    </LinearLayout>
+
+    <View style="@style/self_v" />
+
+    <LinearLayout style="@style/self_ll">
+
+        <View
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:background="@mipmap/department" />
+
+        <TextView
+            android:id="@+id/department_tv"
+            style="@style/self_tv"
+            android:text="云产品事业部" />
+    </LinearLayout>
+
+    <View style="@style/self_v" />
+
+    <LinearLayout style="@style/self_ll">
+
+        <View
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:background="@mipmap/phone" />
+
+        <TextView
+            android:id="@+id/phone_tv"
+            style="@style/self_tv"
+            android:text="136888888888" />
+    </LinearLayout>
+
+    <View style="@style/self_v" />
+
+    <LinearLayout style="@style/self_ll">
+
+        <View
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:background="@mipmap/eamil" />
+
+        <TextView
+            android:id="@+id/email_tv"
+            style="@style/self_tv"
+            android:text="zhangsan@qq.com" />
+    </LinearLayout>
+
+    <View style="@style/self_v" />
+
+    <LinearLayout
+        android:id="@+id/modify_ll"
+        style="@style/self_ll">
+
+        <TextView
+            android:id="@+id/modify_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/modify_password"
+            android:textColor="#282828"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginRight="30dp"
+            android:background="@mipmap/right_icon" />
+
+    </LinearLayout>
+
+    <View style="@style/self_v" />
+</LinearLayout>

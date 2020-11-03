@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_common" />
+
+    <TextView
+        android:id="@+id/self_phone_tv"
+        android:layout_width="103dp"
+        android:layout_height="21dp"
+        android:layout_marginLeft="19dip"
+        android:layout_marginTop="25dip"
+        android:text="15278298760"
+        android:textColor="#ff34373b"
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="12dip"
+        android:layout_marginTop="7dp"
+        android:layout_marginRight="12dip"
+        android:background="#0CABDF" />
+
+    <LinearLayout
+        style="@style/self_modify_ll"
+        android:layout_marginTop="25dp">
+
+        <EditText
+            android:id="@+id/old_pwd_et"
+            style="@style/self_modify_et"
+            android:hint="@string/please_old_pwd"
+            android:inputType="textPassword"
+            android:maxLength="20" />
+
+        <View
+            android:id="@+id/old_view_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="7dp"
+            android:background="#f9f9f9" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        style="@style/self_modify_ll"
+        android:layout_marginTop="25dp">
+
+
+        <EditText
+            android:id="@+id/new_pwd_et"
+            style="@style/self_modify_et"
+            android:hint="@string/please_new_pwd"
+            android:inputType="textPassword"
+            android:maxLength="20" />
+
+        <View
+            android:id="@+id/new_pwd_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="7dp"
+            android:background="#f9f9f9" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/self_modify_ll"
+        android:layout_marginTop="25dp">
+
+
+        <EditText
+            android:id="@+id/confirm_pwd"
+            style="@style/self_modify_et"
+            android:hint="@string/please_new_pwds"
+            android:inputType="textPassword"
+            android:maxLength="20" />
+
+        <View
+            android:id="@+id/confirm_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="7dp"
+            android:background="#f9f9f9" />
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/self_hint"
+        android:textColor="#0CABDF"
+        android:textSize="@dimen/fs12" />
+
+    <TextView
+        android:id="@+id/submit_tv"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/self_modify_submit_shape"
+        android:gravity="center"
+        android:text="确定"
+        android:textColor="@color/color_blue" />
+</LinearLayout>

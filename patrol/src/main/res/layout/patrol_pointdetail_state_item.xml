@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/patrol_list_item_shape"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/state_item_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/patrol_pointstep_name_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:textColor="#ff3c3c3c"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="105dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="7dp"
+                android:background="@drawable/patrol_point_detail_state_shape"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/normal_tv"
+                    android:layout_width="52dp"
+                    android:layout_height="33dp"
+                    android:gravity="center"
+                    android:text="正常"
+                    android:textColor="#ff3c3c3c"
+                    android:textSize="15sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_gray5" />
+
+                <TextView
+                    android:id="@+id/abnormal_tv"
+                    android:layout_width="52dp"
+                    android:layout_height="33dp"
+                    android:gravity="center"
+                    android:text="异常"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/step_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/patrol_pointstep_remark_et"
+                style="@style/patrol_remark"
+                android:layout_height="100dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/patrol_detail_item_shape"
+                android:gravity="top"
+                android:paddingTop="7dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="最多添加6张照片或视频"
+                    android:textColor="#888888" />
+
+                <ImageView
+                    android:id="@+id/camera_iv"
+                    android:layout_width="22dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/icon_patrol_bluecamera" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/pic_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

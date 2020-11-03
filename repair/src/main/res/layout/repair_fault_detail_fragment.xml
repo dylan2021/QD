@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white">
+
+    <include layout="@layout/title_common" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="65dp"
+        android:layout_marginTop="75dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout style="@style/repair_manager_details_ll">
+
+                <TextView
+                    style="@style/repair_manager_details_tv"
+                    android:text="@string/repair_fault_type" />
+
+                <TextView
+                    android:id="@+id/repair_fault_type_tv"
+                    style="@style/repair_manager_details_tv2" />
+            </LinearLayout>
+
+            <View style="@style/repair_manager_hint" />
+
+            <LinearLayout style="@style/repair_manager_details_ll">
+
+                <TextView
+                    style="@style/repair_manager_details_tv"
+                    android:text="@string/repair_fault_code" />
+
+                <TextView
+                    android:id="@+id/repair_fault_code_tv"
+                    style="@style/repair_manager_details_tv2" />
+            </LinearLayout>
+
+            <View style="@style/repair_manager_hint" />
+
+            <LinearLayout style="@style/repair_manager_details_ll">
+
+                <TextView
+                    style="@style/repair_manager_details_tv"
+                    android:text="@string/repair_servity" />
+
+                <TextView
+                    android:id="@+id/repair_fault_degree_tv"
+                    style="@style/repair_manager_details_tv2" />
+            </LinearLayout>
+
+            <View style="@style/repair_manager_hint" />
+
+            <LinearLayout style="@style/repair_manager_details_ll">
+
+                <TextView
+                    style="@style/repair_manager_details_tv"
+                    android:text="@string/repair_equipment" />
+
+                <TextView
+                    android:id="@+id/repair_equipement_tv"
+                    style="@style/repair_manager_details_tv2" />
+            </LinearLayout>
+
+            <View style="@style/repair_manager_hint" />
+
+            <LinearLayout style="@style/repair_manager_details_ll">
+
+                <TextView
+                    style="@style/repair_manager_details_tv"
+                    android:text="@string/repair_patrol" />
+
+                <TextView
+                    android:id="@+id/repair_fault_patrol_tv"
+                    style="@style/repair_manager_details_tv2" />
+            </LinearLayout>
+
+            <View style="@style/repair_manager_hint" />
+
+            <LinearLayout style="@style/repair_manager_details_ll">
+
+                <TextView
+                    style="@style/repair_manager_details_tv"
+                    android:text="@string/repair_fault_report_person" />
+
+                <TextView
+                    android:id="@+id/repair_report_person_org_tv"
+                    style="@style/repair_manager_details_tv2"
+                    android:lines="1"
+                    android:maxEms="5"
+                    android:textColor="#AAAAAA" />
+
+                <TextView
+                    android:id="@+id/repair_report_person_tv"
+                    style="@style/repair_manager_details_tv2" />
+            </LinearLayout>
+
+            <View style="@style/repair_manager_hint" />
+
+            <LinearLayout style="@style/repair_manager_details_ll">
+
+                <TextView
+                    style="@style/repair_manager_details_tv"
+                    android:text="@string/repair_fault_report_date" />
+
+                <TextView
+                    android:id="@+id/repair_report_date_tv"
+                    style="@style/repair_manager_details_tv2" />
+            </LinearLayout>
+
+
+            <View style="@style/repair_manager_hint" />
+
+            <LinearLayout
+                android:id="@+id/repair_look_scene_record_ll"
+                style="@style/repair_manager_details_ll">
+
+                <TextView
+                    style="@style/repair_manager_details_tv"
+                    android:text="@string/repair_scene_record"
+                    android:textSize="@dimen/fs16" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/repair_look_scene_record"
+                    android:textColor="@color/color_underline_bg"
+                    android:textSize="@dimen/fs14" />
+
+                <View
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:background="@drawable/ic_equiment_right" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</FrameLayout>

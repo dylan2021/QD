@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_common" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/self_modify_ll"
+                android:layout_marginTop="25dp">
+
+
+                <EditText
+                    android:id="@+id/name_edt"
+                    style="@style/self_modify_et"
+                    android:hint="请输入您的姓名" />
+
+                <View
+                    android:id="@+id/name_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="7dp"
+                    android:background="#f9f9f9" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/self_modify_ll"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/phone_et"
+                    style="@style/self_modify_et"
+                    android:hint="请填写您的手机号码"
+                    android:inputType="number"
+                    android:maxLength="11" />
+
+                <View
+                    android:id="@+id/phone_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="7dp"
+                    android:background="#f9f9f9" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/feedback_ll"
+                style="@style/self_modify_ll"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/self_modify_tv"
+                    android:text="@string/category"
+                    android:textColor="#ff9b9b9b" />
+
+
+                <TextView
+                    android:id="@+id/type_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/color_blank"
+                    android:textSize="15sp" />
+
+                <View
+                    android:layout_width="15dp"
+                    android:layout_height="8dp"
+                    android:background="@drawable/icon_fault_pulldown" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="7dp"
+                android:background="#f9f9f9" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginRight="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/please_category"
+                    android:textColor="#ff3c3c3c"
+                    android:textSize="@dimen/fs16" />
+
+                <View
+                    android:id="@+id/video_view"
+                    android:layout_width="16dp"
+                    android:layout_height="20dp"
+                    android:background="@mipmap/self_audio_icon"
+                    android:padding="7dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/self_modify_ll"
+                android:layout_height="160dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/self_modify_shape"
+                android:orientation="vertical">
+
+
+                <EditText
+                    android:id="@+id/feedbak_et"
+                    style="@style/self_modify_et"
+                    android:layout_height="0dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:hint="@string/leaving_message"
+                    android:maxLength="200"
+                    android:padding="10dp"
+                    android:textSize="@dimen/fs15" />
+
+                <LinearLayout
+                    android:id="@+id/audio_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="7dp"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/char_lenth_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="@string/char_lenth"
+                        android:textColor="@color/color_back"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="添加照片"
+                    android:textColor="#ff3c3c3c"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_weight="1"
+                    android:text="最多添加4张图片"
+                    android:textColor="@color/color_task_ft"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/add_pic_iv"
+                    android:layout_width="25dp"
+                    android:layout_height="20dp"
+
+                    android:background="@mipmap/icon_bluecamera" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="12dp" />
+
+            <TextView
+                android:id="@+id/submit_tv"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/self_modify_submit_shape"
+                android:gravity="center"
+                android:text="提交"
+                android:textColor="@color/color_blue" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

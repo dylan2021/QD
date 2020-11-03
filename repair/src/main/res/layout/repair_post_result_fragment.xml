@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_common" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/repair_result_ll"
+                style="@style/repair_manager_details_ll">
+
+                <TextView
+                    style="@style/repair_manager_details_tv"
+                    android:text="@string/repair_result" />
+
+                <TextView
+                    android:id="@+id/repair_result_tv"
+                    style="@style/repair_equipment_repair_tv"
+                    android:hint="@string/repair_result_tip" />
+
+                <View style="@style/repair_equipment_repair_iv" />
+            </LinearLayout>
+
+            <View style="@style/repair_manager_hint" />
+
+            <LinearLayout
+                android:id="@+id/repair_method_ll"
+                style="@style/repair_manager_details_ll">
+
+                <TextView
+                    style="@style/repair_manager_details_tv"
+                    android:text="@string/repair_method" />
+
+                <TextView
+                    android:id="@+id/repair_method_tv"
+                    style="@style/repair_equipment_repair_tv"
+                    android:hint="@string/repair_method_tip" />
+
+                <View style="@style/repair_equipment_repair_iv" />
+            </LinearLayout>
+
+            <View style="@style/repair_manager_hint" />
+
+            <LinearLayout
+                android:id="@+id/repair_complete_time_ll"
+                style="@style/repair_manager_details_ll">
+
+                <TextView
+                    style="@style/repair_manager_details_tv"
+                    android:text="@string/repair_complete_time" />
+
+                <TextView
+                    android:id="@+id/repair_complete_time_tv"
+                    style="@style/repair_equipment_repair_tv"
+                    android:hint="@string/repair_complete_time_tip" />
+
+                <View style="@style/repair_equipment_repair_iv" />
+            </LinearLayout>
+
+            <View style="@style/repair_manager_hint" />
+
+            <LinearLayout
+                android:id="@+id/repair_analysis_ll"
+                style="@style/repair_manager_details_ll">
+
+                <TextView
+                    style="@style/repair_manager_details_tv"
+                    android:text="@string/repair_analysis"
+                    android:textSize="@dimen/fs16" />
+
+                <TextView
+                    android:id="@+id/repair_analysis_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/repair_add_analysis"
+                    android:textColor="@color/color_underline_bg"
+                    android:textSize="@dimen/fs14" />
+
+                <View
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:background="@drawable/ic_equiment_right" />
+            </LinearLayout>
+
+            <View style="@style/repair_manager_hint" />
+
+            <TextView
+                style="@style/repair_post_tv"
+                android:layout_marginLeft="25dp"
+                android:text="@string/repair_processing_after" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_weight="1"
+                    android:text="@string/repair_add_pic"
+                    android:textColor="@color/color_task_ft"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/add_pic_iv"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginRight="25dp"
+                    android:background="@drawable/ic_common_camera" />
+            </LinearLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

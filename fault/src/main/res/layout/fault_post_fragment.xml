@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_common" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/fault_type_ll"
+                style="@style/fault_ll"
+                android:layout_marginTop="18dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/fault_post_tv"
+                    android:text="@string/fault_type" />
+
+                <TextView
+                    android:id="@+id/fault_type"
+                    style="@style/fault_post_value_v"
+                    android:hint="@string/fault_type_tip" />
+
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/fault_type_view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f9f9f9" />
+
+            <LinearLayout
+                android:id="@+id/fault_equipment_ll"
+                style="@style/fault_ll"
+                android:layout_marginTop="18dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    style="@style/fault_post_tv"
+                    android:text="@string/fault_equipment" />
+
+                <TextView
+                    android:id="@+id/fault_equipment_tv"
+                    style="@style/fault_post_value_v"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:hint="@string/fault_equipment_tip" />
+
+                <ImageButton
+                    android:id="@+id/scan_code_iv"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/icon_fault_bluescan"
+                    android:padding="12dp" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/fault_equipment_view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f9f9f9" />
+
+            <LinearLayout
+                android:id="@+id/fault_process_ll"
+                style="@style/fault_ll"
+                android:layout_marginTop="18dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/fault_post_tv"
+                    android:text="@string/falut_location" />
+
+                <TextView
+                    android:id="@+id/fault_process_tv"
+                    style="@style/fault_post_value_v"
+                    android:hint="@string/fault_location_tip" />
+
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/fault_process_view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f9f9f9" />
+
+            <LinearLayout
+                android:id="@+id/fault_severity_ll"
+                style="@style/fault_ll"
+                android:layout_marginTop="18dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/fault_post_tv"
+                    android:text="@string/fault_level" />
+
+                <TextView
+                    android:id="@+id/fault_level_tv"
+                    style="@style/fault_post_value_v"
+                    android:hint="@string/fault_level_tip" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/fault_severity_view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f9f9f9" />
+
+            <LinearLayout
+                android:id="@+id/processing_ll"
+                style="@style/fault_ll"
+                android:layout_marginTop="18dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/fault_post_tv"
+                    android:text="处  理  人" />
+
+                <TextView
+                    android:id="@+id/fault_processing_tv"
+                    style="@style/fault_post_value_v"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/fault_processing_person_tip"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp" />
+
+                <View
+                    android:layout_width="15dp"
+                    android:layout_height="8dp"
+                    android:background="@drawable/icon_fault_pulldown" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/fault_person_view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f9f9f9" />
+
+            <LinearLayout
+                style="@style/fault_ll"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/fault_post_tv"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/fault_add_remark" />
+
+
+                <View
+                    android:id="@+id/voicer_view"
+                    android:layout_width="16dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/fault_audio_icon" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_margin="15dp"
+                android:background="@drawable/fault_post_remarks_shape"
+                android:orientation="vertical">
+
+
+                <EditText
+                    android:id="@+id/remark_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:hint="请输入内容"
+                    android:maxLength="200"
+                    android:padding="10dp"
+                    android:textSize="@dimen/fs15" />
+
+                <LinearLayout
+                    android:id="@+id/audio_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="7dp"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/char_lenth_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="0/200"
+                        android:textColor="@color/color_back"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/fault_post_tv"
+                    android:text="@string/fault_record" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:text="最多添加6张图片"
+                    android:textColor="#ff9b9b9b"
+                    android:textSize="12sp" />
+
+                <ImageButton
+                    android:id="@+id/add_pic_iv"
+                    android:layout_width="25dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/icon_fault_bluecamera"
+                    android:padding="12dp" />
+            </LinearLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp" />
+
+
+            <TextView
+                android:id="@+id/submit_tv"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/self_fault_submit_shape"
+                android:gravity="center"
+                android:text="提交"
+                android:textColor="@color/color_blue" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

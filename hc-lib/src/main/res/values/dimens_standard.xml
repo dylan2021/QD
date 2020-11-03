@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mg_title_size">17sp</string>  <!--一级标题-->
+    <string name="mg_content_size">17sp</string>  <!--一级标题-->
+</resources>

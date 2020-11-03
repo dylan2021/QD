@@ -1,0 +1,8 @@
+include ':app', ':water-link', 'mango-lib', ':curve-link', ':hc-lib-link', ':watermark-link', ':skin-link', ':repair-link', ':patrol-link', ':fault-link'
+project(':curve-link').projectDir = new File('curve')
+project(':hc-lib-link').projectDir = new File('hc-lib')
+project(':watermark-link').projectDir = new File('watermark')
+project(':skin-link').projectDir = new File('skin')
+project(':repair-link').projectDir = new File('repair')
+project(':patrol-link').projectDir = new File('patrol')
+project(':fault-link').projectDir = new File('fault')

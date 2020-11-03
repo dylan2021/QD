@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="menu_icon">
+        <item>equipment_icon</item>
+        <item>patrol_icon</item>
+        <item>defect_icon</item>
+        <item>repair_icon</item>
+        <item>repair_icon</item>
+    </string-array>
+
+
+    <array name="navigate_fragmentname">
+        <item>com.haocang.waterlink.home.ui.HomeFragment</item>
+        <item>com.haocang.fault.post.ui.PostFaultFragment</item>
+        <item>com.haocang.messge.ui.MessgeTabLayouFragment</item>
+        <item>com.haocang.waterlink.self.ui.MyHomeFragment</item>
+    </array>
+
+    <array name="navigate_fragment_uri">
+        <item>/home/homefragment</item>
+        <item>/alarm/main</item>
+        <item>/follow/main</item>
+        <item>/message/main</item>
+        <item>/my/info</item>
+    </array>
+
+    <string-array name="multi_media2">
+        <item>相 机</item>
+        <item>从手机相册选择</item>
+    </string-array>
+    <array name="navigate_name">
+        <item>@string/navigate_first</item>
+        <item>@string/navigate_second</item>
+        <item>@string/navigate_third</item>
+        <item>@string/navigate_fourth</item>
+        <item>@string/navigate_fifth</item>
+    </array>
+
+    <!-- 不要随意修改，代码中写死了判断-->
+    <string-array name="pending_task">
+        <item>巡检任务</item>
+        <item>消缺任务</item>
+        <item>维修工单</item>
+        <item>保养任务</item>
+    </string-array>
+
+    <!-- 不要随意修改，代码中写死了判断-->
+    <integer-array name="pending_task_id">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </integer-array>
+
+    <!-- 不要随意修改，代码中写死了判断-->
+    <string-array name="follow_menu">
+        <item>设备台账</item>
+        <item>巡检任务</item>
+        <item>缺陷申报</item>
+        <item>维修工单</item>
+        <!--  <item>养护工单</item>  -->
+    </string-array>
+
+    <!-- 不要随意修改，代码中写死了判断-->
+    <string-array name="follow_menu_id">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string name="navigate_first">首页</string>
+    <string name="navigate_second">报警</string>
+    <string name="navigate_third">关注</string>
+    <string name="navigate_fourth">消息</string>
+    <string name="navigate_fifth">我的</string>
+</resources>

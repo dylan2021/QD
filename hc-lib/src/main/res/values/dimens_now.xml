@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="title_height">75dip</dimen> <!-- title高度-->
+    <dimen name="font_size_16">16sp</dimen><!--顶部title底部标签字体大小-->
+    <dimen name="font_size_15">15sp</dimen><!--二级标签字体大小-->
+    <dimen name="font_size_14">14sp</dimen><!--正文，表单 ，列表文字等-->
+    <dimen name="font_size_13">13sp</dimen><!--用于次要信息说明文字日期，卡片-->
+
+</resources>

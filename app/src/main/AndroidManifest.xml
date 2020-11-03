@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.haocang.hsdd"
+    android:versionCode="2"
+    android:versionName="2.0.0.0003">
+
+    <!--android:roundIcon="@mipmap/ic_launcher_round"-->
+
+    <application
+        android:name="com.haocang.base.config.AppApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/launch_icon"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
+        <activity
+            android:name="com.haocang.waterlink.constant.ui.GuiActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.haocang.base.ui.BussinessActivity"
+            android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
+            android:label="@string/title_activity_buss"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.haocang.hsdd.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="oMWhshSGmwksOa01PoU9WAPeSvV2CwC3" />
+        <meta-data
+            android:name="speechkey"
+            android:value="5ab8b9ec" />
+
+        <meta-data
+            android:name="wechatShareKey"
+            android:value="wxed2472863a1f722d" />
+
+        <meta-data
+            android:name="qqShareKey"
+            android:value="101735975" />
+
+        <service
+            android:name="com.haocang.waterlink.utils.DownloadService"
+            android:enabled="true" />
+
+        <receiver android:name="com.haocang.base.utils.NetBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+                <action android:name="android.net.wifi.STATE_CHANGE" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

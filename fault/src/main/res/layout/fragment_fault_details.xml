@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_common" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout style="@style/fault_manager_details_ll">
+
+                <TextView
+                    style="@style/fault_manager_details_tv"
+                    android:text="@string/faut_type" />
+
+                <TextView
+                    android:id="@+id/fault_type_tv"
+                    style="@style/fault_manager_details_tv2" />
+            </LinearLayout>
+
+            <View style="@style/fault_manager_hint" />
+
+            <LinearLayout style="@style/fault_manager_details_ll">
+
+                <TextView
+                    style="@style/fault_manager_details_tv"
+                    android:text="@string/fault_number" />
+
+                <TextView
+                    android:id="@+id/fault_nuber_tv"
+                    style="@style/fault_manager_details_tv2" />
+            </LinearLayout>
+
+            <View style="@style/fault_manager_hint" />
+
+            <LinearLayout style="@style/fault_manager_details_ll">
+
+                <TextView
+                    style="@style/fault_manager_details_tv"
+                    android:text="申  报  人" />
+
+                <TextView
+                    android:id="@+id/fault_create_user_tv"
+                    style="@style/fault_manager_details_tv2" />
+            </LinearLayout>
+
+            <View style="@style/fault_manager_hint" />
+
+            <LinearLayout style="@style/fault_manager_details_ll">
+
+                <TextView
+                    style="@style/fault_manager_details_tv"
+                    android:text="@string/falut_level" />
+
+                <TextView
+                    android:id="@+id/fault_severity_tv"
+                    style="@style/fault_manager_details_tv2" />
+            </LinearLayout>
+
+            <View style="@style/fault_manager_hint" />
+
+            <LinearLayout style="@style/fault_manager_details_ll">
+
+                <TextView
+                    style="@style/fault_manager_details_tv"
+                    android:text="@string/falut_equipment" />
+
+                <TextView
+                    android:id="@+id/fault_equ_tv"
+                    style="@style/fault_manager_details_tv2" />
+            </LinearLayout>
+
+            <View style="@style/fault_manager_hint" />
+
+            <LinearLayout style="@style/fault_manager_details_ll">
+
+                <TextView
+                    style="@style/fault_manager_details_tv"
+                    android:text="@string/falut_location" />
+
+                <TextView
+                    android:id="@+id/fault_processing_tv"
+                    style="@style/fault_manager_details_tv2" />
+            </LinearLayout>
+
+            <View style="@style/fault_manager_hint" />
+
+            <LinearLayout style="@style/fault_manager_details_ll">
+
+                <TextView
+                    style="@style/fault_manager_details_tv"
+                    android:text="@string/falut_patrol" />
+
+                <TextView
+                    android:id="@+id/patrol_tv"
+                    style="@style/fault_manager_details_tv2" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/fault_manager_details_ll">
+
+                <TextView
+                    style="@style/fault_manager_details_tv"
+                    android:text="所属组织" />
+
+                <TextView
+                    android:id="@+id/fault_org_tv"
+                    style="@style/fault_manager_details_tv2" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/fault_manager_details_ll">
+
+                <TextView
+                    style="@style/fault_manager_details_tv"
+                    android:text="处  理  人" />
+
+
+                <TextView
+                    android:id="@+id/processing_name_tv"
+                    style="@style/fault_manager_details_tv2" />
+            </LinearLayout>
+
+            <View style="@style/fault_manager_hint" />
+
+            <LinearLayout
+                android:id="@+id/fault_scene_ll"
+                style="@style/fault_manager_details_ll">
+
+                <TextView
+                    style="@style/fault_manager_details_tv"
+                    android:text="@string/falut_scene"
+                    android:textSize="@dimen/fs16" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/fault_see_to"
+                    android:textColor="@color/color_underline_bg"
+                    android:textSize="@dimen/fs14" />
+
+                <View
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:background="@drawable/ic_equiment_right" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/fault_processing_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginBottom="10dp"
+                android:background="#F6FAFB"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/fault_low_statu_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:textColor="@color/color_task_ft"
+                        android:textSize="@dimen/fs16" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/fault_new_people_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:textColor="@color/color_task_ft"
+                            android:textSize="@dimen/fs16" />
+
+                        <TextView
+                            android:id="@+id/fault_new_people_org_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="7dp"
+                            android:layout_marginTop="6dp"
+                            android:singleLine="true"
+                            android:textColor="@color/color_self_tv"
+                            android:textSize="@dimen/fs16" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/fault_time_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:textColor="@color/color_task_ft"
+                        android:textSize="@dimen/fs16" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/falut_state_iv"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginRight="10dp" />
+
+                <View
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:background="@drawable/ic_equiment_right" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/spare_application_tv"
+            android:layout_width="0dp"
+            android:layout_height="39dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/fault_details_shape"
+            android:gravity="center"
+            android:text="备件申请"
+            android:textColor="@color/color_white"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/processing_result_tv"
+            android:layout_width="0dp"
+            android:layout_height="39dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/fault_details_shape"
+            android:gravity="center"
+            android:text="@string/falut_result"
+            android:textColor="@color/color_white"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/equipment_repair_tv"
+            android:layout_width="0dp"
+            android:layout_height="39dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/fault_details_shape"
+            android:gravity="center"
+            android:text="@string/falut_equipment_repair"
+            android:textColor="@color/color_white"
+            android:textSize="16sp"
+            android:visibility="gone" />
+    </LinearLayout>
+</LinearLayout>

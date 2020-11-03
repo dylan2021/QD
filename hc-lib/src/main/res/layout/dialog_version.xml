@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="261dp"
+        android:layout_height="156dp"
+        android:background="@drawable/icon_version_dialog"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:text="发现新版本"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_version_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+
+        <TextView
+            android:id="@+id/size_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="13dp"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_msg"
+        android:layout_width="261dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="120dp"
+        android:background="#ffffff"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textColor="#ff9b9b9b"
+        android:textSize="13sp" />
+
+    <View
+        android:layout_width="261dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="180dp"
+        android:background="#4d979797" />
+
+    <Button
+        android:id="@+id/versionchecklib_version_dialog_commit"
+        android:layout_width="261dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="182dp"
+        android:background="#ffffff"
+        android:gravity="center"
+        android:text="立即升级"
+        android:textColor="#ff0cabdf"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+</FrameLayout>

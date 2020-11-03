@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/home_head_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/home_degree_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dip"
+            android:layout_marginTop="20dip"
+            android:textColor="#ffffffff"
+            android:textSize="50sp" />
+
+        <LinearLayout
+            android:id="@+id/weather_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/home_weather_iv"
+                android:layout_width="33dip"
+                android:layout_height="33dip"
+                android:layout_marginLeft="20dip"
+                android:background="@mipmap/home_weather_sunny" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dip"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="8dip"
+                        android:layout_height="11dip"
+                        android:background="@mipmap/home_head_location" />
+
+                    <TextView
+                        android:id="@+id/home_city_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dip"
+                        android:textColor="#ffffffff"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/home_city_pinyin_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dip"
+                    android:layout_marginTop="4dip"
+                    android:text="BEIJING"
+                    android:textColor="#ffffffff"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/display_ll"
+        android:layout_width="210dp"
+        android:layout_height="30dp"
+        android:layout_gravity="right|bottom"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/home_bulletins_shape"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <com.haocang.waterlink.widgets.FiveTextView
+            android:id="@+id/tv_scoll"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+
+        <ImageButton
+            android:id="@+id/close_bulletins_itbn"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/icon_bulletins_fork" />
+    </LinearLayout>
+</FrameLayout>

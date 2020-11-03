@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.haocang.fault">
+
+    <application android:icon="@mipmap/ic_mango">
+        <activity
+            android:name=".list.ui.FaultFilterActivity"
+            android:label="@string/title_activity_fault_filter"
+            android:theme="@style/MyDialogStyleBottom"></activity>
+        <activity
+            android:name="com.example.cj.videoeditor.activity.RecordedActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+
+    </application>
+
+</manifest>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_common" />
+
+    <LinearLayout style="@style/repair_manager_details_ll">
+
+        <TextView
+            style="@style/repair_manager_details_tv"
+            android:text="@string/repair_type" />
+
+        <TextView
+            style="@style/repair_equipment_repair_tv"
+            android:text="内部维修" />
+
+        <View style="@style/repair_equipment_repair_iv" />
+    </LinearLayout>
+
+    <View style="@style/repair_manager_hint" />
+
+    <LinearLayout style="@style/repair_manager_details_ll">
+
+        <TextView
+            style="@style/repair_manager_details_tv"
+            android:text="@string/repair_equipment_name" />
+
+        <TextView
+            style="@style/repair_equipment_repair_tv"
+            android:text="3#泵" />
+
+        <View
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/ic_scan_code" />
+
+        <View style="@style/repair_equipment_repair_iv" />
+    </LinearLayout>
+
+    <View style="@style/repair_manager_hint" />
+
+    <LinearLayout style="@style/repair_manager_details_ll">
+
+        <TextView
+            style="@style/repair_manager_details_tv"
+            android:text="@string/repair_equipment_code" />
+
+        <TextView
+            style="@style/repair_equipment_repair_tv"
+            android:text="BDN2323" />
+
+    </LinearLayout>
+
+    <View style="@style/repair_manager_hint" />
+
+    <LinearLayout style="@style/repair_manager_details_ll">
+
+        <TextView
+            style="@style/repair_manager_details_tv"
+            android:text="@string/repair_equipment_org" />
+
+        <TextView
+            style="@style/repair_equipment_repair_tv"
+            android:text="组织A" />
+
+    </LinearLayout>
+
+    <View style="@style/repair_manager_hint" />
+
+    <LinearLayout style="@style/repair_manager_details_ll">
+
+        <TextView
+            style="@style/repair_manager_details_tv"
+            android:text="@string/repair_process_postion" />
+
+        <TextView
+            style="@style/repair_equipment_repair_tv"
+            android:text="泵站" />
+
+    </LinearLayout>
+
+    <View style="@style/repair_manager_hint" />
+
+    <LinearLayout style="@style/repair_manager_details_ll">
+
+        <TextView
+            style="@style/repair_manager_details_tv"
+            android:text="@string/repair_fault_reason" />
+
+        <TextView
+            style="@style/repair_equipment_repair_tv"
+            android:text="设备损耗" />
+
+        <View style="@style/repair_equipment_repair_iv" />
+    </LinearLayout>
+
+    <View style="@style/repair_manager_hint" />
+
+    <LinearLayout style="@style/repair_manager_details_ll">
+
+        <TextView
+            style="@style/repair_manager_details_tv"
+            android:text="@string/repair_degree" />
+
+        <TextView
+            style="@style/repair_equipment_repair_tv"
+            android:text="二级" />
+
+        <View style="@style/repair_equipment_repair_iv" />
+    </LinearLayout>
+
+    <View style="@style/repair_manager_hint" />
+
+    <TextView
+        style="@style/repair_manager_details_tv"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/repair_add_remarks" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/repair_scene_bg_shape"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/repair_scene_et"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="@string/repair_add_remarks"
+            android:textColor="@color/color_task_ft"
+            android:textSize="@dimen/fs15" />
+
+        <LinearLayout
+            android:id="@+id/audio_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/char_lenth_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="7dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="0/100"
+                android:textColor="@color/color_back"
+                android:textSize="13sp" />
+
+            <View
+                android:layout_width="16dp"
+                android:layout_height="19dp"
+                android:layout_marginRight="7dp"
+                android:background="@mipmap/audio_icon" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

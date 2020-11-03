@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.85"
+        android:background="@mipmap/login_title_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:background="@mipmap/back"
+                android:onClick="back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="back"
+                android:text="@string/back"
+                android:textColor="@color/color_back"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout style="@style/login_input_box">
+
+            <TextView
+                style="@style/verify_mobilep_ft"
+                android:text="新  密  码" />
+
+            <EditText
+                android:id="@+id/userame_et"
+                style="@style/login_editext_box"
+                android:hint="@string/newpwd_hint"
+                android:maxLength="20"
+                android:password="true"
+                android:textColorHint="@color/color_hint" />
+        </LinearLayout>
+
+        <View style="@style/underline_style" />
+
+        <LinearLayout
+            style="@style/login_input_box"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                style="@style/verify_mobilep_ft"
+                android:text="@string/confirm_pwd" />
+
+            <EditText
+                android:id="@+id/password_et"
+                style="@style/login_editext_box"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:hint="@string/confirm_pwds"
+                android:maxLength="20"
+                android:password="true"
+                android:textColorHint="@color/color_hint" />
+
+        </LinearLayout>
+
+        <View
+            style="@style/underline_style"
+            android:layout_marginBottom="20dp" />
+
+        <Button
+            android:id="@+id/next_step_btn"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="30dp"
+            android:background="@mipmap/login_btn_bg"
+            android:text="@string/complete"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/fs16" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,91 @@
+apply plugin: 'com.android.library'
+
+
+apply plugin: 'maven'
+
+def isReleaseBuild() {
+    return VERSION_NAME.contains("SNAPSHOT") == false
+}
+
+def getRepositoryUsername() {
+    return hasProperty('NEXUS_USERNAME') ? NEXUS_USERNAME : ""
+}
+
+def getRepositoryPassword() {
+    return hasProperty('NEXUS_PASSWORD') ? NEXUS_PASSWORD : ""
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+//                pom.groupId = GROUP
+//                pom.artifactId = POM_ARTIFACT_HCLIC_ID
+//                pom.version = VERSION_NAME
+//                pom.packaging="aar"
+            repository(url: RELEASE_REPOSITORY_URL) {
+                authentication(userName: getRepositoryUsername(), password: getRepositoryPassword())
+            }
+            pom.project {
+                groupId = GROUP
+                artifactId = POM_ARTIFACT_WATER_ID
+                version = WATER_VERSION_NAME
+                packaging = POM_PACKAGING
+            }
+            snapshotRepository(url: SNAPSHOT_REPOSITORY_URL) {
+                authentication(userName: getRepositoryUsername(), password: getRepositoryPassword())
+            }
+        }
+    }
+}
+
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "25.0.3"
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+                arguments = [moduleName: project.getName()]
+            }
+        }
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            //path "CMakeLists.txt"
+            version '3.10.2'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    testImplementation 'junit:junit:4.12'
+
+    api 'androidx.appcompat:appcompat:1.0.0'
+    api 'com.github.bumptech.glide:glide:4.6.1'
+    api 'androidx.cardview:cardview:1.0.0'
+    api 'androidx.multidex:multidex:2.0.0'
+}

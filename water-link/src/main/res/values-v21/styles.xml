@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ImageTranslucentBarTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!--半透明状态栏-->
+        <item name="android:windowTranslucentStatus">true</item>
+        <!--半透明导航栏-->
+        <!--<item name="android:windowTranslucentNavigation">true</item>-->
+        <!--5.0以后要手动设置状态栏的颜色-->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+</resources>

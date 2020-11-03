@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/color_gray" />
+
+    <LinearLayout
+        android:id="@+id/jump_ll"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:text="@string/kpi"
+            android:textColor="@color/color_back"
+            android:textSize="@dimen/fs18" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="6dp"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/look_all"
+            android:textColor="@color/color_task_ft"
+            android:textSize="@dimen/fs14" />
+
+        <View
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginRight="12dp"
+            android:background="@mipmap/right_icon" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#F1F1F1"
+        android:layerType="software" />
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        app:elevation="0dp"
+        app:tabBackground="@android:color/transparent"
+        app:tabIndicatorColor="@color/color_title_blue_bg"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/color_title_blue_bg"
+        app:tabTextColor="@color/color_task_ft" />
+
+    <!--<android.support.v4.view.ViewPager-->
+    <com.haocang.waterlink.home.widgets.CustomViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/white" />
+</LinearLayout>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="menu_name">
+        <item>设备台账</item>
+        <item>巡检管理</item>
+        <item>缺陷管理</item>
+        <item>维修管理</item>
+        <item>曲线管理</item>
+    </string-array>
+
+    <string-array name="menu_name_key">
+        <item>equ</item>
+        <item>patrol</item>
+        <item>fault</item>
+        <item>repair</item>
+        <item>curve</item>
+    </string-array>
+    <string-array name="task_board_bar">
+        <item>待执行</item>
+        <item>执行中</item>
+        <item>已完成</item>
+    </string-array>
+
+    <string-array name="pending_task_bar">
+        <item>全部</item>
+        <item>执行</item>
+        <item>审批</item>
+    </string-array>
+
+    <string-array name="menu_fragment">
+        <item>/equiment/list</item>
+        <item>/patrol/list</item>
+        <item>/fault/list</item>
+        <item>/repair/list</item>
+        <item>/curve/main</item>
+    </string-array>
+
+    <string-array name="activity_url">
+        <item>/ar/main</item>
+        <item>/singnin/main</item>
+        <item>/mr/main</item>
+    </string-array>
+
+    <array name="self_statu">
+        <item>业务需求</item>
+        <item>系统问题</item>
+        <item>其它问题</item>
+    </array>
+
+
+    <!-- "equipment", "patrol", "fault", "repair", "maintian"-->
+
+    <string-array name="follow_type_key">
+        <item>equipment</item>
+        <item>patrol</item>
+        <item>fault</item>
+        <item>repair</item>
+    </string-array>
+
+
+    <string-array name="multi_media">
+        <item>相 机</item>
+        <item>从手机相册选择</item>
+    </string-array>
+
+    <string-array name="tab_list">
+        <item>数据组合</item>
+        <item>数据测点</item>
+        <item>设备台账</item>
+        <item>缺陷工单</item>
+        <item>维修工单</item>
+        <item>巡检工单</item>
+    </string-array>
+
+    <string-array name="task_tab_list">
+        <item>巡检任务</item>
+        <item>缺陷工单</item>
+        <item>维修工单</item>
+        <!--<item>保养工单</item>-->
+    </string-array>
+
+    <string-array name="voicerset_name">
+        <item>回到首页</item>
+        <item>实时值</item>
+        <item>设备台账</item>
+        <item>趋势曲线</item>
+        <item>报表</item>
+        <item>实时视频</item>
+        <item>缺陷管理</item>
+        <item>报警</item>
+        <item>AR</item>
+        <item>消息</item>
+        <item>维修管理</item>
+        <item>养护管理</item>
+    </string-array>
+    <string-array name="voicerset_value">
+        <item>回到首页|返回首页</item>
+        <item>值|多少</item>
+        <item>台账|设备|台账管理</item>
+        <item>趋势曲线|曲线</item>
+        <item>报表</item>
+        <item>实时视频|视频管理</item>
+        <item>报缺|缺陷申报</item>
+        <item>报警|报警管理</item>
+        <item>AR|3T</item>
+        <item>消息</item>
+        <item>维修|维修管理</item>
+        <item>养护|养护管理</item>
+    </string-array>
+
+
+    <string-array name="home_menu_name">
+        <item>com.haocang.waterlink.home.ui.HomeFragment</item>
+        <item>com.haocang.datamonitor.alarm.ui.AlarmFragment</item>
+        <item>com.haocang.waterlink.follow.ui.FollowNewFragment</item>
+        <!--        <item>com.haocang.waterlink.taskboard.ui.TaskNewBoardFragment</item>-->
+        <item>com.haocang.messge.ui2.MessgeTabLayouFragment</item>
+        <item>com.haocang.waterlink.self.ui.MyHomeFragment</item>
+    </string-array>
+
+
+    <string-array name="home_menu_all_url">
+        <item>/ar/main</item>
+        <item>/patrol/list</item>
+        <item>/equiment/list</item>
+        <item>/mr/main</item>
+        <item>/curve/main</item>
+        <item>/curve/two</item>
+        <item>/fault/post</item>
+        <item>/singnin/main</item>
+        <item>/fault/list</item>
+        <item>/task/list</item>
+        <item>/repair/list</item>
+        <item>/monitor/home/</item>
+        <item>/data/reportform</item>
+        <item>/maintain/list</item>
+        <item>/home/myapp</item>
+        <item>/model/modelmsg</item>
+        <item>/pump/pumplist</item>
+        <item>/experiment/experiment</item>
+
+    </string-array>
+</resources>

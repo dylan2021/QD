@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的"
+            android:textColor="#ff3c3c3c"
+            android:textSize="17sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="104dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:background="@mipmap/self_home_bg"
+        android:orientation="horizontal">
+
+
+        <com.haocang.waterlink.widgets.ImageViewPlus
+            android:id="@+id/my_head_iv"
+            android:layout_width="67dp"
+            android:layout_height="67dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="17dp"
+            android:background="@drawable/self_head_shape"
+            android:scaleType="centerCrop" />
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/user_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="21sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/group_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ffbde9f8"
+                android:textSize="@dimen/fs13" />
+
+            <TextView
+                android:id="@+id/org_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ffd5f4ff"
+                android:textSize="@dimen/fs13" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/modify_pwd_ll"
+                style="@style/self_ll"
+                android:layout_marginTop="10dp">
+
+
+                <View
+                    android:layout_width="17dp"
+                    android:layout_height="21dp"
+                    android:background="@mipmap/icon_self_password" />
+
+                <TextView
+                    style="@style/self_tv"
+                    android:layout_marginLeft="24dp"
+                    android:text="@string/modify_pwd" />
+
+                <View style="@style/self_home_icon" />
+            </LinearLayout>
+
+            <View style="@style/self_v" android:visibility="gone"/>
+
+            <LinearLayout
+                android:id="@+id/home_setup_ll"
+                style="@style/self_ll"
+                android:visibility="gone">
+
+                <View
+                    style="@style/self_view"
+                    android:background="@mipmap/icon_self_setting" />
+
+                <TextView
+                    style="@style/self_tv"
+                    android:text="@string/home_setup" />
+
+                <View style="@style/self_home_icon" />
+            </LinearLayout>
+
+            <View style="@style/self_v" />
+
+            <LinearLayout
+                android:id="@+id/self_voicerset_ll"
+                style="@style/self_ll">
+
+                <View
+                    style="@style/self_view"
+                    android:background="@mipmap/icon_self_video" />
+
+                <TextView
+                    style="@style/self_tv"
+                    android:text="@string/self_voicer_set" />
+
+                <View style="@style/self_home_icon" />
+            </LinearLayout>
+
+            <View
+                android:visibility="gone"
+                android:id="@+id/self_voicerset_v"
+                style="@style/self_v" />
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/feedback_ll"
+                style="@style/self_ll">
+
+                <View
+                    style="@style/self_view"
+                    android:background="@mipmap/icon_self_back" />
+
+                <TextView
+                    style="@style/self_tv"
+                    android:text="@string/feedback" />
+
+                <View style="@style/self_home_icon" />
+            </LinearLayout>
+
+            <View style="@style/self_v" />
+
+            <LinearLayout
+                android:id="@+id/version_ll"
+                style="@style/self_ll">
+
+                <View
+                    style="@style/self_view"
+                    android:background="@mipmap/icon_self_version" />
+
+
+                <TextView
+                    style="@style/self_tv"
+                    android:text="@string/version" />
+
+                <View style="@style/self_home_icon" />
+            </LinearLayout>
+
+            <View style="@style/self_v" />
+
+
+            <LinearLayout
+                android:id="@+id/siwich_ll"
+                style="@style/self_ll">
+
+                <View
+                    android:layout_width="14dp"
+                    android:layout_height="21dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@mipmap/icon_phone_my_home" />
+
+
+                <TextView
+                    style="@style/self_tv"
+                    android:text="@string/switch_phone" />
+
+                <View style="@style/self_home_icon" />
+            </LinearLayout>
+
+            <View style="@style/self_v" />
+
+            <LinearLayout
+                android:id="@+id/exit_ll"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="45dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/self_exit_shape"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="退出账号"
+                    android:textColor="#ff0cabdf"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

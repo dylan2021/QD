@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="147dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginRight="22dp"
+        android:background="@drawable/follow_rectangle_big"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <LinearLayout style="@style/follow_equipment_ll">
+
+
+            <TextView
+                android:id="@+id/fault_level_tv"
+                style="@style/follow_equipment_tv2"
+                android:textColor="#ff0cabdf"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/follow_equipment_ll">
+
+
+            <TextView
+                android:id="@+id/equipment_name_tv"
+                style="@style/follow_equipment_tv2"
+                android:textColor="#ff3c3c3c"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/follow_equipment_ll">
+
+
+            <TextView
+                android:id="@+id/fault_code_tv"
+                style="@style/follow_equipment_tv2"
+                android:textColor="#ff3c3c3c"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+
+        <LinearLayout style="@style/follow_equipment_ll">
+
+            <TextView
+                style="@style/follow_equipment_tv"
+                android:text="处理人："
+                android:textColor="#ff9b9b9b"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/fault_person_tv"
+                style="@style/follow_equipment_tv2"
+                android:textColor="#ff9b9b9b"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.haocang.equiment.ar.ui.RoundArImageView
+        android:id="@+id/equipment_iv"
+        android:layout_width="110dp"
+        android:layout_height="102dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="25dp"
+        android:scaleType="fitXY" />
+
+    <ImageButton
+        android:id="@+id/follow_ibt"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_gravity="right"
+        android:layout_marginTop="9dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/icon_follow_stars" />
+
+</FrameLayout>

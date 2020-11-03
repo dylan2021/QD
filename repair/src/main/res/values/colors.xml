@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="repair_color_primary">#3F51B5</color>
+    <color name="repair_color_primary_dark">#303F9F</color>
+    <color name="repair_color_accent">#FF4081</color>
+    <color name="repair_state_unallote">#7C4E93</color>
+    <color name="repair_state_unprocess">#f99a6b</color>
+    <color name="repair_state_processing">#efb336</color>
+    <color name="repair_state_hangup">#125fa5</color>
+    <color name="repair_state_close">#e35c5c</color>
+    <color name="repair_state_complete">#0cabdf</color>
+</resources>

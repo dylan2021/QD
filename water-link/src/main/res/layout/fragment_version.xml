@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_common" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.haocang.waterlink.widgets.ImageViewPlus
+            android:id="@+id/my_head_iv"
+            android:layout_width="89dp"
+            android:layout_height="89dp"
+            android:background="@mipmap/ic_mango" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/app_name"
+            android:textColor="@color/color_back"
+            android:textSize="@dimen/fs16" />
+
+        <TextView
+            android:id="@+id/version_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/version_ft"
+            android:textSize="@dimen/fs16" />
+
+
+        <TextView
+            android:id="@+id/detection_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/version_shadow_shape"
+            android:text="@string/detection_update"
+            android:textColor="@color/color_title_blue_bg" />
+    </LinearLayout>
+</LinearLayout>

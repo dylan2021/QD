@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="patrol_mapwindow_bg">#50AAAAAA</color>
+    <color name="patrol_blue">#EDF9FD</color>
+    <color name="patrol_font_pink">#0CABDF</color>
+    <color name="patrol_gray">#EEEEEE</color>
+    <color name="patrol_font_gray">#555555</color>
+    <color name="patrol_tab_select">#44BFE6</color>
+    <color name="patrol_tab_unselect">#5b5b5b</color>
+    <color name="patrol_plan_legend">#EC4300</color>
+    <color name="patrol_actual_legend">#0CABDF</color>
+    <color name="patrol_name_common">#888888</color>
+    <color name="patrol_name_gray">#CCCCCC</color>
+    <color name="patrol_state">#3CBCE5</color>
+    <color name="patrol_state_normal">#4CC946</color>
+    <color name="patrol_state_abnormal">#EC4300</color>
+</resources>

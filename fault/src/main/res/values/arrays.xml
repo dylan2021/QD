@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="fault_statu">
+        <item>全　部</item>
+        <item>待处理</item>
+        <item>处理中</item>
+        <item>挂　起</item>
+        <item>已关闭</item>
+    </array>
+
+    <array name="fault_type">
+        <item>工艺缺陷</item>
+        <item>设备缺陷</item>
+        <item>管理缺陷</item>
+        <item>其它缺陷</item>
+    </array>
+
+    <array name="fault_type_id">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </array>
+    <array name="fault_severitys">
+        <item>严重</item>
+        <item>一般</item>
+        <item>轻微</item>
+    </array>
+
+    <array name="fault_severity_id">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </array>
+
+    <array name="fault_filter_statu">
+        <item>未分配</item>
+        <item>待处理</item>
+        <item>处理中</item>
+        <item>挂起</item>
+        <item>关闭</item>
+        <item>完成</item>
+
+    </array>
+
+    <array name="fault_filter_statu_id">
+        <item>5</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </array>
+
+    <array name="fault_repair_urgency">
+        <item>紧急</item>
+        <item>一般</item>
+        <item>不紧急</item>
+    </array>
+
+    <array name="fault_repair_urgency_id">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </array>
+
+    <array name="fault_repair_type">
+        <item>内部维修</item>
+        <item>委外维修</item>
+    </array>
+
+    <array name="fault_repair_type_ids">
+        <item>1</item>
+        <item>2</item>
+    </array>
+
+
+    <array name="fault_repair_reason">
+        <item>设备损耗</item>
+        <item>人为损耗</item>
+        <item>其它原因</item>
+    </array>
+
+    <array name="fault_repair_reason_id">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </array>
+
+    <string-array name="falut_multi_media">
+        <item>拍照</item>
+        <item>录像</item>
+        <item>从手机相册选择</item>
+    </string-array>
+
+    <array name="processing_results">
+        <item>处理中</item>
+        <item>挂起</item>
+        <item>关闭</item>
+        <item>已完成</item>
+    </array>
+
+    <array name="processing_results_id">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </array>
+
+    <array name="processing_result_hook">
+        <item>缺少备品</item>
+        <item>等待整改</item>
+        <item>统一规划</item>
+        <item>其它原因</item>
+    </array>
+
+    <array name="processing_result_hook_id">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </array>
+
+    <array name="processing_result_close">
+        <item>重复填报</item>
+        <item>误报</item>
+        <item>其它原因</item>
+    </array>
+    <array name="processing_result_close_id">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </array>
+</resources>

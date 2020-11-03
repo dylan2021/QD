@@ -1,0 +1,79 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_gray5"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_common" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_equiment_search"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/search_v"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginLeft="13dp"
+            android:background="@drawable/ic_equiment_search"
+            android:padding="7dp" />
+
+        <EditText
+            android:id="@+id/query_et"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="7dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="工艺位置"
+            android:imeOptions="actionSearch"
+            android:singleLine="true"
+            android:textColor="@color/color_task_ft"
+            android:textColorHint="@color/color_task_ft"
+            android:textSize="@dimen/fs14" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ListView
+            android:id="@+id/school_friend_member"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="7dp"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@drawable/bg_cut_line"
+            android:dividerHeight="1px"
+            android:fadingEdge="none"
+            android:listSelector="@android:color/transparent"
+            android:scrollbars="none" />
+
+        <TextView
+            android:id="@+id/school_friend_dialog"
+            android:layout_width="80.0dip"
+            android:layout_height="80.0dip"
+            android:layout_gravity="center"
+            android:background="@drawable/contact_select_pinyin_bg"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="45sp"
+            android:visibility="gone" />
+
+        <com.haocang.base.widgets.SideBar
+            android:id="@+id/school_friend_sidrbar"
+            android:layout_width="20dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="right" />
+    </FrameLayout>
+
+</LinearLayout>

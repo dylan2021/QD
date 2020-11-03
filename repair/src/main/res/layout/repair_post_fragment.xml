@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@mipmap/home_title_bg"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/title_common_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="5dp"
+            android:text="@string/repair_post"
+            android:textColor="#ffffff"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/common_complete_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:text="@string/repair_complete"
+            android:textColor="@color/color_white"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/repair_type_ll"
+                style="@style/repair_ll"
+                android:layout_marginTop="18dp">
+
+                <TextView
+                    style="@style/repair_post_tv"
+                    android:text="@string/repair_type" />
+
+                <TextView
+                    android:id="@+id/repair_type"
+                    style="@style/repair_post_value_v" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/repair_equipment_ll"
+                style="@style/repair_ll"
+                android:layout_marginTop="18dp"
+                android:gravity="center_vertical">
+
+
+                <TextView
+                    style="@style/repair_post_tv"
+                    android:text="@string/repair_equipment" />
+
+                <TextView
+                    android:id="@+id/repair_equipment_tv"
+                    style="@style/repair_post_value_v" />
+
+                <ImageView
+                    android:id="@+id/scan_code_iv"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/ic_scan_code"
+                    android:padding="5dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/repair_severity_ll"
+                style="@style/repair_ll"
+                android:layout_marginTop="18dp">
+
+                <TextView
+                    style="@style/repair_post_tv"
+                    android:text="@string/repair_level" />
+
+                <TextView
+                    android:id="@+id/repair_level_tv"
+                    style="@style/repair_post_value_v" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/processing_ll"
+                style="@style/repair_ll"
+                android:layout_marginTop="18dp">
+
+                <TextView
+                    style="@style/repair_post_tv"
+                    android:text="处  理  人" />
+
+                <TextView
+                    android:id="@+id/repair_processing_tv"
+                    style="@style/repair_post_value_v" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/color_underline" />
+
+            <LinearLayout
+                android:id="@+id/repair_add_remark_ll"
+                style="@style/repair_ll"
+                android:layout_marginBottom="12dp"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/repair_post_tv"
+                    android:text="@string/repair_add_remark" />
+
+                <TextView
+                    android:id="@+id/repair_remark_tv"
+                    style="@style/repair_post_value_v"
+                    android:layout_marginRight="10dp"
+                    android:background="@null"
+                    android:gravity="right|center_vertical"
+                    android:text="@string/repair_remark" />
+
+                <View
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@mipmap/right_icon" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="7dp"
+                android:background="@color/color_underline" />
+
+            <TextView
+                style="@style/repair_post_tv"
+                android:layout_marginLeft="25dp"
+                android:text="@string/repair_record" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_weight="1"
+                    android:text="@string/repair_add_pic"
+                    android:textColor="@color/color_task_ft"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/add_pic_iv"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginRight="25dp"
+                    android:background="@drawable/ic_common_camera" />
+            </LinearLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

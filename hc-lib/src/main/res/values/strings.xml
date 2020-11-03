@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name">hc-lib</string>
+    <string name="permissions">必需要许可 %1$2s 权限才能使用该功能</string>
+    <string name="no_network">暂无网络可用</string>
+    <string name="back">返回</string>
+    <string name="exit_program_tip">再按一次退出程序</string>
+    <string name="glide_plus_icon_string">android.resource://</string>
+    <string name="post_delete_tv_d">拖动到此处，进行删除</string>
+    <string name="post_delete_tv_s"> 放开手指，进行删除</string>
+    <string name="title_activity_scan">ScanActivity</string>
+    <string name="title_activity_scan_code">ScanCodeActivity</string>
+    <string name="permissions_camera">此功能需要相机和存储权限才能使用</string>
+
+    <!-- QR_Code -->
+    <string name="button_ok">OK</string>
+    <string name="msg_camera_framework_bug">Sorry, the Android camera encountered a problem. You may need to restart the
+        device.
+    </string>
+    <string name="msg_bulk_mode_scanned">Bulk mode: barcode scanned and saved</string>
+    <string name="scan_text">放入框中即可进行二维码扫描</string>
+    <string name="contents_contact">Contact info</string>
+    <string name="contents_email">Email address</string>
+    <string name="contents_location">Geographic coordinates</string>
+    <string name="contents_phone">Phone number</string>
+    <string name="contents_sms">SMS address</string>
+    <string name="contents_text">Plain text</string>
+    <string name="preferences_vibrate">preferences_vibrate</string>
+    <string name="preferences_play_beep">preferences_play_beep</string>
+    <string name="preferences_actions_title">When a barcode is found\u2026</string>
+    <string name="preferences_copy_to_clipboard_title">Copy to clipboard</string>
+    <string name="preferences_decode_1D_title">1D barcodes</string>
+    <string name="preferences_decode_Data_Matrix_title">Data Matrix</string>
+    <string name="preferences_decode_QR_title">QR Codes</string>
+    <string name="preferences_play_beep_title">Beep</string>
+    <string name="preferences_remember_duplicates_summary">Store multiple scans of the same barcode in History</string>
+    <string name="preferences_remember_duplicates_title">Remember duplicates</string>
+    <string name="preferences_scanning_title">When scanning for barcodes, decode\u2026</string>
+    <string name="preferences_supplemental_summary">Try to retrieve more information about the barcode contents</string>
+    <string name="preferences_supplemental_title">Retrieve more info</string>
+    <string name="preferences_vibrate_title">Vibrate</string>
+
+
+    <string name="__picker_title">Images</string>
+    <string name="__picker_delete">Delete</string>
+    <string name="__picker_done">完成</string>
+    <string name="__picker_done_with_count">完成(%1$d/%2$d)</string>
+    <string name="__picker_image_index">%1$d/%2$d</string>
+    <string name="__picker_undo">Undo</string>
+    <string name="__picker_deleted_a_photo">Deleted a photo</string>
+    <string name="__picker_confirm_to_delete">Confirm to delete?</string>
+    <string name="__picker_yes">Yes</string>
+    <string name="__picker_cancel">Cancel</string>
+    <string name="__picker_all_image">All Images</string>
+    <string name="__picker_image_count">%1$d</string>
+    <string name="__picker_over_max_count_tips">You can only select %1$d images</string>
+    <string name="select_picture">选择图片</string>
+    <string name="permissions_storage">此功能必须开启存储权限</string>
+    <string name="permissions_photo">此功能必须开启相机权限</string>
+    <string name="__picker_album">相册</string>
+    <string name="permissions_location">请开启位置权限</string>
+    <string name="base_complete">完成</string>
+    <string name="equiment_all_data">已为您加载全部数据</string>
+    <string name="equiment_follow">关注</string>
+    <string name="falut_max_picture">最多添加6张照片</string>
+    <string name="permissions_audio">此功能必须开启录音功能</string>
+    <string name="patrol_week">周</string>
+    <string name="equiment_reset">重置</string>
+    <string name="equiment_done">完成</string>
+    <string name="alarm">报警</string>
+    <string name="message">消息</string>
+    <string name="follow">关注</string>
+    <string name="my">我的</string>
+    <string name="home">首页</string>
+    <string name="defect_declaration">缺陷申报</string>
+    <string name="concern_failed">关注失败</string>
+    <string name="concern_success">关注成功</string>
+    <string name="service_name">com.haocang.messge.service.MessgeService</string>
+    <string name="wan">万</string>
+
+    <string name="newVersion">发现新版本</string>
+    <string name="voice_tips">支持普通话，四川话，河南话</string>
+</resources>
+

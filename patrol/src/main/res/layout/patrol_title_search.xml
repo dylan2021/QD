@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#f9f9f9">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dip"
+            android:background="@drawable/icon_base_title"
+            android:clipToPadding="true"
+            android:fitsSystemWindows="true"
+            android:gravity="center_vertical">
+
+            <View
+                android:id="@+id/comon_back_v"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="-20dp"
+                android:background="@drawable/icon_backwhite_patrol"
+                android:onClick="back"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/common_back_tv"
+                android:layout_width="120dip"
+                android:layout_height="75dip"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="-20dp"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:onClick="back"
+                android:paddingLeft="22dp"
+                android:paddingTop="7dp"
+                android:paddingRight="35dip"
+                android:paddingBottom="7dp"
+                android:text="@string/back"
+                android:textColor="@color/color_white"
+                android:textSize="15sp"
+                android:visibility="gone" />
+
+
+            <TextView
+                android:id="@+id/title_common_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="-20dp"
+                android:ellipsize="end"
+                android:maxEms="10"
+                android:singleLine="true"
+                android:text="@string/app_name"
+                android:textColor="#ffffff"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/common_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="-20dp"
+                android:layout_marginRight="10dp"
+                android:padding="10dp"
+                android:textColor="#ffffff"
+                android:textSize="17sp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/common_iv"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="-20dp"
+                android:layout_marginRight="10dp"
+                android:padding="10dp"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginTop="62dp"
+            android:layout_weight="1"
+            android:background="@drawable/icon_base_search"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/search_v"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginLeft="16dp"
+                android:background="@mipmap/icon_base_search"
+                android:padding="7dp" />
+
+            <EditText
+                android:id="@+id/query_et"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="7dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:imeOptions="actionSearch"
+                android:singleLine="true"
+                android:textColor="@color/color_task_ft"
+                android:textColorHint="@color/color_task_ft"
+                android:textCursorDrawable="@drawable/base_cursor_shape"
+                android:textSize="@dimen/fs14" />
+
+            <ImageButton
+                android:id="@+id/delete_ibtn"
+                android:layout_width="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/icon_search_delete" />
+        </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

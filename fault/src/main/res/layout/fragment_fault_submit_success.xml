@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_common" />
+
+
+    <ImageView
+        android:layout_width="43dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/ic_fault_success" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/hc_margin"
+        android:text="提交成功"
+        android:textColor="@color/color_menu_ft"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="设备维修申请提交成功"
+        android:textColor="@color/__picker_selected_bg"
+        android:textSize="@dimen/fs16" />
+
+    <TextView
+        android:id="@+id/fault_see_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/fault_success_shape"
+        android:padding="7dp"
+        android:text="查看缺陷"
+        android:textColor="@color/color_title_blue_bg" />
+
+</LinearLayout>

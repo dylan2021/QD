@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_blue">#0cabdf</color><!--app导航背景，标签栏高亮，按钮颜色-->
+    <color name="color_green">#4cc946</color><!--用于提示性文字，卡片背景色，状态显示-->
+    <color name="color_red">#e35c5c</color><!--用于提示性文字，卡片背景色，状态显示-->
+    <color name="color_yellow">#f6fafb</color><!--错误颜色值规范bug-->
+    <color name="color_gray">#f6fafb</color><!--用于卡片背景色-->
+    <color name="color_gray2">#c8c7c7</color><!--用于辅助信息，如友情提示等-->
+    <color name="color_gray3">#d2d2d2</color><!--用于一级分割线，边框，小面积背景-->
+    <color name="color_gray4">#d5d5d5</color><!--用于二级分割线，边框，不可点按钮-->
+    <color name="color_gray5">#f2f2f2</color><!--用于大面积灰背景等-->
+    <color name="color_white">#ffffff</color><!--白色-->
+    <color name="color_blank">#282828</color><!--用于一级信息，如标题，正文重要部分，层级权重一级字体-->
+    <color name="color_blank2">#323232</color><!--用于一级信息，如标二级标签入口，层级权重一级字体-->
+    <color name="color_blank3">#5b5b5b</color><!--用于二级信息，如标签未选中部分，正文，层级权重为2级-->
+    <color name="color_blank4">#989898</color><!--用于三级信息，如副文，列表中时间显示，层级权重3级的文字等-->
+    <color name="color_transparent">#00000000</color>
+    <color name="lib_color_orange">#FE9B23</color>
+    <color name="lib_color_blue">#0BB1DF</color>
+
+</resources>
