@@ -7,6 +7,7 @@ import com.haocang.base.adapter.BaseHolder;
 import com.haocang.base.bean.EquimentEntity;
 import com.haocang.waterlink.R;
 import com.haocang.waterlink.experiment.bean.ExperimentListBean;
+import com.haocang.waterlink.utils.TextUtilsMy;
 
 /**
  * Copyright(C) 2015-2020 Shang hai haocang-tech Co., Ltd. All Rights Reserved.
@@ -32,13 +33,14 @@ public class HomeExperimentAdapter extends BaseAdapter<ExperimentListBean.ItemsB
 
     @Override
     protected void convert(final BaseHolder holder, final ExperimentListBean.ItemsBean item) {
-        String formLatestdate = TextUtils.isEmpty(item.getFormLatestdate())?"":item.getFormLatestdate();
+        String formLatestdate = TextUtilsMy.remove_N(item.getFormLatestdate());
+        String updateTime = TextUtilsMy.remove_N(item.getUpdateTime());
         holder.setText(R.id.name,item.getFormName())
                 .setText(R.id.area,item.getSiteName())
                 .setText(R.id.professional,"业务时间:"+
                         formLatestdate.replace("T"," ").replace("Z",""))
                 .setText(R.id.cycle,item.getCycleName())
-                .setText(R.id.cycle_time,"录入时间:"+item.getUpdateTime().replace("T"," ").replace("Z",""));
+                .setText(R.id.cycle_time,"录入时间:"+ updateTime.replace("T"," ").replace("Z",""));
 //        holder.setText(R.id.patrol_allocator_tv, item.getName());
 //        holder.setText(R.id.patrol_allocate_group_tv, item.getProcessName());
     }
