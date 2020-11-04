@@ -266,15 +266,16 @@ public class PatrolPointDetailAdapter
             if (mList.get(position).getStepImgList() != null && mList.get(position).getStepImgList().size() > 0) {
                 List<PatrolPictureEntity> picList = mList.get(position).getStepImgList();
                 for (PatrolPictureEntity entity : picList) {
-                    if (entity.getImgUrl() != null && (entity.getImgUrl().contains("png") || entity.getImgUrl().contains("jpeg") || entity.getImgUrl().contains("jpg"))) {
+                    String imgUrl = entity.getImgUrl();
+                    if (imgUrl != null && (imgUrl.contains("png") || imgUrl.contains("jpeg") || imgUrl.contains("jpg"))) {
                         PictureInfo pictureInfo = new PictureInfo();
                         pictureInfo.setType(0);
-                        pictureInfo.setImgUrl(entity.getImgUrl());
+                        pictureInfo.setImgUrl(imgUrl);
                         pictureAdapter.addItem(pictureInfo);
                     } else {
                         PictureInfo pictureInfo = new PictureInfo();
                         pictureInfo.setType(1);
-                        pictureInfo.setNetWordVideoPath(entity.getImgUrl());
+                        pictureInfo.setNetWordVideoPath(imgUrl);
                         pictureAdapter.addItem(pictureInfo);
                     }
                 }

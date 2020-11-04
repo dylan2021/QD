@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,11 +36,13 @@ import com.haocang.base.utils.PermissionsProcessingUtil;
 import com.haocang.base.utils.ToastUtil;
 import com.haocang.base.utils.UploadUtil;
 import com.haocang.base.widgets.MyGridLayoutManager;
+import com.haocang.patrol.patrolinhouse.bean.PatrolPictureEntity;
 import com.haocang.waterlink.R;
 import com.haocang.waterlink.experiment.adapter.HomeExperimentDetailAdapter;
 import com.haocang.waterlink.experiment.bean.ExperimentDetailBean;
 import com.haocang.waterlink.experiment.presenter.ExperimentDetailPresenter;
 import com.haocang.waterlink.experiment.presenter.ExperimentDetailPresenterImpl;
+import com.haocang.waterlink.utils.ImageUtil;
 import com.haocang.waterlink.utils.TextUtilsMy;
 
 import org.json.JSONArray;
@@ -170,8 +173,8 @@ public class ExperimentDetailFragment extends Fragment implements
 //        Map<String,String> mMap = new HashMap<>();
 //        mMap.put("time","time");
         try {
-            String t = "";
             JSONObject mObj = new JSONObject(entity);
+            Log.d("图片数据", "图片数据" + mObj.toString());
             if (mObj.getJSONObject("record").has("formId")) {
                 experimentDetailBean.setFormId(mObj.getJSONObject("record").getInt("formId"));
             } else {
@@ -233,8 +236,8 @@ public class ExperimentDetailFragment extends Fragment implements
             } else {
                 ToastUtil.makeText(context, "最多添加4张照片");
             }
-        // hideNameInputMethod();
-        // hidePhoneInputMethod();
+            // hideNameInputMethod();
+            // hidePhoneInputMethod();
         } else if (v.getId() == R.id.common_tv) {//提交
             List<String> fileList = pictureAdapter.getFileList();
             if (TextUtilsMy.isEmptyList(fileList)) {
@@ -317,7 +320,7 @@ public class ExperimentDetailFragment extends Fragment implements
             }
         }).show();
     }
-    
+
     private PermissionsProcessingUtil.OnPermissionsCallback cameraCallBack = new PermissionsProcessingUtil.OnPermissionsCallback() {
         @Override
         public void callBack(boolean flag, String permission) {
@@ -396,12 +399,23 @@ public class ExperimentDetailFragment extends Fragment implements
     }
 
     //todo Dylan 请求后台数据后,拿出图片/视频路径集合, 遍历,这里添加图片或者视频,
-    private void addImgPic(String imgUrl) {
-        if (!TextUtils.isEmpty(imgUrl)) {
-            PictureInfo entity = new PictureInfo();
-            entity.setType(0);
-            entity.setImgUrl(imgUrl);
-            pictureAdapter.addItem(entity);
+     /*   if (mList.get(position).getStepImgList() != null && mList.get(position).getStepImgList().size() > 0) {
+            List<PatrolPictureEntity> picList = mList.get(position).getStepImgList();*/
+    private void addImgPic(List<PatrolPictureEntity> picList ) {
+
+        for (PatrolPictureEntity entity : picList) {
+            String imgUrl = entity.getImgUrl();
+            if (imgUrl != null && (ImageUtil.isImageSuffix(imgUrl))) {
+                PictureInfo pictureInfo = new PictureInfo();
+                pictureInfo.setType(0);
+                pictureInfo.setImgUrl(imgUrl);
+                pictureAdapter.addItem(pictureInfo);
+            } else {
+                PictureInfo pictureInfo = new PictureInfo();
+                pictureInfo.setType(1);
+                pictureInfo.setNetWordVideoPath(imgUrl);
+                pictureAdapter.addItem(pictureInfo);
+            }
             pictureAdapter.notifyDataSetChanged();
         }
     }
