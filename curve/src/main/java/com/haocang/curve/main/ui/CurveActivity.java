@@ -109,19 +109,12 @@ public class CurveActivity extends BaseActivity
      */
     @Override
     protected void doOnCreate() {
-
         setContentView(R.layout.curve_activity);
-//        setTaskBar();
         ARouter.getInstance().inject(this);
         curvePresenter = new CurvePresenterImpl();
         curvePresenter.setView(this);
         setView();
     }
-
-
-    /**
-     *
-     */
     private void setView() {
         titletv = findViewById(R.id.curve_title_tv);
         if (getIntent().getStringExtra("combineName") != null) {
@@ -164,7 +157,6 @@ public class CurveActivity extends BaseActivity
 
 
     public class JsApi {
-
         @JavascriptInterface()
         public void addTagging(Object msg) {
             try {

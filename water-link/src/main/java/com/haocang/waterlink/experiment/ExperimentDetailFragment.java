@@ -164,10 +164,8 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
         pvTime.show();
 
     }
-
-
     public void setData(String entity){
-        Log.e("==============",""+entity.toString());
+        Log.d("李国良",""+entity.toString());
 //        Map<String,String> mMap = new HashMap<>();
 //        mMap.put("time","time");
         try {

@@ -99,8 +99,8 @@
             android:layout_alignParentRight="true"
             android:background="@color/white"
             android:gravity="center"
-            android:visibility="gone"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/curve_refresh_iv"
@@ -147,10 +147,7 @@
                     android:textSize="@dimen/font_size_13" />
             </LinearLayout>
 
-
         </LinearLayout>
-
-
     </RelativeLayout>
 
     <FrameLayout
