@@ -19,7 +19,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.haocang.base.R;
-import com.haocang.base.bean.PictureEntity;
+import com.haocang.base.bean.PictureInfo;
 import com.haocang.base.utils.ProgressBarDialog;
 
 
@@ -46,7 +46,7 @@ import java.util.List;
 public class PictureNewPreviewAdapter extends PagerAdapter {
 
     private Context context;
-    public List<PictureEntity> fileList = new ArrayList<>();
+    public List<PictureInfo> fileList = new ArrayList<>();
     private boolean isDeleteDisplay = false;//是否需要显示删除按钮
     private ImageView pictureIv;
 
@@ -59,7 +59,7 @@ public class PictureNewPreviewAdapter extends PagerAdapter {
         context = ctx;
     }
 
-    public void addAll(List<PictureEntity> list) {
+    public void addAll(List<PictureInfo> list) {
         fileList.clear();
         fileList.addAll(list);
     }
@@ -96,15 +96,15 @@ public class PictureNewPreviewAdapter extends PagerAdapter {
 
     private void initData(int position, View view) {
         Log.i("test", view.getVisibility() + "");
-        PictureEntity entity = fileList.get(position);
+        PictureInfo entity = fileList.get(position);
         pictureIv = view.findViewById(R.id.picture_iv);
-        if (entity.getFileType() == PictureEntity.IMAGE) {
+        if (entity.getFileType() == PictureInfo.IMAGE) {
             pictureIv.setVisibility(View.VISIBLE);
             Glide.with(context).load(entity.getImgUrl()).apply(options).into(pictureIv);
-        } else if (entity.getFileType() == PictureEntity.LOCAL_IMAGE) {
+        } else if (entity.getFileType() == PictureInfo.LOCAL_IMAGE) {
             pictureIv.setVisibility(View.VISIBLE);
             Glide.with(context).load(entity.getLocalImgPath()).apply(options).into(pictureIv);
-        } else if (entity.getFileType() == PictureEntity.VIDEO || entity.getFileType() == PictureEntity.LOCAL_VIDEO) {
+        } else if (entity.getFileType() == PictureInfo.VIDEO || entity.getFileType() == PictureInfo.LOCAL_VIDEO) {
             frameLayout = view.findViewById(R.id.video_fl);
             frameLayout.setVisibility(View.VISIBLE);
             videoView = view.findViewById(R.id.video_view);
@@ -118,8 +118,8 @@ public class PictureNewPreviewAdapter extends PagerAdapter {
     /**
      * 加载服务器视频用uri。本地视频直接设置路径即可
      */
-    private void playVideo(PictureEntity entity) {
-        if (entity.getFileType() == PictureEntity.LOCAL_VIDEO) {
+    private void playVideo(PictureInfo entity) {
+        if (entity.getFileType() == PictureInfo.LOCAL_VIDEO) {
             Uri uri = Uri.parse(entity.getVideoPath());
             videoView.setVideoURI(uri);
         } else {
@@ -158,7 +158,7 @@ public class PictureNewPreviewAdapter extends PagerAdapter {
      *
      * @param entity
      */
-    private void playVideoNet(PictureEntity entity) {
+    private void playVideoNet(PictureInfo entity) {
         if (!TextUtils.isEmpty(entity.getVideoUrl())) {
             videoView.setVideoPath(entity.getVideoUrl());
             dialog.show();

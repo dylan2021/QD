@@ -18,7 +18,7 @@ import android.net.Uri;
  * 修 改 者：
  * 修改时间：
  */
-public class PictureEntity {
+public class PictureInfo {
     public static final int LOCAL_IMAGE = 0;//todo  本地图片路径
     public static final int IMAGE = 1;//todo 后台图片路径
     public static final int LOCAL_VIDEO = 2;//todo 本地视频路径

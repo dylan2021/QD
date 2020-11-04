@@ -33,7 +33,7 @@ import com.example.cj.videoeditor.WaterMark;
 import com.example.cj.videoeditor.activity.RecordedActivity;
 import com.example.cj.videoeditor.picture.ImageUtil;
 import com.haocang.base.adapter.PictureAdapter;
-import com.haocang.base.bean.PictureEntity;
+import com.haocang.base.bean.PictureInfo;
 import com.haocang.base.config.AppApplication;
 import com.haocang.base.config.LibConfig;
 import com.haocang.base.ui.CameraFragment;
@@ -486,7 +486,7 @@ public class PostFaultFragment extends Fragment implements View.OnClickListener,
      */
     private void addItemPicture(String picturePath) {
         if (!TextUtils.isEmpty(picturePath)) {
-            PictureEntity entity = new PictureEntity();
+            PictureInfo entity = new PictureInfo();
             File file = new File(picturePath);
             File newFile = CompressHelper.getDefault(getActivity()).compressToFile(file);//压缩图片
             entity.setLocalImgPath(newFile.getPath());
@@ -503,7 +503,7 @@ public class PostFaultFragment extends Fragment implements View.OnClickListener,
      */
     private void addItemVideo(String videoPath) {
         if (!TextUtils.isEmpty(videoPath)) {
-            PictureEntity entity = new PictureEntity();
+            PictureInfo entity = new PictureInfo();
             entity.setType(1);
             entity.setVideoPath(videoPath);
             pictureAdapter.addItem(entity);

@@ -1,7 +1,6 @@
 package com.haocang.waterlink.experiment;
 
 import android.content.ContentUris;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -13,13 +12,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,23 +29,18 @@ import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.bigkoo.pickerview.view.TimePickerView;
 import com.haocang.base.adapter.PictureAdapter;
 import com.haocang.base.bean.FileEntity;
-import com.haocang.base.bean.PictureEntity;
+import com.haocang.base.bean.PictureInfo;
 import com.haocang.base.config.LibConfig;
 import com.haocang.base.utils.PermissionsProcessingUtil;
 import com.haocang.base.utils.ToastUtil;
 import com.haocang.base.utils.UploadUtil;
 import com.haocang.base.widgets.MyGridLayoutManager;
 import com.haocang.waterlink.R;
-import com.haocang.waterlink.experiment.adapter.HomeExperimentAdapter;
 import com.haocang.waterlink.experiment.adapter.HomeExperimentDetailAdapter;
 import com.haocang.waterlink.experiment.bean.ExperimentDetailBean;
 import com.haocang.waterlink.experiment.presenter.ExperimentDetailPresenter;
 import com.haocang.waterlink.experiment.presenter.ExperimentDetailPresenterImpl;
-import com.haocang.waterlink.experiment.presenter.ExperimentPresenter;
-import com.haocang.waterlink.experiment.presenter.ExperimentPresenterImpl;
-import com.haocang.waterlink.self.ui.FeedbackFragment;
-import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
-import com.nanchen.compresshelper.CompressHelper;
+import com.haocang.waterlink.utils.TextUtilsMy;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -67,7 +60,8 @@ import java.util.Map;
 import camera2library.camera.Camera2RecordActivity;
 
 @Route(path = "/experiment/experiment/detail")
-public class ExperimentDetailFragment extends Fragment implements View.OnClickListener, UploadUtil.UploadSuccess {
+public class ExperimentDetailFragment extends Fragment implements
+        View.OnClickListener {
 
     private int formId;
     private String cycleId;
@@ -83,14 +77,15 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
     private PictureAdapter pictureAdapter;
     private RecyclerView recyclerview;
     private TextView rightTextView;
+    private FragmentActivity context;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        formId = getActivity().getIntent().getExtras().getInt("formId");
-        cycleId = getActivity().getIntent().getExtras().getString("cycleId");
-        View view = inflater.from(getActivity()).inflate(R.layout.fragment_experiment_detail, null);
+        context = getActivity();
+        formId = context.getIntent().getExtras().getInt("formId");
+        cycleId = context.getIntent().getExtras().getString("cycleId");
+        View view = inflater.from(context).inflate(R.layout.fragment_experiment_detail, null);
         initView(view);
         return view;
     }
@@ -117,13 +112,13 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
         adapter = new HomeExperimentDetailAdapter(R.layout.adapter_home_experiment_detail);
         equimentRv.setItemViewCacheSize(100);
 
-        equimentRv.setLayoutManager(new LinearLayoutManager(getActivity()));
-        footView = View.inflate(getActivity(), R.layout.experiment_foot, null);
+        equimentRv.setLayoutManager(new LinearLayoutManager(context));
+        footView = View.inflate(context, R.layout.experiment_foot, null);
         adapter.setFootView(footView);
         footView.findViewById(R.id.add_pic_iv).setOnClickListener(this);
         recyclerview = footView.findViewById(R.id.recyclerview);
-        recyclerview.setLayoutManager(new MyGridLayoutManager(getActivity(), 3));
-        pictureAdapter = new PictureAdapter(getActivity());
+        recyclerview.setLayoutManager(new MyGridLayoutManager(context, 3));
+        pictureAdapter = new PictureAdapter(context);
         recyclerview.setAdapter(pictureAdapter);
 
         Calendar calendar = Calendar.getInstance();
@@ -210,9 +205,9 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
                         mpointsBean.setValue(value);
                         mpointsBean.setMpointId(mpointId);
                         mpointsBean.setStatus(status);
-                        mpointsBean.mpointName=mpointName;
+                        mpointsBean.mpointName = mpointName;
                         experimentDetailBean.getMpoints().add(mpointsBean);
-                        mpointName=null;
+                        mpointName = null;
                     }
                 }
             }
@@ -236,68 +231,100 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
             if (pictureAdapter.getItemCount() < 4) {
                 showMulti();
             } else {
-                ToastUtil.makeText(getActivity(), "最多添加4张照片");
+                ToastUtil.makeText(context, "最多添加4张照片");
             }
-//            hideNameInputMethod();
-//            hidePhoneInputMethod();
-        } else if (v.getId() == R.id.common_tv) {
+        // hideNameInputMethod();
+        // hidePhoneInputMethod();
+        } else if (v.getId() == R.id.common_tv) {//提交
             List<String> fileList = pictureAdapter.getFileList();
-            if (fileList == null || fileList.size() <= 0) {
-                com.alibaba.fastjson.JSONObject jsonObject = com.alibaba.fastjson.JSONObject.parseObject(com.alibaba.fastjson.JSONObject.toJSON(experimentDetailBean).toString());
+            if (TextUtilsMy.isEmptyList(fileList)) {
+                com.alibaba.fastjson.JSONObject jsonObject = com.alibaba.fastjson.JSONObject.
+                        parseObject(com.alibaba.fastjson.JSONObject.toJSON(experimentDetailBean).toString());
+                //没有图片,直接上传数据
                 presenter.submit(jsonObject.toJSONString());
             } else {
+                //有图片,先上传图片
                 upLoadFile();
             }
-
         }
     }
 
-
+    //上传文件
     private void upLoadFile() {
-        new UploadUtil(getActivity()).setUploadData(pictureAdapter.getFileList()).setUploadSuccess(this).startUploadFileEX();
+        List<String> fileList = pictureAdapter.getFileList();
+        new UploadUtil(context).setUploadData(fileList).setUploadSuccess(new UploadUtil.UploadSuccess() {
+            @Override
+            public void uploadSuccess(List<FileEntity> fileList) {
+                Log.e("fileEntity", fileList.toString());
+                String thumbnailUrl = "";
+                String url = "";
+                for (int i = 0; i < fileList.size(); i++) {
+                    thumbnailUrl = thumbnailUrl + fileList.get(i).getThumbFullPath() + ",";
+                    url = url + fileList.get(i).getFullPath() + ",";
+                }
+
+                if (thumbnailUrl.length() > 0) {
+                    thumbnailUrl = thumbnailUrl.substring(0, thumbnailUrl.length() - 1);
+                }
+
+                if (url.length() > 0) {
+                    url = url.substring(0, url.length() - 1);
+                }
+
+                experimentDetailBean.setUrl(url);
+                experimentDetailBean.setThumbnailUrl(thumbnailUrl);
+
+                com.alibaba.fastjson.JSONObject jsonObject = com.alibaba.fastjson.JSONObject.parseObject(
+                        com.alibaba.fastjson.JSONObject.toJSON(experimentDetailBean).toString());
+                presenter.submit(jsonObject.toJSONString());
+            }
+
+            @Override
+            public void uploadError() {
+
+            }
+        }).startUploadFileEX();
     }
 
 
     //    private void hideNameInputMethod() {
-//        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+//        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
 //        imm.hideSoftInputFromWindow(nameEdt.getWindowToken(), 0); //强制隐藏键盘
 //    }
 //
 //    private void hidePhoneInputMethod() {
-//        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+//        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
 //        imm.hideSoftInputFromWindow(phoneEdt.getWindowToken(), 0); //强制隐藏键盘
 //    }
     private void showMulti() {
-        final String[] stateLabel = getActivity().getResources().getStringArray(R.array.multi_media);
+        final String[] stateLabel = context.getResources().
+                getStringArray(R.array.multi_media);
         new AlertView(null, null, "取消", null,
-                stateLabel, getActivity(), AlertView.Style.ActionSheet, new OnItemClickListener() {
+                stateLabel, context, AlertView.Style.ActionSheet, new OnItemClickListener() {
             @Override
             public void onItemClick(final Object o, final int position) {
-                //如果是-1说明点击的取消,点击取消时，不做任何事
+                //-1==取消,不做任何事
                 if (position == -1) {
                     return;
-                } else if (position == 0) {
-                    PermissionsProcessingUtil.setPermissions(ExperimentDetailFragment.this, LibConfig.CAMERA, cameraCallBack);
-                } else {
-                    openAlbum();
+                } else if (position == 0) {//相机
+                    PermissionsProcessingUtil.setPermissions(
+                            ExperimentDetailFragment.this, LibConfig.CAMERA, cameraCallBack);
+                } else {//从相册选择
+                    Intent intent = new Intent("android.intent.action.GET_CONTENT");
+                    intent.setType("image/*");
+                    context.startActivityForResult(intent, 1004);
                 }
             }
         }).show();
     }
-
-    private void openAlbum() {
-        Intent intent = new Intent("android.intent.action.GET_CONTENT");
-        intent.setType("image/*");
-        getActivity().startActivityForResult(intent, 1004);
-    }
-
+    
     private PermissionsProcessingUtil.OnPermissionsCallback cameraCallBack = new PermissionsProcessingUtil.OnPermissionsCallback() {
         @Override
         public void callBack(boolean flag, String permission) {
             if (flag) {
-                Camera2RecordActivity.start(getActivity());
+                Camera2RecordActivity.start(context);
             } else {
-                ToastUtil.makeText(getActivity(), getString(R.string.permissions_camera));
+                ToastUtil.makeText(context, getString(R.string.permissions_camera));
             }
         }
     };
@@ -308,8 +335,8 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
             //添加照片或者视频
             String videoPath = data.getStringExtra("videoPath");
             String picturePath = data.getStringExtra("picturePath");
-            addItemPicture(picturePath);
-            addItemVideo(videoPath);
+            addLocPicture(picturePath);//添加本地图片
+            addItemVideo(videoPath);//添加本地视频
         } else if (requestCode == 1004 && data != null) {
             handleImageOfKitKat(data);
         }
@@ -318,7 +345,7 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
     private void handleImageOfKitKat(Intent data) {
         String imageUrl = null;
         Uri uri = data.getData();
-        if (DocumentsContract.isDocumentUri(getActivity(), uri)) {
+        if (DocumentsContract.isDocumentUri(context, uri)) {
             String docId = DocumentsContract.getDocumentId(uri);
             if ("com.android.providers.media.documents".equals(uri.getAuthority())) {//判断uri是不是media格式
                 String id = docId.split(":")[1];//是media格式的话将uri进行二次解析取出id
@@ -333,12 +360,12 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
         } else if ("file".equalsIgnoreCase(uri.getScheme())) {
             imageUrl = uri.getPath();
         }
-        addItemPicture(imageUrl);
+        addLocPicture(imageUrl);
     }
 
     private String getImagePath(Uri externalContentUri, String selection) {
         String path = null;
-        Cursor cursor = getActivity().getContentResolver().query(externalContentUri, null, selection, null, null, null);
+        Cursor cursor = context.getContentResolver().query(externalContentUri, null, selection, null, null, null);
         if (cursor == null) {
             return path;
         }
@@ -355,14 +382,25 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
      *
      * @param picturePath
      */
-    private void addItemPicture(String picturePath) {
+    private void addLocPicture(String picturePath) {
         if (!TextUtils.isEmpty(picturePath)) {
-            PictureEntity entity = new PictureEntity();
+            PictureInfo picInfo = new PictureInfo();
             File file = new File(picturePath);
-//            File newFile = CompressHelper.getDefault(getActivity()).compressToFile(file);//压缩图片
-            entity.setLocalImgPath(file.getPath());
-            entity.setLocalImgPath(picturePath);
+//            File newFile = CompressHelper.getDefault(context).compressToFile(file);//压缩图片
+            picInfo.setType(0);
+            picInfo.setLocalImgPath(file.getPath());
+            picInfo.setLocalImgPath(picturePath);
+            pictureAdapter.addItem(picInfo);
+            pictureAdapter.notifyDataSetChanged();
+        }
+    }
+
+    //todo Dylan 请求后台数据后,拿出图片/视频路径集合, 遍历,这里添加图片或者视频,
+    private void addImgPic(String imgUrl) {
+        if (!TextUtils.isEmpty(imgUrl)) {
+            PictureInfo entity = new PictureInfo();
             entity.setType(0);
+            entity.setImgUrl(imgUrl);
             pictureAdapter.addItem(entity);
             pictureAdapter.notifyDataSetChanged();
         }
@@ -370,12 +408,10 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
 
     /**
      * 添加视频
-     *
-     * @param videoPath
      */
     private void addItemVideo(String videoPath) {
         if (!TextUtils.isEmpty(videoPath)) {
-            PictureEntity entity = new PictureEntity();
+            PictureInfo entity = new PictureInfo();
             entity.setType(1);
             entity.setVideoPath(videoPath);
             pictureAdapter.addItem(entity);
@@ -383,39 +419,8 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
         }
     }
 
-
-    @Override
-    public void uploadSuccess(List<FileEntity> fileList) {
-        Log.e("fileEntity", fileList.toString());
-        String thumbnailUrl = "";
-        String url = "";
-        for (int i = 0; i < fileList.size(); i++) {
-            thumbnailUrl = thumbnailUrl + fileList.get(i).getThumbFullPath() + ",";
-            url = url + fileList.get(i).getFullPath() + ",";
-        }
-
-        if (thumbnailUrl.length() > 0) {
-            thumbnailUrl = thumbnailUrl.substring(0, thumbnailUrl.length() - 1);
-        }
-
-        if (url.length() > 0) {
-            url = url.substring(0, url.length() - 1);
-        }
-
-        experimentDetailBean.setUrl(url);
-        experimentDetailBean.setThumbnailUrl(thumbnailUrl);
-
-        com.alibaba.fastjson.JSONObject jsonObject = com.alibaba.fastjson.JSONObject.parseObject(com.alibaba.fastjson.JSONObject.toJSON(experimentDetailBean).toString());
-        presenter.submit(jsonObject.toJSONString());
-    }
-
-    @Override
-    public void uploadError() {
-
-    }
-
     public void submitSuccess() {
-        ToastUtil.makeText(getActivity(), "录入成功");
-        getActivity().finish();
+        ToastUtil.makeText(context, "录入成功");
+        context.finish();
     }
 }

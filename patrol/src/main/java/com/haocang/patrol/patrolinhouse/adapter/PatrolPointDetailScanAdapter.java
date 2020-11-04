@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.haocang.base.adapter.BaseRecyclerAdapter;
 import com.haocang.base.adapter.PictureAdapter;
 import com.haocang.base.adapter.SmartViewHolder;
-import com.haocang.base.bean.PictureEntity;
+import com.haocang.base.bean.PictureInfo;
 import com.haocang.patrol.R;
 import com.haocang.patrol.patrolinhouse.bean.PatrolPictureEntity;
 import com.haocang.patrol.patrolinhouse.bean.PatrolTaskPointStep;
@@ -60,15 +60,15 @@ public class PatrolPointDetailScanAdapter extends BaseRecyclerAdapter<PatrolTask
             List<PatrolPictureEntity> picList = mList.get(position).getStepImgList();
             for (PatrolPictureEntity entity : picList) {
                 if (entity.getImgUrl() != null && (entity.getImgUrl().contains("png") || entity.getImgUrl().contains("jpeg") || entity.getImgUrl().contains("jpg"))) {
-                    PictureEntity pictureEntity = new PictureEntity();
-                    pictureEntity.setType(0);
-                    pictureEntity.setImgUrl(entity.getImgUrl());
-                    pictureAdapter.addItem(pictureEntity);
+                    PictureInfo pictureInfo = new PictureInfo();
+                    pictureInfo.setType(0);
+                    pictureInfo.setImgUrl(entity.getImgUrl());
+                    pictureAdapter.addItem(pictureInfo);
                 } else {
-                    PictureEntity pictureEntity = new PictureEntity();
-                    pictureEntity.setType(1);
-                    pictureEntity.setNetWordVideoPath(entity.getImgUrl());
-                    pictureAdapter.addItem(pictureEntity);
+                    PictureInfo pictureInfo = new PictureInfo();
+                    pictureInfo.setType(1);
+                    pictureInfo.setNetWordVideoPath(entity.getImgUrl());
+                    pictureAdapter.addItem(pictureInfo);
                 }
             }
             pictureAdapter.notifyDataSetChanged();

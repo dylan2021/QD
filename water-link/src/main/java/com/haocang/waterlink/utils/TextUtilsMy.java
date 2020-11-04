@@ -12,6 +12,7 @@ import com.haocang.waterlink.R;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -521,5 +522,12 @@ public class TextUtilsMy {
                 return "未知";
         }
 
+    }
+
+    public static boolean isEmptyList(List result) {
+        if (result == null || result.size() <= 0) {
+            return true;
+        }
+        return false;
     }
 }

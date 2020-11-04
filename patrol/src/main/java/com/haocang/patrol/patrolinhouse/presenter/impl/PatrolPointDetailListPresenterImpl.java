@@ -14,7 +14,7 @@ import com.google.gson.reflect.TypeToken;
 import com.haocang.base.base.CommonModel;
 import com.haocang.base.base.impl.CommonModelImpl;
 import com.haocang.base.bean.FileEntity;
-import com.haocang.base.bean.PictureEntity;
+import com.haocang.base.bean.PictureInfo;
 import com.haocang.base.config.AppApplication;
 import com.haocang.base.config.LibConfig;
 import com.haocang.base.http.AddParameters;
@@ -130,7 +130,7 @@ public class PatrolPointDetailListPresenterImpl implements PatrolPointDetailList
             uploadPointSteps();
             return;
         }
-        List<PictureEntity> list = steps.get(0).getFileList();
+        List<PictureInfo> list = steps.get(0).getFileList();
         if (list == null || list.size() == 0 || OffLineOutApiUtil.isOffLine()) {
             upSteps.add(steps.get(0));
             steps.remove(0);
@@ -138,7 +138,7 @@ public class PatrolPointDetailListPresenterImpl implements PatrolPointDetailList
             return;
         }
         List<String> upList = new ArrayList<>();
-        for (PictureEntity entity : list) {
+        for (PictureInfo entity : list) {
             if (entity.getType() == 0) {
                 //照片
                 upList.add(entity.getLocalImgPath());

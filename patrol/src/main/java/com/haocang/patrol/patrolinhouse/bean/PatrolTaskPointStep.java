@@ -3,8 +3,7 @@
  */
 package com.haocang.patrol.patrolinhouse.bean;
 
-import com.haocang.base.bean.FileEntity;
-import com.haocang.base.bean.PictureEntity;
+import com.haocang.base.bean.PictureInfo;
 
 import java.util.List;
 
@@ -16,7 +15,7 @@ import java.util.List;
  * @version 2018-03-22
  */
 public class PatrolTaskPointStep {
-    public List<PictureEntity> getFileList() {
+    public List<PictureInfo> getFileList() {
         return fileList;
     }
 
@@ -30,11 +29,11 @@ public class PatrolTaskPointStep {
         this.stepImgList = stepImgList;
     }
 
-    public void setFileList(List<PictureEntity> fileList) {
+    public void setFileList(List<PictureInfo> fileList) {
         this.fileList = fileList;
     }
 
-    private List<PictureEntity> fileList;
+    private List<PictureInfo> fileList;
     private String imgUrl;
 
     private String imgThumbnaiUrl;

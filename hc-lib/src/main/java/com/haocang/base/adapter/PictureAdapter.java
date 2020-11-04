@@ -18,7 +18,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.Gson;
 import com.haocang.base.R;
-import com.haocang.base.bean.PictureEntity;
+import com.haocang.base.bean.PictureInfo;
 import com.haocang.base.ui.CommonActivity;
 import com.haocang.base.ui.PictureNewPreviewFragment;
 import com.haocang.base.utils.FileUtils;
@@ -47,7 +47,7 @@ public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private static final int PICTURE = 0;
     private static final int VIDEO = 1;
     private Context ctx;
-    private List<PictureEntity> mList = new ArrayList<>();
+    private List<PictureInfo> mList = new ArrayList<>();
 
     public PictureAdapter(Context ctx) {
         this.ctx = ctx;
@@ -203,7 +203,7 @@ public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public List<String> getFileList() {
         List<String> listFilePath = new ArrayList<>();
         for (int i = 0; i < getItemCount(); i++) {
-            PictureEntity entity = mList.get(i);
+            PictureInfo entity = mList.get(i);
             if (entity.getType() == 0 && !TextUtils.isEmpty(entity.getLocalImgPath()) && !entity.getLocalImgPath().contains("http")) {
                 listFilePath.add(entity.getLocalImgPath());
             } else if (entity.getType() == 1 && !TextUtils.isEmpty(entity.getVideoPath())) {
@@ -216,7 +216,7 @@ public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public String getNetWordFile() {
         String path = "";
         for (int i = 0; i < getItemCount(); i++) {
-            PictureEntity entity = mList.get(i);
+            PictureInfo entity = mList.get(i);
             if (entity.getType() == 0 && !TextUtils.isEmpty(entity.getImgUrl()) && entity.getImgUrl().contains("http")) {
                 path += entity.getImgUrl() + ",";
             } else if (entity.getType() == 1 && !TextUtils.isEmpty(entity.getVideoUrl()) && entity.getVideoUrl().contains("http")) {
@@ -232,7 +232,7 @@ public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public String getNetWordThumbnailUrl() {
         String path = "";
         for (int i = 0; i < getItemCount(); i++) {
-            PictureEntity entity = mList.get(i);
+            PictureInfo entity = mList.get(i);
             if (entity.getType() == 0 && !TextUtils.isEmpty(entity.getThumbnailUrl()) && entity.getThumbnailUrl().contains("http")) {
                 path += entity.getThumbnailUrl() + ",";
             } else if (entity.getType() == 1 && !TextUtils.isEmpty(entity.getThumbnailUrl()) && entity.getThumbnailUrl().contains("http")) {
@@ -293,17 +293,17 @@ public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     }
 
-    public void addAll(List<PictureEntity> list) {
+    public void addAll(List<PictureInfo> list) {
         mList.addAll(list);
 
     }
 
-    public void addItem(PictureEntity entity) {
+    public void addItem(PictureInfo entity) {
         mList.add(entity);
         notifyDataSetChanged();
     }
 
-    public void addItemWithoutNotifyList(final PictureEntity entity) {
+    public void addItemWithoutNotifyList(final PictureInfo entity) {
         mList.add(entity);
     }
 
@@ -329,7 +329,7 @@ public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void isFileEmpty() {
         try {
             for (int i = 0; i < mList.size(); ) {
-                PictureEntity entity = mList.get(i);
+                PictureInfo entity = mList.get(i);
                 if (!TextUtils.isEmpty(entity.getLocalImgPath())) {
                     File f = new File(entity.getLocalImgPath());
                     if (!f.exists()) {
@@ -355,23 +355,23 @@ public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         notifyDataSetChanged();
     }
 
-    private List<PictureEntity> getFilesList() {
-        List<PictureEntity> list = new ArrayList<>();
-        for (PictureEntity entity : mList) {
+    private List<PictureInfo> getFilesList() {
+        List<PictureInfo> list = new ArrayList<>();
+        for (PictureInfo entity : mList) {
             if (!TextUtils.isEmpty(entity.getLocalImgPath())) {
-                entity.setFileType(PictureEntity.LOCAL_IMAGE);
+                entity.setFileType(PictureInfo.LOCAL_IMAGE);
                 list.add(entity);
             } else if (!TextUtils.isEmpty(entity.getImgUrl())) {
-                entity.setFileType(PictureEntity.IMAGE);
+                entity.setFileType(PictureInfo.IMAGE);
                 list.add(entity);
             } else if (!TextUtils.isEmpty(entity.getVideoPath())) {
-                entity.setFileType(PictureEntity.LOCAL_VIDEO);
+                entity.setFileType(PictureInfo.LOCAL_VIDEO);
                 list.add(entity);
             } else if (!TextUtils.isEmpty(entity.getVideoUrl())) {
-                entity.setFileType(PictureEntity.VIDEO);
+                entity.setFileType(PictureInfo.VIDEO);
                 list.add(entity);
             } else if (!TextUtils.isEmpty(entity.getNetWordVideoPath())) {
-                entity.setFileType(PictureEntity.VIDEO);
+                entity.setFileType(PictureInfo.VIDEO);
                 list.add(entity);
             }
         }

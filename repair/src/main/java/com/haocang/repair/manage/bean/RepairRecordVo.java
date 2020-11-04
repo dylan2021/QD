@@ -1,6 +1,6 @@
 package com.haocang.repair.manage.bean;
 
-import com.haocang.base.bean.PictureEntity;
+import com.haocang.base.bean.PictureInfo;
 
 import java.util.List;
 
@@ -65,7 +65,7 @@ public class RepairRecordVo {
     private String repairAdoptName;
 
 
-    private List<PictureEntity> pictureVideos;
+    private List<PictureInfo> pictureVideos;
 
     public Integer getRepairAdopt() {
         return repairAdopt;
@@ -382,11 +382,11 @@ public class RepairRecordVo {
         this.repairCloseReason = repairCloseReason;
     }
 
-    public List<PictureEntity> getPictureVideos() {
+    public List<PictureInfo> getPictureVideos() {
         return pictureVideos;
     }
 
-    public void setPictureVideos(List<PictureEntity> pictureVideos) {
+    public void setPictureVideos(List<PictureInfo> pictureVideos) {
         this.pictureVideos = pictureVideos;
     }
 }

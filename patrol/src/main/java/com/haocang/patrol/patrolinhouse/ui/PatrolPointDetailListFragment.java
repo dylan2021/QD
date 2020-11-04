@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +27,7 @@ import com.example.cj.videoeditor.Constants;
 import com.example.cj.videoeditor.WaterMark;
 import com.example.cj.videoeditor.activity.RecordedActivity;
 import com.example.cj.videoeditor.picture.ImageUtil;
-import com.haocang.base.bean.PictureEntity;
+import com.haocang.base.bean.PictureInfo;
 import com.haocang.base.config.AppApplication;
 import com.haocang.base.config.LibConfig;
 import com.haocang.base.ui.CameraFragment;
@@ -262,8 +261,8 @@ public class PatrolPointDetailListFragment extends Fragment
             mPresenter.getPatrolPointDetailList();
         } else if (resultCode == 1039 && data != null) {
             String video = data.getStringExtra("videoUrl");
-            List<PictureEntity> list = new ArrayList<>();
-            PictureEntity fileEntity = new PictureEntity();
+            List<PictureInfo> list = new ArrayList<>();
+            PictureInfo fileEntity = new PictureInfo();
             fileEntity.setType(1);
             fileEntity.setVideoPath(video);
             list.add(fileEntity);
@@ -294,8 +293,8 @@ public class PatrolPointDetailListFragment extends Fragment
                 }
                 Bitmap map = ImageUtil.createWaterMaskLeftBottom(getActivity(), bitmap, Constants.loadBitmapFromView(new WaterMark(getActivity(), intent, R.layout.patrol_mark_view).getWaterMarkView()), 0, 0);
                 File file = FileUtils.saveBitmapFile(map);
-                List<PictureEntity> list = new ArrayList<>();
-                PictureEntity fileEntity = new PictureEntity();
+                List<PictureInfo> list = new ArrayList<>();
+                PictureInfo fileEntity = new PictureInfo();
                 fileEntity.setType(0);
                 fileEntity.setLocalImgPath(file.getPath());
                 list.add(fileEntity);

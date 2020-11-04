@@ -15,7 +15,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.haocang.base.adapter.PictureAdapter;
-import com.haocang.base.bean.PictureEntity;
+import com.haocang.base.bean.PictureInfo;
 import com.haocang.base.config.LibConfig;
 import com.haocang.base.utils.StringUtils;
 import com.haocang.base.widgets.MyGridLayoutManager;
@@ -82,16 +82,16 @@ public class FaultSceneFragment extends Fragment {
         if (TextUtils.isEmpty(imgUrl)) {
             return;
         }
-        Type type = new TypeToken<List<PictureEntity>>() {
+        Type type = new TypeToken<List<PictureInfo>>() {
         }.getType();
-        List<PictureEntity> list = new Gson().fromJson(imgUrl, type);
+        List<PictureInfo> list = new Gson().fromJson(imgUrl, type);
         pictureAdapter.addAll(list);
         pictureAdapter.notifyDataSetChanged();
     }
 
 
     private void addItem(String path) {
-        PictureEntity entity = new PictureEntity();
+        PictureInfo entity = new PictureInfo();
         if (StringUtils.isPicture(path)) {
             entity.setLocalImgPath(path);
             entity.setType(0);

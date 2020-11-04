@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.haocang.base.R;
-import com.haocang.base.bean.PictureEntity;
+import com.haocang.base.bean.PictureInfo;
 import com.haocang.base.config.LibConfig;
 
 /**
@@ -25,7 +25,7 @@ import com.haocang.base.config.LibConfig;
  * 修 改 者：
  * 修改时间：
  */
-public class ImageViewAdapter extends BaseAdapter<PictureEntity> {
+public class ImageViewAdapter extends BaseAdapter<PictureInfo> {
 
     private Context ctx;
 
@@ -46,7 +46,7 @@ public class ImageViewAdapter extends BaseAdapter<PictureEntity> {
 //        Glide.with(ctx).load(uri).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView);
     }
 
-    private void setFirst(BaseHolder holder, PictureEntity item) {
+    private void setFirst(BaseHolder holder, PictureInfo item) {
     }
 
     private void setSecound(BaseHolder holder) {

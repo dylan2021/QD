@@ -22,7 +22,7 @@ import com.example.cj.videoeditor.WaterMark;
 import com.example.cj.videoeditor.activity.RecordedActivity;
 import com.example.cj.videoeditor.picture.ImageUtil;
 import com.haocang.base.adapter.PictureAdapter;
-import com.haocang.base.bean.PictureEntity;
+import com.haocang.base.bean.PictureInfo;
 import com.haocang.base.config.AppApplication;
 import com.haocang.base.config.LibConfig;
 import com.haocang.base.ui.CameraFragment;
@@ -241,7 +241,7 @@ public class PostPictureUtil implements View.OnClickListener, PermissionsProcess
      */
     private void addItemPicture(final String picturePath) {
         if (!TextUtils.isEmpty(picturePath)) {
-            PictureEntity entity = new PictureEntity();
+            PictureInfo entity = new PictureInfo();
             File file = new File(picturePath);
             File newFile = CompressHelper.getDefault(mFragment.getActivity()).compressToFile(file);
             entity.setLocalImgPath(newFile.getPath());
@@ -258,7 +258,7 @@ public class PostPictureUtil implements View.OnClickListener, PermissionsProcess
      */
     private void addItemVideo(final String videoPath) {
         if (!TextUtils.isEmpty(videoPath)) {
-            PictureEntity entity = new PictureEntity();
+            PictureInfo entity = new PictureInfo();
             entity.setType(1);
             entity.setVideoPath(videoPath);
             mPictureAdapter.addItem(entity);
@@ -306,7 +306,7 @@ public class PostPictureUtil implements View.OnClickListener, PermissionsProcess
      *
      */
     @SuppressLint("StaticFieldLeak")
-    public void setUrlList(final List<PictureEntity> list) {
+    public void setUrlList(final List<PictureInfo> list) {
 
         if (list != null && list.size() > 0) {
             mPictureAdapter.addAll(list);
@@ -315,7 +315,7 @@ public class PostPictureUtil implements View.OnClickListener, PermissionsProcess
     }
 
     private void addItem(final String path) {
-        PictureEntity entity = new PictureEntity();
+        PictureInfo entity = new PictureInfo();
         if (StringUtils.isPicture(path)) {
             entity.setLocalImgPath(path);
             entity.setType(0);

@@ -1,6 +1,6 @@
 package com.haocang.repair.progress.bean;
 
-import com.haocang.base.bean.PictureEntity;
+import com.haocang.base.bean.PictureInfo;
 
 import java.util.List;
 
@@ -73,7 +73,7 @@ public class AppRepairRecordDetailVo {
      */
     private Boolean concerned;
 
-    private List<PictureEntity> pictureVideos;
+    private List<PictureInfo> pictureVideos;
 
     /**
      * @return the equId
@@ -285,11 +285,11 @@ public class AppRepairRecordDetailVo {
         this.concerned = concerned;
     }
 
-    public List<PictureEntity> getPictureVideos() {
+    public List<PictureInfo> getPictureVideos() {
         return pictureVideos;
     }
 
-    public void setPictureVideos(List<PictureEntity> pictureVideos) {
+    public void setPictureVideos(List<PictureInfo> pictureVideos) {
         this.pictureVideos = pictureVideos;
     }
 

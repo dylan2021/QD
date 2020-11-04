@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.haocang.base.adapter.PictureAdapter;
-import com.haocang.base.bean.PictureEntity;
+import com.haocang.base.bean.PictureInfo;
 import com.haocang.base.config.LibConfig;
 import com.haocang.base.utils.StringUtils;
 import com.haocang.base.utils.TimeTransformUtil;
@@ -130,14 +130,14 @@ public class FaultProcessingResultsFragment extends Fragment implements FaultPro
     }
 
     private void addItem(final String path) {
-        PictureEntity entity = new PictureEntity();
+        PictureInfo entity = new PictureInfo();
         if (StringUtils.isPicture(path)) {
             entity.setLocalImgPath(path);
             entity.setType(0);
             pictureAdapter.addItem(entity);
         } else if (path.contains(".mp4")) {
             entity.setNetWordVideoPath(path);
-            entity.setType(PictureEntity.VIDEO);
+            entity.setType(PictureInfo.VIDEO);
             pictureAdapter.addItem(entity);
         }
     }

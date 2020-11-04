@@ -2,7 +2,7 @@ package com.haocang.fault.list.bean;
 
 import android.text.TextUtils;
 
-import com.haocang.base.bean.PictureEntity;
+import com.haocang.base.bean.PictureInfo;
 import com.haocang.base.config.AppApplication;
 import com.haocang.fault.R;
 
@@ -103,7 +103,7 @@ public class FaultManagerEntity {
     }
 
     private String updateDate;
-    private List<PictureEntity> pictureVideos;
+    private List<PictureInfo> pictureVideos;
 
 
     private int processed;
@@ -130,11 +130,11 @@ public class FaultManagerEntity {
         return pathList;
     }
 
-    public List<PictureEntity> getPictureVideos() {
+    public List<PictureInfo> getPictureVideos() {
         return pictureVideos;
     }
 
-    public void setPictureVideos(List<PictureEntity> pictureVideos) {
+    public void setPictureVideos(List<PictureInfo> pictureVideos) {
         this.pictureVideos = pictureVideos;
     }
 

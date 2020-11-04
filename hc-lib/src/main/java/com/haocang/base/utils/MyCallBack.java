@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.haocang.base.R;
 import com.haocang.base.adapter.ImageViewAdapter;
-import com.haocang.base.bean.PictureEntity;
+import com.haocang.base.bean.PictureInfo;
 
 import java.util.Collections;
 import java.util.List;
@@ -22,11 +22,11 @@ public class MyCallBack extends ItemTouchHelper.Callback {
     private int dragFlags;
     private int swipeFlags;
     private ImageViewAdapter adapter;
-    private List<PictureEntity> images;//图片经过压缩处理
-    private List<PictureEntity> originImages;//图片没有经过处理，这里传这个进来是为了使原图片的顺序与拖拽顺序保持一致
+    private List<PictureInfo> images;//图片经过压缩处理
+    private List<PictureInfo> originImages;//图片没有经过处理，这里传这个进来是为了使原图片的顺序与拖拽顺序保持一致
     private boolean up;//手指抬起标记位
 
-    public MyCallBack(ImageViewAdapter adapter, List<PictureEntity> images, List<PictureEntity> originImages) {
+    public MyCallBack(ImageViewAdapter adapter, List<PictureInfo> images, List<PictureInfo> originImages) {
         this.adapter = adapter;
         this.images = images;
         this.originImages = originImages;

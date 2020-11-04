@@ -16,7 +16,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.haocang.base.R;
 import com.haocang.base.adapter.PictureNewPreviewAdapter;
-import com.haocang.base.bean.PictureEntity;
+import com.haocang.base.bean.PictureInfo;
 import com.haocang.base.utils.ToastUtil;
 
 import java.io.File;
@@ -71,10 +71,10 @@ public class PictureNewPreviewFragment extends Fragment {
             deleteIv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    PictureEntity entity = adapter.fileList.get(position);
-                    if (entity.getFileType() == PictureEntity.LOCAL_VIDEO) {
+                    PictureInfo entity = adapter.fileList.get(position);
+                    if (entity.getFileType() == PictureInfo.LOCAL_VIDEO) {
                         deleteFile(entity.getVideoPath());
-                    } else if (entity.getFileType() == PictureEntity.LOCAL_IMAGE) {
+                    } else if (entity.getFileType() == PictureInfo.LOCAL_IMAGE) {
                         deleteFile(entity.getLocalImgPath());
                     }
                     adapter.removes(position);
@@ -109,12 +109,12 @@ public class PictureNewPreviewFragment extends Fragment {
         });
     }
 
-    private List<PictureEntity> getPictureUrl() {
+    private List<PictureInfo> getPictureUrl() {
         String s = getActivity().getIntent().getStringExtra("url");
-        List<PictureEntity> retList = new Gson().fromJson(s,
-                new TypeToken<List<PictureEntity>>() {
+        List<PictureInfo> retList = new Gson().fromJson(s,
+                new TypeToken<List<PictureInfo>>() {
                 }.getType());
-        List<PictureEntity> list = new ArrayList<>();
+        List<PictureInfo> list = new ArrayList<>();
         list.add(retList.get(position));
         return list;
     }

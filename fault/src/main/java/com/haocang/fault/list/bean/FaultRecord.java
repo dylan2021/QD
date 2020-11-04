@@ -1,6 +1,6 @@
 package com.haocang.fault.list.bean;
 
-import com.haocang.base.bean.PictureEntity;
+import com.haocang.base.bean.PictureInfo;
 
 import java.util.List;
 
@@ -38,7 +38,7 @@ public class FaultRecord {
     private String finishTime;
     private List<String> imgUrl;
     private List<String> imgThumbnailUrl;
-    private List<PictureEntity> pictureVideos;
+    private List<PictureInfo> pictureVideos;
 
     public int getId() {
         return id;

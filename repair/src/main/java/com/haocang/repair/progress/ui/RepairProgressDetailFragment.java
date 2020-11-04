@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.haocang.base.adapter.PictureAdapter;
-import com.haocang.base.bean.PictureEntity;
+import com.haocang.base.bean.PictureInfo;
 import com.haocang.base.config.ArouterPathConstants;
 import com.haocang.base.utils.ARouterUtil;
 import com.haocang.base.utils.StringUtils;
@@ -204,7 +204,7 @@ public class RepairProgressDetailFragment extends Fragment
         return null;
     }
 
-    private void setUrlList(List<PictureEntity> list) {
+    private void setUrlList(List<PictureInfo> list) {
         pictureAdapter.addAll(list);
         pictureAdapter.notifyDataSetChanged();
 //        if (imgUrlArr != null && imgUrlArr.length > 0) {
@@ -231,7 +231,7 @@ public class RepairProgressDetailFragment extends Fragment
 
 
     private void addItem(final String path) {
-        PictureEntity entity = new PictureEntity();
+        PictureInfo entity = new PictureInfo();
         if (StringUtils.isPicture(path)) {
             entity.setLocalImgPath(path);
             entity.setType(0);

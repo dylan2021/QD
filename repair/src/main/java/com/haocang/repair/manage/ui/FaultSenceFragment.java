@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bumptech.glide.RequestBuilder;
 import com.haocang.base.adapter.PictureAdapter;
-import com.haocang.base.bean.PictureEntity;
+import com.haocang.base.bean.PictureInfo;
 import com.haocang.base.config.ArouterPathConstants;
 import com.haocang.base.utils.StringUtils;
 import com.haocang.base.widgets.MyGridLayoutManager;
@@ -120,7 +120,7 @@ public class FaultSenceFragment extends Fragment {
     }
 
     private void addItem(final String path) {
-        PictureEntity entity = new PictureEntity();
+        PictureInfo entity = new PictureInfo();
         if (StringUtils.isPicture(path)) {
             entity.setLocalImgPath(path);
             entity.setType(0);
