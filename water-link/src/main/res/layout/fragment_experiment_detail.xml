@@ -7,7 +7,6 @@
 
     <include layout="@layout/title_common" />
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,22 +15,22 @@
         android:orientation="horizontal">
 
         <TextView
+            style="@style/a5a5a5_sp15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="业务时间: "
-            style="@style/a5a5a5_sp15" />
+            android:text="业务时间: " />
 
         <TextView
             android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:autoLink="all"
-            android:textStyle="bold"
             android:paddingLeft="@dimen/dp_6"
             android:paddingTop="@dimen/dp_15"
             android:paddingBottom="@dimen/dp_15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text=""
-            android:textColor="@color/mainColor" />
+            android:textColor="@color/mainColor"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <FrameLayout

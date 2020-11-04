@@ -102,7 +102,7 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
         experimentDetailBean.setMpoints(mpointsBeans);
 
         title = view.findViewById(R.id.title_common_tv);
-        title.setText("数据填报");
+        title.setText("");
 
         time = view.findViewById(R.id.time);
         time.setOnClickListener(this);
