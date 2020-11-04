@@ -1,33 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="300dp">
+    android:layout_height="500dp"
+
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <RelativeLayout
             android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/margin_left_13dp"
+            android:layout_marginTop="@dimen/dp_20"
             android:layout_height="match_parent">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:text="最多添加4张图片"
-            android:textColor="@color/color_task_ft"
-            android:textSize="14sp" />
 
-        <ImageView
-            android:layout_alignParentRight="true"
-            android:id="@+id/add_pic_iv"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:gravity="right"
-            android:layout_gravity="right"
-            android:layout_marginRight="25dp"
-            android:background="@drawable/ic_common_camera" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="添加图片(最多4张)"
+                android:textColor="@color/color_eee"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/add_pic_iv"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="right"
+                android:layout_marginRight="@dimen/margin_left_13dp"
+                android:background="@drawable/ic_common_camera"
+                android:gravity="right" />
         </RelativeLayout>
     </LinearLayout>
 

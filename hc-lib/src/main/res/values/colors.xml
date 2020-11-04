@@ -3,7 +3,7 @@
     <color name="color_black4">#919191</color><!--四级字体-->
 
     <color name="color_title_blue_bg">#0cabdf</color>
-    <color name="color_underline_bg">#D7D7D7</color>
+    <color name="color_underline_bg">#e5e5e5</color>
     <color name="color_self_tv">#C8C7C7</color>
     <color name="holo_red_dark">#ffcc0000</color>
     <color name="holo_red_light">#ffff4444</color>

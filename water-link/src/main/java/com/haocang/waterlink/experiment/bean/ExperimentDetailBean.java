@@ -77,6 +77,7 @@ public class ExperimentDetailBean {
         private String falseTime;
         private String value;
         private String status;
+        public String mpointName;
 
 
         @Override

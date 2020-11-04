@@ -27,8 +27,7 @@ public class ExperimentDetailPresenterImpl implements ExperimentDetailPresenter 
 
     public void getDataList(Map<String,Object> paramsMap) {
         CommonModel<String> progressModel = new CommonModelImpl<>();
-        progressModel
-                .setContext(mFragment.getActivity())
+        progressModel.setContext(mFragment.getActivity())
                 .setUrl(HomeMethodConfig.EXPERIMENT_DATA)
                 .setParamMap(paramsMap)
 //                .setRequestMethod(LibConfig.HTTP_POST)

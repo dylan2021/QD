@@ -75,7 +75,7 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
     private RecyclerView equimentRv;
     private HomeExperimentDetailAdapter adapter;
     private ExperimentDetailPresenter presenter;
-    private Map<String,Object> mMap;
+    private Map<String, Object> mMap;
     private TextView time;
 
     private ExperimentDetailBean experimentDetailBean;
@@ -106,7 +106,8 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
 
         time = view.findViewById(R.id.time);
         time.setOnClickListener(this);
-        time.setText(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        time.setText(format.format(new Date()));
 
         equimentRv = view.findViewById(R.id.recyclerview);
         rightTextView = view.findViewById(R.id.common_tv);
@@ -115,23 +116,28 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
         rightTextView.setOnClickListener(this);
         adapter = new HomeExperimentDetailAdapter(R.layout.adapter_home_experiment_detail);
         equimentRv.setItemViewCacheSize(100);
-        presenter = new ExperimentDetailPresenterImpl();
-        presenter.setView(this);
+
         equimentRv.setLayoutManager(new LinearLayoutManager(getActivity()));
-        footView = View.inflate(getActivity(),R.layout.experiment_foot,null);
+        footView = View.inflate(getActivity(), R.layout.experiment_foot, null);
         adapter.setFootView(footView);
         footView.findViewById(R.id.add_pic_iv).setOnClickListener(this);
         recyclerview = footView.findViewById(R.id.recyclerview);
         recyclerview.setLayoutManager(new MyGridLayoutManager(getActivity(), 3));
         pictureAdapter = new PictureAdapter(getActivity());
         recyclerview.setAdapter(pictureAdapter);
-        mMap = new HashMap<>();
-        mMap.put("formId",formId);
-        mMap.put("cycleId",cycleId);
+
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
-        calendar.add(Calendar.DAY_OF_MONTH,-1);
-        mMap.put("recordDate",new SimpleDateFormat("yyyy-MM-dd").format(calendar.getTime())+"T16:00:00.000Z");
+        calendar.add(Calendar.DAY_OF_MONTH, -1);
+
+
+        //请求数据
+        presenter = new ExperimentDetailPresenterImpl();
+        presenter.setView(this);
+        mMap = new HashMap<>();
+        mMap.put("formId", formId);
+        mMap.put("cycleId", cycleId);
+        mMap.put("recordDate", format.format(calendar.getTime()) + "T16:00:00.000Z");
 
         presenter.getDataList(mMap);
     }
@@ -155,8 +161,8 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
                         time.setText(new SimpleDateFormat("yyyy-MM-dd").format(date));
                         Calendar calendar = Calendar.getInstance();
                         calendar.setTime(date);
-                        calendar.add(Calendar.DAY_OF_MONTH,-1);
-                        mMap.put("recordDate",new SimpleDateFormat("yyyy-MM-dd").format(calendar.getTime())+"T16:00:00.000Z");
+                        calendar.add(Calendar.DAY_OF_MONTH, -1);
+                        mMap.put("recordDate", new SimpleDateFormat("yyyy-MM-dd").format(calendar.getTime()) + "T16:00:00.000Z");
                         presenter.getDataList(mMap);
                     }
                 }).isDialog(true).build();
@@ -164,8 +170,8 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
         pvTime.show();
 
     }
-    public void setData(String entity){
-        Log.d("李国良",""+entity.toString());
+
+    public void setData(String entity) {
 //        Map<String,String> mMap = new HashMap<>();
 //        mMap.put("time","time");
         try {
@@ -173,7 +179,7 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
             JSONObject mObj = new JSONObject(entity);
             if (mObj.getJSONObject("record").has("formId")) {
                 experimentDetailBean.setFormId(mObj.getJSONObject("record").getInt("formId"));
-            }else {
+            } else {
                 experimentDetailBean.setFormId(mObj.getJSONObject("record").getInt("id"));
             }
             title.setText(mObj.getJSONObject("record").getString("formName"));
@@ -183,17 +189,19 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
 
             JSONObject groups = mObj.getJSONObject("items").getJSONObject("groups");
             Iterator<String> keys = groups.keys();
-            while (keys.hasNext()){
-               JSONArray arr = groups.getJSONArray(keys.next());
+            while (keys.hasNext()) {
+                JSONArray arr = groups.getJSONArray(keys.next());
                 for (int i = 0; i < arr.length(); i++) {
-                    JSONArray datas = arr.getJSONObject(i).getJSONArray("datas");
+                    JSONObject obj = arr.getJSONObject(i);
 
+                    String mpointName = obj.getString("mpointName");
+                    JSONArray datas = obj.getJSONArray("datas");
                     for (int j = 0; j < datas.length(); j++) {
                         String time = datas.getJSONObject(j).getString("time");
                         String value = datas.getJSONObject(j).getString("value");
                         String status = datas.getJSONObject(j).getString("value");
-                        int mpointId = arr.getJSONObject(i).getInt("mpointId");
-                        if (value.equals("")){
+                        int mpointId = obj.getInt("mpointId");
+                        if (value.equals("")) {
                             status = "DELETE";
                         }
                         ExperimentDetailBean.MpointsBean mpointsBean = new ExperimentDetailBean.MpointsBean();
@@ -202,7 +210,9 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
                         mpointsBean.setValue(value);
                         mpointsBean.setMpointId(mpointId);
                         mpointsBean.setStatus(status);
+                        mpointsBean.mpointName=mpointName;
                         experimentDetailBean.getMpoints().add(mpointsBean);
+                        mpointName=null;
                     }
                 }
             }
@@ -214,15 +224,15 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
         adapter.addAll(experimentDetailBean.getMpoints());
         adapter.notifyDataSetChanged();
         equimentRv.setAdapter(adapter);
-        Log.e("adapter",adapter.mList.size()+"");
-        Log.e("experimentDetailBean",experimentDetailBean.toString());
+        Log.e("adapter", adapter.mList.size() + "");
+        Log.e("experimentDetailBean", experimentDetailBean.toString());
     }
 
     @Override
     public void onClick(View v) {
-        if (v.getId()==R.id.time){
+        if (v.getId() == R.id.time) {
             showPickTimeView();
-        }else if(v.getId()==R.id.add_pic_iv){
+        } else if (v.getId() == R.id.add_pic_iv) {
             if (pictureAdapter.getItemCount() < 4) {
                 showMulti();
             } else {
@@ -230,12 +240,12 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
             }
 //            hideNameInputMethod();
 //            hidePhoneInputMethod();
-        }else if (v.getId()==R.id.common_tv){
+        } else if (v.getId() == R.id.common_tv) {
             List<String> fileList = pictureAdapter.getFileList();
-            if (fileList==null||fileList.size()<=0){
+            if (fileList == null || fileList.size() <= 0) {
                 com.alibaba.fastjson.JSONObject jsonObject = com.alibaba.fastjson.JSONObject.parseObject(com.alibaba.fastjson.JSONObject.toJSON(experimentDetailBean).toString());
                 presenter.submit(jsonObject.toJSONString());
-            }else {
+            } else {
                 upLoadFile();
             }
 
@@ -291,6 +301,7 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
             }
         }
     };
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (Camera2RecordActivity.RESULTCODE == requestCode && data != null) {
@@ -324,6 +335,7 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
         }
         addItemPicture(imageUrl);
     }
+
     private String getImagePath(Uri externalContentUri, String selection) {
         String path = null;
         Cursor cursor = getActivity().getContentResolver().query(externalContentUri, null, selection, null, null, null);
@@ -374,19 +386,19 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
 
     @Override
     public void uploadSuccess(List<FileEntity> fileList) {
-        Log.e("fileEntity",fileList.toString());
+        Log.e("fileEntity", fileList.toString());
         String thumbnailUrl = "";
         String url = "";
         for (int i = 0; i < fileList.size(); i++) {
-            thumbnailUrl = thumbnailUrl + fileList.get(i).getThumbFullPath()+",";
-            url = url + fileList.get(i).getFullPath()+",";
+            thumbnailUrl = thumbnailUrl + fileList.get(i).getThumbFullPath() + ",";
+            url = url + fileList.get(i).getFullPath() + ",";
         }
 
-        if (thumbnailUrl.length()>0){
+        if (thumbnailUrl.length() > 0) {
             thumbnailUrl = thumbnailUrl.substring(0, thumbnailUrl.length() - 1);
         }
 
-        if (url.length()>0){
+        if (url.length() > 0) {
             url = url.substring(0, url.length() - 1);
         }
 
@@ -402,8 +414,8 @@ public class ExperimentDetailFragment extends Fragment implements View.OnClickLi
 
     }
 
-    public void submitSuccess(){
-        ToastUtil.makeText(getActivity(),"录入成功");
+    public void submitSuccess() {
+        ToastUtil.makeText(getActivity(), "录入成功");
         getActivity().finish();
     }
 }

@@ -11,6 +11,7 @@ import com.haocang.base.adapter.BaseHolder;
 import com.haocang.waterlink.R;
 import com.haocang.waterlink.experiment.bean.ExperimentDetailBean;
 import com.haocang.waterlink.experiment.bean.ExperimentListBean;
+import com.haocang.waterlink.utils.TextUtilsMy;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -40,28 +41,31 @@ public class HomeExperimentDetailAdapter extends BaseAdapter<ExperimentDetailBea
         super(layoutId);
     }
 
-    public void setFootView(View footView){
+    public void setFootView(View footView) {
         this.footView = footView;
     }
 
     @Override
     protected void convert(final BaseHolder holder, final ExperimentDetailBean.MpointsBean item) {
+        if (item == null) {
+            return;
+        }
+        String mpointName = item.mpointName;
         Date date = new Date();
-//        date.
-        Log.e("hhmmss",item.getFalseTime().replace("T"," ").replace("Z",""));
-
+        String falseTime = item.getFalseTime();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try {
-            date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(item.getFalseTime().replace("T"," ").replace("Z",""));
+            date = format.parse(falseTime.replace("T", " ").replace("Z", ""));
         } catch (ParseException e) {
             e.printStackTrace();
         }
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-        calendar.add(Calendar.HOUR_OF_DAY,+8);
-        Log.e("yyyy-mm-dd",new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(calendar.getTime()));
+        calendar.add(Calendar.HOUR_OF_DAY, +8);
 
-        holder.setText(R.id.time,new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(calendar.getTime()))
-                .setText(R.id.value,item.getValue());
+        holder.setText(R.id.point_name_tv, mpointName).setVisible(!TextUtilsMy.isEmpty(mpointName));
+        holder.setText(R.id.time, TextUtilsMy.subTimeMDHm(format.format(calendar.getTime())))
+                .setText(R.id.value, item.getValue());
         EditText et = holder.itemView.findViewById(R.id.value);
         et.addTextChangedListener(new TextWatcher() {
             @Override
@@ -97,7 +101,6 @@ public class HomeExperimentDetailAdapter extends BaseAdapter<ExperimentDetailBea
 
     @Override
     public int getItemCount() {
-//        if ()
         return super.getItemCount();
     }
 
