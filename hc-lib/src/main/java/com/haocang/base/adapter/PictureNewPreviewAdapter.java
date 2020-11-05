@@ -3,6 +3,7 @@ package com.haocang.base.adapter;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.net.Uri;
+
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
@@ -49,7 +50,6 @@ public class PictureNewPreviewAdapter extends PagerAdapter {
     public List<PictureInfo> fileList = new ArrayList<>();
     private boolean isDeleteDisplay = false;//是否需要显示删除按钮
     private ImageView pictureIv;
-
     private VideoView videoView;
     private ImageView playIv;
     private FrameLayout frameLayout;
@@ -95,7 +95,6 @@ public class PictureNewPreviewAdapter extends PagerAdapter {
     }
 
     private void initData(int position, View view) {
-        Log.i("test", view.getVisibility() + "");
         PictureInfo entity = fileList.get(position);
         pictureIv = view.findViewById(R.id.picture_iv);
         if (entity.getFileType() == PictureInfo.IMAGE) {

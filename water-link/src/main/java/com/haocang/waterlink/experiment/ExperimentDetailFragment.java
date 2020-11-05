@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,7 +35,6 @@ import com.haocang.base.utils.PermissionsProcessingUtil;
 import com.haocang.base.utils.ToastUtil;
 import com.haocang.base.utils.UploadUtil;
 import com.haocang.base.widgets.MyGridLayoutManager;
-import com.haocang.patrol.patrolinhouse.bean.PatrolPictureEntity;
 import com.haocang.waterlink.R;
 import com.haocang.waterlink.experiment.adapter.HomeExperimentDetailAdapter;
 import com.haocang.waterlink.experiment.bean.ExperimentDetailBean;
@@ -262,39 +260,39 @@ public class ExperimentDetailFragment extends Fragment implements
         List<String> fileList = pictureAdapter.getFileList();
         new UploadUtil(context).setUploadData(fileList).setUploadSuccess(
                 new UploadUtil.UploadSuccess() {
-            @Override
-            public void uploadSuccess(List<FileEntity> fileList) {
-                Log.d("图片上传", "成功:" + fileList.size());
-                String thumbnailUrl = "";
-                String url = "";
-                for (int i = 0; i < fileList.size(); i++) {
-                    thumbnailUrl = thumbnailUrl + fileList.get(i).getThumbFullPath() + ",";
-                    url = url + fileList.get(i).getFullPath() + ",";
-                }
+                    @Override
+                    public void uploadSuccess(List<FileEntity> fileList) {
+                        Log.d("图片上传", "成功:" + fileList.size());
+                        String thumbnailUrl = "";
+                        String url = "";
+                        for (int i = 0; i < fileList.size(); i++) {
+                            thumbnailUrl = thumbnailUrl + fileList.get(i).getThumbFullPath() + ",";
+                            url = url + fileList.get(i).getFullPath() + ",";
+                        }
 
-                if (thumbnailUrl.length() > 0) {
-                    thumbnailUrl = thumbnailUrl.substring(0, thumbnailUrl.length() - 1);
-                }
+                        if (thumbnailUrl.length() > 0) {
+                            thumbnailUrl = thumbnailUrl.substring(0, thumbnailUrl.length() - 1);
+                        }
 
-                if (url.length() > 0) {
-                    url = url.substring(0, url.length() - 1);
-                }
+                        if (url.length() > 0) {
+                            url = url.substring(0, url.length() - 1);
+                        }
 
-                experimentDetailBean.setUrl(url);
-                experimentDetailBean.setThumbnailUrl(thumbnailUrl);
+                        experimentDetailBean.setUrl(url);
+                        experimentDetailBean.setThumbnailUrl(thumbnailUrl);
 
-                com.alibaba.fastjson.JSONObject jsonObject = com.alibaba.fastjson.JSONObject.parseObject(
-                        com.alibaba.fastjson.JSONObject.toJSON(experimentDetailBean).toString());
-                presenter.submit(jsonObject.toJSONString());
-            }
+                        com.alibaba.fastjson.JSONObject jsonObject = com.alibaba.fastjson.JSONObject.parseObject(
+                                com.alibaba.fastjson.JSONObject.toJSON(experimentDetailBean).toString());
+                        presenter.submit(jsonObject.toJSONString());
+                    }
 
-            @Override
-            public void uploadError() {
-                Log.d("图片上传", "失败:" );
-                ToastUtil.makeText(context, "图片上传失败,请稍后重试");
+                    @Override
+                    public void uploadError() {
+                        Log.d("图片上传", "失败:");
+                        ToastUtil.makeText(context, "图片上传失败,请稍后重试");
 
-            }
-        }).startUploadFileEX();
+                    }
+                }).startUploadFileEX();
     }
 
 
@@ -347,13 +345,14 @@ public class ExperimentDetailFragment extends Fragment implements
             String videoPath = data.getStringExtra("videoPath");
             String picturePath = data.getStringExtra("picturePath");
             addLocPicture(picturePath);//添加本地图片
-            addItemVideo(videoPath);//添加本地视频
+            //addItemVideo(videoPath);//添加本地视频
         } else if (requestCode == 1004 && data != null) {
-            handleImageOfKitKat(data);
+            picKitKat(data);
         }
     }
 
-    private void handleImageOfKitKat(Intent data) {
+    //版本 4.4
+    private void picKitKat(Intent data) {
         String imageUrl = null;
         Uri uri = data.getData();
         if (DocumentsContract.isDocumentUri(context, uri)) {
@@ -394,16 +393,17 @@ public class ExperimentDetailFragment extends Fragment implements
      * @param picturePath
      */
     private void addLocPicture(String picturePath) {
-        if (!TextUtils.isEmpty(picturePath)) {
-            PictureInfo picInfo = new PictureInfo();
-            File file = new File(picturePath);
-//            File newFile = CompressHelper.getDefault(context).compressToFile(file);//压缩图片
-            picInfo.setType(0);
-            picInfo.setLocalImgPath(file.getPath());
-            picInfo.setLocalImgPath(picturePath);
-            pictureAdapter.addItem(picInfo);
-            pictureAdapter.notifyDataSetChanged();
+        if (!ImageUtil.isImageSuffix(picturePath)) {
+            ToastUtil.makeText(context, "请上传图片类型文件");
+            return;
         }
+        PictureInfo picInfo = new PictureInfo();
+        File file = new File(picturePath);
+        picInfo.setType(0);
+        picInfo.setLocalImgPath(file.getPath());
+        picInfo.setLocalImgPath(picturePath);
+        pictureAdapter.addItem(picInfo);
+        pictureAdapter.notifyDataSetChanged();
     }
 
     //添加图片或者视频,

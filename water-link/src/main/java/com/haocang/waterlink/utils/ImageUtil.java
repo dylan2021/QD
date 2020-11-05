@@ -154,7 +154,7 @@ public class ImageUtil {
     }
 
     public static boolean isImageSuffix(String url) {
-        if (null == url) {
+        if (TextUtilsMy.isEmpty(url)) {
             return false;
         }
         return url.contains(".png")
@@ -219,7 +219,7 @@ public class ImageUtil {
         return bitmap;
     }
 
-    public static void savePicUrl( final String url) {
+    public static void savePicUrl(final String url) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -233,7 +233,7 @@ public class ImageUtil {
                     Bitmap bitmap = BitmapFactory.decodeStream(is);
                     is.close();
 
-                   // savePicBitmap( bitmap);
+                    // savePicBitmap( bitmap);
                 } catch (Exception e) {
                 }
             }
