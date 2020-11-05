@@ -64,19 +64,19 @@
                 android:layout_width="20dip"
                 android:layout_height="20dip"
                 android:layout_marginLeft="50dip"
-                android:layout_marginRight="30dp"
+                android:layout_marginRight="20dp"
                 android:src="@mipmap/curve_left_arrow_blue" />
 
             <TextView
                 android:id="@+id/curve_cycle_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="15dip"
-                android:paddingRight="15dip"
-                android:text="@string/day"
-
-                android:textColor="@color/color_blank3"
-                android:textSize="@dimen/font_size_13" />
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="@string/month"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="@dimen/font_size_14" />
 
             <Spinner
                 android:id="@+id/curve_cycle_sp"
@@ -88,7 +88,7 @@
                 android:id="@+id/curve_right_arrow_iv"
                 android:layout_width="20dip"
                 android:layout_height="20dip"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="20dp"
                 android:src="@mipmap/curve_right_arrow_blue" />
         </LinearLayout>
 

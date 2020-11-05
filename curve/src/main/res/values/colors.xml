@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="curve_tab_select">#44BFE6</color>
     <color name="curve_tab_unselect">#5b5b5b</color>
+    <color name="main_color">#0cabdf</color>
 </resources>

@@ -8,7 +8,9 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Handler;
+
 import androidx.core.view.ViewCompat;
+
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -83,30 +85,13 @@ public class CurveActivity extends BaseActivity
      * 曲线webview.
      */
     private DWebView curveWv;
-    /**
-     *
-     */
     private CurvePresenterImpl curvePresenter;
-
-    /**
-     *
-     */
     private TextView cycleTv;
-
-    /**
-     * 更多曲线
-     */
     private static final int REQUESTCODE = 3002;
-
     private List<PointEntity> selectedPoints;
-
     private View pickMoreLl;
-
     private JSONObject object;
 
-    /**
-     *
-     */
     @Override
     protected void doOnCreate() {
         setContentView(R.layout.curve_activity);
@@ -115,6 +100,7 @@ public class CurveActivity extends BaseActivity
         curvePresenter.setView(this);
         setView();
     }
+
     private void setView() {
         titletv = findViewById(R.id.curve_title_tv);
         if (getIntent().getStringExtra("combineName") != null) {

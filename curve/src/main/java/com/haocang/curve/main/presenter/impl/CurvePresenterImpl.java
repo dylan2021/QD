@@ -91,7 +91,7 @@ public class CurvePresenterImpl implements CurvePresenter {
     /**
      * 周期，默认周期为天.
      */
-    private int cycle = CurveConstans.CYCLE_DAY;
+    private int cycle = CurveConstans.CYCLE_MONTH;
 
     /**
      * @param view 和界面交互接口.
@@ -126,7 +126,7 @@ public class CurvePresenterImpl implements CurvePresenter {
      */
     private void setDate(final Date date) {
         curDate = date;
-        mCurveView.setSelectTime(TimeUtil.getDayStr(date));
+        mCurveView.setSelectTime(TimeUtil.getDayStr(curDate));
     }
 
     /**
@@ -167,35 +167,31 @@ public class CurvePresenterImpl implements CurvePresenter {
         loadData();
     }
 
-    /**
-     *
-     */
+    private int[] MWD = {CurveConstans.CYCLE_MONTH, cycle = CurveConstans.CYCLE_WEEK, cycle = CurveConstans.CYCLE_DAY};
+    private int[] MWD_NAME_ID = {R.string.month, R.string.week, R.string.day};
+
     @Override
     public void showSelectCycleView() {
-        String[] repairResultArr = getContext().getResources().getStringArray(R.array.curve_cycle);
+        final Context context = getContext();
+        String[] repairResultArr = context.getResources().getStringArray(R.array.curve_cycle);
         new AlertView(null,
                 null,
-                getContext().getString(R.string.curve_cancel), null,
-                repairResultArr, getContext(),
+                context.getString(R.string.curve_cancel), null,
+                repairResultArr, context,
                 AlertView.Style.ActionSheet, new OnItemClickListener() {
             @Override
             public void onItemClick(final Object o, final int position) {
-                if (position == 0) {
-                    curDate = new Date();
-                    cycle = CurveConstans.CYCLE_DAY;
-                    mCurveView.setCycle(getContext().getString(R.string.day));
-                    mCurveView.setSelectTime(TimeUtil.getDayStr(curDate));
-                } else if (position == 1) {
-                    cycle = CurveConstans.CYCLE_WEEK;
-                    mCurveView.setCycle(getContext().getString(R.string.week));
-                    curDate = TimeUtil.convertWeekByDate(new Date());
-                    mCurveView.setSelectTime(TimeUtil.getDayStr(curDate));
-                } else if (position == 2) {
-                    cycle = CurveConstans.CYCLE_MONTH;
-                    mCurveView.setCycle(getContext().getString(R.string.month));
-                    curDate = TimeUtil.getMonthFirstDay(new Date());
-                    mCurveView.setSelectTime(TimeUtil.getDayStr(curDate));
+                Date date = new Date();
+                if (position == 0) {//月
+                    curDate = TimeUtil.getMonthFirstDay(date);
+                } else if (position == 1) {//周
+                    curDate = TimeUtil.convertWeekByDate(date);
+                } else if (position == 2) {//日
+                    curDate = date;
                 }
+                cycle = MWD[position];
+                mCurveView.setCycle(context.getString(MWD_NAME_ID[position]));
+                mCurveView.setSelectTime(TimeUtil.getDayStr(curDate));
                 loadData();
             }
         }).show();
@@ -211,9 +207,6 @@ public class CurvePresenterImpl implements CurvePresenter {
         loadData();
     }
 
-    /**
-     *
-     */
     @Override
     public void pickCollection() {
         Map<String, Object> map = new HashMap<>();
@@ -236,7 +229,8 @@ public class CurvePresenterImpl implements CurvePresenter {
         if (!TextUtils.isEmpty(mCurveView.getSelectPoints())) {
             map.put("ids", mCurveView.getSelectPoints());
         }
-        map.put("beginDate", TimeTransformUtil.getUploadGMTTime(TimeUtil.getDateSTimetr(getStartTime())));
+        String beginDate = TimeUtil.getDateSTimetr(getStartTime());
+        map.put("beginDate", TimeTransformUtil.getUploadGMTTime(beginDate));
         map.put("cycle", getCycle());
         model.getCurveData(map, new GetEntityListener<JSONObject>() {
 
@@ -319,14 +313,16 @@ public class CurvePresenterImpl implements CurvePresenter {
 
     @Override
     public void setDefault() {
+        curDate = TimeUtil.getMonthFirstDay(new Date());
+        cycle = MWD[0];
+        mCurveView.setCycle(getContext().getString(MWD_NAME_ID[0]));
         setDate(curDate);
-
     }
 
     @Override
     public void submitTaggin(JSONObject jsonObject) {
-        AddParameters addParameters =new AddParameters();
-        addParameters.addParam("curveRemark",jsonObject);
+        AddParameters addParameters = new AddParameters();
+        addParameters.addParam("curveRemark", jsonObject);
         new OkHttpClientManager()
                 .setUrl(CurveMethod.LOONNG_REMARKS)
                 .setRequestMethod(LibConfig.HTTP_POST)
@@ -395,7 +391,7 @@ public class CurvePresenterImpl implements CurvePresenter {
                             mCurveView.toShare();
                         } else if (position == 2) {
                             mCurveView.toMore();
-                        }else if(position==3){
+                        } else if (position == 3) {
                             mCurveView.startTaggin();
                         }
                     }
@@ -439,7 +435,7 @@ public class CurvePresenterImpl implements CurvePresenter {
         menuItems.add(new PowerMenuItem(getContext().getString(R.string.curve_collect), false));
         menuItems.add(new PowerMenuItem(getContext().getString(R.string.curve_share), false));
         menuItems.add(new PowerMenuItem(getContext().getString(R.string.curve_more), false));
-        menuItems.add(new PowerMenuItem("添加备注",false));
+        menuItems.add(new PowerMenuItem("添加备注", false));
         return menuItems;
     }
 }
