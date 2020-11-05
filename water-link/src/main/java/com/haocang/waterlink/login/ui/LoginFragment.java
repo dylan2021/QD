@@ -148,6 +148,9 @@ public class LoginFragment extends Fragment implements LoginView, View.OnClickLi
         view.findViewById(R.id.sign_in_btn).setOnClickListener(this);
         view.findViewById(R.id.forgetPwd_tv).setOnClickListener(this);
         view.findViewById(R.id.ip_btn).setOnClickListener(this);
+
+        //todo 测试时候用自动登录,后面删掉
+        presenter.login();
     }
 
 
@@ -174,7 +177,8 @@ public class LoginFragment extends Fragment implements LoginView, View.OnClickLi
             SharedPreferences sp = getActivity().getSharedPreferences(LibConfig.CHECK, Context.MODE_PRIVATE);
             usernameEt.setText(sp.getString(LibConfig.USERNAME, ""));
             passwordEt.setText(sp.getString(LibConfig.PASSWORD, ""));
-            boolean isModifyStatue = getActivity().getIntent().getBooleanExtra("statu", false);
+            boolean isModifyStatue = getActivity().getIntent().
+                    getBooleanExtra("statu", false);
             if (isModifyStatue) {
                 presenter.login();
             }

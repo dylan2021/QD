@@ -1,6 +1,7 @@
 package com.haocang.base.utils;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -72,8 +73,6 @@ public class UploadUtil implements OkHttpClientManager.OnNetworkResponse {
         }
     }
 
-
-
     /**
      * 上传文件不过是通过遍历list,多次调用上传接口， 推荐用下面的 上传多个文件
      */
@@ -125,18 +124,37 @@ public class UploadUtil implements OkHttpClientManager.OnNetworkResponse {
 
 
     private void upLoadFileEX() {
-        AddParameters addParameters = new AddParameters();
+        AddParameters para = new AddParameters();
         Map<String, Object> map = new HashMap<>();
-        File file = new File(list.get(0));
-        map.put("file", file);
-        addParameters.addParam(map);
+
+        String pathName = list.get(0);
         list.remove(0);
+        //后台请求来的
+        if (pathName.startsWith("http")) {
+            FileEntity fileEntity = new FileEntity();
+            fileEntity.setFullPath(pathName);
+            fileList.add(fileEntity);
+            startUploadFileEX();
+            return;
+        } else {//本地上传
+            File file = new File(pathName);
+            map.put("file", file);
+            para.addParam(map);
+        }
+        Log.d("图片上传", "文件:" + map.toString());
         new OkHttpClientManager()
                 .setLoadDialog(new ProgressBarDialog(mCtx))
                 .setOnNetWorkReponse(new OkHttpClientManager.OnNetworkResponse() {
                     @Override
                     public void onNetworkResponse(String result) {
+                        Log.d("图片上传", "上传返回: " + result.toString());
                         try {
+/*                          "name" : "S@3T@QKBKODWAIPX4N2~FIO.png",
+                            "size" : 60638,
+                            "path" : "group1/M00/00/0C/wKgB6V-jn6SAQ4fZAADs3uy_8Rs241.png",
+                             "fullPath" : "http://www.qdhsdd.com:18188/group1/M00/00/0C/wKgB6V-jn6SAQ4fZAADs3uy_8Rs241.png",
+                            "thumbPath" : "group1/M00/00/0D/wKgB6V-jn6SAYlUNAAAS_EDLMdw510.png",
+                             "thumbFullPath" : "http://www.qdhsdd.com:18188/group1/M00/00/0D/wKgB6V-jn6SAYlUNAAAS_EDLMdw510.png"*/
                             JSONObject object = new JSONObject(result);
                             FileEntity fileEntity = new FileEntity();
                             fileEntity.setFullPath(object.optString("fullPath"));
@@ -156,19 +174,20 @@ public class UploadUtil implements OkHttpClientManager.OnNetworkResponse {
                             fileList.add(fileEntity);
                             startUploadFileEX();
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            uploadSuccess.uploadError();
+                            Log.d("图片上传", "失败: " + e.toString());
                         }
                     }
 
                     @Override
                     public void onErrorResponse(Response response) {
-
+                        Log.d("图片上传", "失败2: " + response.toString());
                         uploadSuccess.uploadError();
                     }
                 })
                 .setUrl(MethodConstants.Equiment.FILE_UPLOAD_EX)
                 .setRequestMethod(LibConfig.HTTP_POST)
-                .setRequestBody(addParameters.formUploadBody())
+                .setRequestBody(para.formUploadBody())
                 .builder();
     }
 

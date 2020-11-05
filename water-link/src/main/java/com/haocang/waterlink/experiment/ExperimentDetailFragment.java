@@ -174,16 +174,15 @@ public class ExperimentDetailFragment extends Fragment implements
 //        mMap.put("time","time");
         try {
             JSONObject mObj = new JSONObject(entity);
-            Log.d("图片数据", "图片数据" + mObj.toString());
-            if (mObj.getJSONObject("record").has("formId")) {
-                experimentDetailBean.setFormId(mObj.getJSONObject("record").getInt("formId"));
+            JSONObject recordObj = mObj.getJSONObject("record");
+            if (recordObj.has("formId")) {
+                experimentDetailBean.setFormId(recordObj.getInt("formId"));
             } else {
-                experimentDetailBean.setFormId(mObj.getJSONObject("record").getInt("id"));
+                experimentDetailBean.setFormId(recordObj.getInt("id"));
             }
-            title.setText(mObj.getJSONObject("record").getString("formName"));
+            title.setText(recordObj.getString("formName"));
             experimentDetailBean.setRecordDate(mMap.get("recordDate").toString());
 //            experimentDetailBean.setThumbnailUrl(t);
-//            experimentDetailBean.setUrl(t);
 
             JSONObject groups = mObj.getJSONObject("items").getJSONObject("groups");
             Iterator<String> keys = groups.keys();
@@ -213,6 +212,12 @@ public class ExperimentDetailFragment extends Fragment implements
                         mpointName = null;
                     }
                 }
+            }
+            //图片资源
+            JSONArray urlArr = recordObj.getJSONArray("url");
+            for (int i = 0; i < urlArr.length(); i++) {
+                String urlStr = urlArr.get(i) + "";
+                addImgVideo(urlStr);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -255,10 +260,11 @@ public class ExperimentDetailFragment extends Fragment implements
     //上传文件
     private void upLoadFile() {
         List<String> fileList = pictureAdapter.getFileList();
-        new UploadUtil(context).setUploadData(fileList).setUploadSuccess(new UploadUtil.UploadSuccess() {
+        new UploadUtil(context).setUploadData(fileList).setUploadSuccess(
+                new UploadUtil.UploadSuccess() {
             @Override
             public void uploadSuccess(List<FileEntity> fileList) {
-                Log.e("fileEntity", fileList.toString());
+                Log.d("图片上传", "成功:" + fileList.size());
                 String thumbnailUrl = "";
                 String url = "";
                 for (int i = 0; i < fileList.size(); i++) {
@@ -284,6 +290,8 @@ public class ExperimentDetailFragment extends Fragment implements
 
             @Override
             public void uploadError() {
+                Log.d("图片上传", "失败:" );
+                ToastUtil.makeText(context, "图片上传失败,请稍后重试");
 
             }
         }).startUploadFileEX();
@@ -398,26 +406,20 @@ public class ExperimentDetailFragment extends Fragment implements
         }
     }
 
-    //todo Dylan 请求后台数据后,拿出图片/视频路径集合, 遍历,这里添加图片或者视频,
-     /*   if (mList.get(position).getStepImgList() != null && mList.get(position).getStepImgList().size() > 0) {
-            List<PatrolPictureEntity> picList = mList.get(position).getStepImgList();*/
-    private void addImgPic(List<PatrolPictureEntity> picList ) {
-
-        for (PatrolPictureEntity entity : picList) {
-            String imgUrl = entity.getImgUrl();
-            if (imgUrl != null && (ImageUtil.isImageSuffix(imgUrl))) {
-                PictureInfo pictureInfo = new PictureInfo();
-                pictureInfo.setType(0);
-                pictureInfo.setImgUrl(imgUrl);
-                pictureAdapter.addItem(pictureInfo);
-            } else {
-                PictureInfo pictureInfo = new PictureInfo();
-                pictureInfo.setType(1);
-                pictureInfo.setNetWordVideoPath(imgUrl);
-                pictureAdapter.addItem(pictureInfo);
-            }
-            pictureAdapter.notifyDataSetChanged();
+    //添加图片或者视频,
+    private void addImgVideo(String imgUrl) {
+        if (imgUrl != null && (ImageUtil.isImageSuffix(imgUrl))) {
+            PictureInfo pictureInfo = new PictureInfo();
+            pictureInfo.setType(0);
+            pictureInfo.setImgUrl(imgUrl);
+            pictureAdapter.addItem(pictureInfo);
+        } else {
+            PictureInfo pictureInfo = new PictureInfo();
+            pictureInfo.setType(1);
+            pictureInfo.setNetWordVideoPath(imgUrl);
+            pictureAdapter.addItem(pictureInfo);
         }
+        pictureAdapter.notifyDataSetChanged();
     }
 
     /**

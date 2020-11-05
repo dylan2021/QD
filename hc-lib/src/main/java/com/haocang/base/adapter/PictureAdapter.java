@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,16 +61,11 @@ public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == PICTURE) {
-
             View view = LayoutInflater.from(ctx).inflate(R.layout.adapter_picture, null);
-
             return new PictureHolder(view);
-
         } else if (viewType == VIDEO) {
-
             View view = LayoutInflater.from(ctx).inflate(R.layout.adapter_video, null);
             return new VideoViewHolder(view);
-
         }
         return null;
     }
@@ -204,8 +201,16 @@ public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         List<String> listFilePath = new ArrayList<>();
         for (int i = 0; i < getItemCount(); i++) {
             PictureInfo entity = mList.get(i);
-            if (entity.getType() == 0 && !TextUtils.isEmpty(entity.getLocalImgPath()) && !entity.getLocalImgPath().contains("http")) {
-                listFilePath.add(entity.getLocalImgPath());
+            String localImgPath = entity.getLocalImgPath();
+            String imgUrl = entity.getImgUrl();
+            if (entity.getType() == 0) {
+                //本地
+                if (!TextUtils.isEmpty(localImgPath) && !localImgPath.contains("http")) {
+                    listFilePath.add(localImgPath);
+                    //服务器返回
+                } else if (!TextUtils.isEmpty(imgUrl)) {
+                    listFilePath.add(imgUrl);
+                }
             } else if (entity.getType() == 1 && !TextUtils.isEmpty(entity.getVideoPath())) {
                 listFilePath.add(entity.getVideoPath());
             }

@@ -21,11 +21,11 @@ public class ExperimentDetailPresenterImpl implements ExperimentDetailPresenter 
 
     ExperimentDetailFragment mFragment;
 
-    public void setView(ExperimentDetailFragment fragment){
-            this.mFragment = fragment;
+    public void setView(ExperimentDetailFragment fragment) {
+        this.mFragment = fragment;
     }
 
-    public void getDataList(Map<String,Object> paramsMap) {
+    public void getDataList(Map<String, Object> paramsMap) {
         CommonModel<String> progressModel = new CommonModelImpl<>();
         progressModel.setContext(mFragment.getActivity())
                 .setUrl(HomeMethodConfig.EXPERIMENT_DATA)
@@ -34,7 +34,7 @@ public class ExperimentDetailPresenterImpl implements ExperimentDetailPresenter 
                 .setStringListener(new GetListStringListener() {
                     @Override
                     public void success(String list) {
-//                        Log.e("list",list.toString());
+                        Log.d("图片上传", "加载:" + list);
                         mFragment.setData(list);
                     }
 

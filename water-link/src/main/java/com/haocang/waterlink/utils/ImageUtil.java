@@ -219,7 +219,7 @@ public class ImageUtil {
         return bitmap;
     }
 
-    public static void savePicUrl(final BaseFgActivity context, final String url) {
+    public static void savePicUrl( final String url) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -233,14 +233,14 @@ public class ImageUtil {
                     Bitmap bitmap = BitmapFactory.decodeStream(is);
                     is.close();
 
-                    savePicBitmap(context, bitmap);
+                   // savePicBitmap( bitmap);
                 } catch (Exception e) {
                 }
             }
         }).start();
 
     }
-
+/*
     public static void savePicBitmap(BaseFgActivity context, Bitmap bmp) {
         // 首先保存图片
         if (bmp == null) {
@@ -270,7 +270,7 @@ public class ImageUtil {
         // 最后通知图库更新
         context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
                 Uri.fromFile(new File(file.getPath()))));
-    }
+    }*/
 
     //计算图片的缩放值
     public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int
