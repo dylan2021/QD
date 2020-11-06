@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 
 import android.view.WindowManager;
 
+import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -23,7 +24,8 @@ public class CommonActivity extends BaseActivity {
     String fragmentUri;
     @Autowired
     String faultId;//缺陷id
-
+    @Autowired
+    String title;
 
     @Override
     protected void doOnCreate() {
@@ -31,7 +33,8 @@ public class CommonActivity extends BaseActivity {
         ARouter.getInstance().inject(this);
         try {
             if (fragmentUri != null && !"".equals(fragmentUri)) {
-                fragment = (Fragment) ARouter.getInstance().build(fragmentUri).navigation();
+                Postcard pc = ARouter.getInstance().build(fragmentUri);
+                fragment = (Fragment) pc.withString("title", title).navigation();
             }
         } catch (Exception e) {
             e.printStackTrace();

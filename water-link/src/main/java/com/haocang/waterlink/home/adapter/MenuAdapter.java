@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,12 +44,12 @@ public class MenuAdapter extends BaseAdapter<MenuEntity> {
             iconLl.setBackgroundResource(R.mipmap.icon_home_menu_more);
             Glide.with(ctx).load(R.mipmap.icon_home_menu_more).apply(options).into(iconIv);
             nameTv.setTextColor(Color.parseColor("#0CABDF"));
-        } else if (!TextUtils.isEmpty(entity.getIcon())&&!entity.getIcon().equals("0")) {
+        } else if (!TextUtils.isEmpty(entity.getIcon()) && !entity.getIcon().equals("0")) {
             iconLl.setBackgroundResource(R.mipmap.icon_home_menu_bg);
             iconIv.setImageResource(Integer.valueOf(entity.getIcon()));
 //            Glide.with(ctx).load(entity.getIcon()).apply(options).into(iconIv);
             nameTv.setTextColor(Color.parseColor("#58637C"));
-        }  else if (!TextUtils.isEmpty(entity.getIconUrl())) {
+        } else if (!TextUtils.isEmpty(entity.getIconUrl())) {
             iconLl.setBackgroundResource(R.mipmap.icon_home_menu_bg);
             Glide.with(ctx).load(entity.getIconUrl()).apply(options).into(iconIv);
             nameTv.setTextColor(Color.parseColor("#58637C"));
@@ -57,10 +58,11 @@ public class MenuAdapter extends BaseAdapter<MenuEntity> {
             Glide.with(ctx).load(R.mipmap.ic_launcher).apply(options).into(iconIv);
             nameTv.setTextColor(Color.parseColor("#58637C"));
         }
-        if (TextUtils.isEmpty(entity.getName())) {
+        String name = entity.getName();
+        if (TextUtils.isEmpty(name)) {
             nameTv.setText("");
         } else {
-            nameTv.setText(entity.getName());
+            nameTv.setText(name);
         }
     }
 

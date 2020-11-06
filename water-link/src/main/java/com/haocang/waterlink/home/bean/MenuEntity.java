@@ -228,4 +228,31 @@ public class MenuEntity {
     public void setState(Object state) {
         this.state = state;
     }
+
+    @Override
+    public String toString() {
+        return "MenuEntity{" +
+                "name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", id=" + id +
+                ", iconUrl='" + iconUrl + '\'' +
+                ", sort=" + sort +
+                ", reson=" + reson +
+                ", fragmentName='" + fragmentName + '\'' +
+                ", params='" + params + '\'' +
+                ", showHomepage=" + showHomepage +
+                ", appType=" + appType +
+                ", key='" + key + '\'' +
+                ", order=" + order +
+                ", title='" + title + '\'' +
+                ", parentId=" + parentId +
+                ", url='" + url + '\'' +
+                ", icon='" + icon + '\'' +
+                ", target='" + target + '\'' +
+                ", version=" + version +
+                ", state=" + state +
+                ", tabList=" + tabList +
+                ", secondMenu=" + secondMenu +
+                '}';
+    }
 }

@@ -30,7 +30,6 @@ public class WebModelFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         View view = inflater.from(getActivity()).inflate(R.layout.fragment_web_model, null);
         initView(view);
 

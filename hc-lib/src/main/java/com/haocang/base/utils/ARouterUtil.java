@@ -2,6 +2,7 @@ package com.haocang.base.utils;
 
 import android.app.Activity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.Postcard;
@@ -29,24 +30,24 @@ import java.util.Map;
 public class ARouterUtil {
 
     public static void toFragment(final Map<String, Object> map) {
-        Postcard postcard = ARouter.getInstance().build(ArouterPathConstants.Common.COMMON_ACTIVY);
+        Postcard post = ARouter.getInstance().build(ArouterPathConstants.Common.COMMON_ACTIVY);
         for (Map.Entry<String, Object> entry : map.entrySet()) {
             String key = entry.getKey();
             Object value = entry.getValue();
             if (value instanceof Boolean) {
                 boolean b = ((Boolean) value).booleanValue();
-                postcard.withBoolean(key, b);
+                post.withBoolean(key, b);
             } else if (value instanceof Integer) {
                 int c = (int) value;
-                postcard.withInt(key, c);
+                post.withInt(key, c);
             } else if (value instanceof String[]) {
-                postcard.getExtras().putStringArray(entry.getKey(), (String[]) entry.getValue());
+                post.getExtras().putStringArray(entry.getKey(), (String[]) entry.getValue());
             } else {
-                postcard.withString(entry.getKey(), entry.getValue() + "");
+                post.withString(entry.getKey(), value + "");
             }
 
         }
-        postcard.navigation();
+        post.navigation();
     }
 
     public static void toFragment(final String fragmentUri) {

@@ -7,6 +7,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,8 +72,7 @@ public class HomeEquipmentListFragment extends Fragment
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull final LayoutInflater inflater,
-                             @Nullable final ViewGroup container,
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container,
                              @Nullable final Bundle savedInstanceState) {
         View view = inflater.from(getActivity()).inflate(R.layout.fragment_home_equipment, null);
         initView(view);
@@ -96,9 +97,7 @@ public class HomeEquipmentListFragment extends Fragment
         addParameter();
         adapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
             @Override
-            public void onClick(final View view,
-                                final int position,
-                                final Object item) {
+            public void onClick(final View view, final int position, final Object item) {
                 EquimentEntity entity = (EquimentEntity) item;
                 Intent intent = new Intent(getActivity(), CommonActivity.class);
                 intent.putExtra("fragmentName", EquipmentDetailsFragment.class.getName());

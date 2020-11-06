@@ -6,11 +6,13 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,6 +94,7 @@ public class AccountSwitchingFragment extends Fragment implements View.OnClickLi
         });
     }
 
+    //登录成功
     private void accountSwitch(final OffLineUserEntity entity) {
         new AutomaticLogonUtils(getActivity()).setAutomaticLogon(new AutomaticLogonUtils.AutomaticLogonInterface() {
             @Override

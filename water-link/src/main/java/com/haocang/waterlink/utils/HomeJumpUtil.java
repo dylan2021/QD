@@ -2,6 +2,7 @@ package com.haocang.waterlink.utils;
 
 import android.app.Activity;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.haocang.base.config.ArouterPathConstants;
 import com.haocang.base.utils.ARouterUtil;
@@ -63,7 +64,6 @@ public class HomeJumpUtil {
      * 执行跳转.
      */
     protected void toFragment(MenuEntity entity) {
-
         String fragmentUri = entity.getUrl();
         if ("/monitor/main".equals(fragmentUri)) {
             fragmentUri = "/monitor/home/";
@@ -88,11 +88,15 @@ public class HomeJumpUtil {
             ARouterUtil.toFragment(map);
             return;
         }
+        String params = entity.getParams();
+
         Map<String, Object> map = new HashMap<>();
         map.put("fragmentUri", fragmentUri);
-        if (!TextUtils.isEmpty(entity.getParams())) {
-            map.put("params", entity.getParams());
+        map.put("title", entity.getName());
+        if (!TextUtils.isEmpty(params)) {
+            map.put("params", params);
         }
+
         ARouterUtil.toFragment(map);
     }
 

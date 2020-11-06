@@ -35,6 +35,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+//人工实验抄录
 @Route(path = "/experiment/experiment")
 public class ExperimentFragment extends Fragment implements View.OnClickListener, BaseRefreshListener,TextView.OnEditorActionListener{
 

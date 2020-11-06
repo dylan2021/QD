@@ -60,6 +60,7 @@ import java.util.Map;
 
 import camera2library.camera.Camera2RecordActivity;
 
+//人工实验抄录详情
 @Route(path = "/experiment/experiment/detail")
 public class ExperimentDetailFragment extends Fragment implements
         View.OnClickListener {
