@@ -12,11 +12,11 @@
         style="@style/px28_212121_bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingRight="@dimen/main_margin_left_x"
+        android:drawableRight="@drawable/btg_icon_arrow_right_selected"
         android:drawablePadding="@dimen/dp_10"
-        android:drawableRight="@drawable/ic_next"
         android:ellipsize="end"
         android:maxLines="1"
+        android:paddingRight="@dimen/main_margin_left_x"
         android:singleLine="true" />
 
 
@@ -27,47 +27,49 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
-        android:paddingRight="@dimen/main_margin_left_x"
-        android:paddingTop="@dimen/dp_7" />
+        android:paddingTop="@dimen/dp_7"
+        android:paddingRight="@dimen/main_margin_left_x" />
 
     <TextView
         android:id="@+id/bz_fmj_item_tv_2"
         style="@style/px26_999"
         android:layout_width="match_parent"
-        android:paddingRight="@dimen/main_margin_left_x"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
-        android:paddingTop="@dimen/dp_4" />
+        android:paddingTop="@dimen/dp_4"
+        android:paddingRight="@dimen/main_margin_left_x" />
 
     <TextView
         android:id="@+id/bz_fmj_item_tv_4"
-        android:paddingRight="@dimen/main_margin_left_x"
         style="@style/px26_999"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
-        android:paddingTop="@dimen/dp_4" />
+        android:paddingTop="@dimen/dp_4"
+        android:paddingRight="@dimen/main_margin_left_x" />
+
     <TextView
         android:id="@+id/bz_fmj_item_tv_3"
-        android:paddingRight="@dimen/main_margin_left_x"
         style="@style/px26_999"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
-        android:paddingTop="@dimen/dp_4" />
+        android:paddingTop="@dimen/dp_4"
+        android:paddingRight="@dimen/main_margin_left_x" />
+
     <TextView
         android:id="@+id/bz_fmj_item_tv_status"
         style="@style/px26_999"
         android:layout_width="match_parent"
-        android:paddingBottom="@dimen/dp_10"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/dp_7" />
+        android:paddingTop="@dimen/dp_7"
+        android:paddingBottom="@dimen/dp_10" />
 
     <View
         android:layout_width="match_parent"
-        android:background="@color/divider_color"
-        android:layout_height="@dimen/dp_1"/>
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/divider_color" />
 </LinearLayout>

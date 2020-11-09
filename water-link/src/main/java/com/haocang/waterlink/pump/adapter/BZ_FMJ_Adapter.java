@@ -18,12 +18,12 @@ public class BZ_FMJ_Adapter extends BaseAdapter<BZ_FMJ_ListBean.ItemsBean> {
 
     @Override
     protected void convert(final BaseHolder holder, final BZ_FMJ_ListBean.ItemsBean item) {
-        holder.setText(R.id.bz_fmj_item_tv_title, "泵站名称", item.getPumpName());
+        holder.setText(R.id.bz_fmj_item_tv_title, item.getPumpName());
         holder.setText(R.id.bz_fmj_item_tv_1, "区域", item.getProcessName());
-        holder.setText(R.id.bz_fmj_item_tv_2, "施工单位(土建)", item.getContractor());
-        holder.setText(R.id.bz_fmj_item_tv_3, "施工单位(外电)", item.getConstructors());
-        holder.setText(R.id.bz_fmj_item_tv_4, "监理单位", item.getSupervisorUnit());
-        holder.setText(R.id.bz_fmj_item_tv_status, "运行状态", TextUtilsMy.getStatusStr(item.isStatus()));
+        holder.setText(R.id.bz_fmj_item_tv_2, "监理单位", item.getSupervisorUnit());
+        holder.setText(R.id.bz_fmj_item_tv_3, "施工单位(土建)", item.getContractor());
+        holder.setText(R.id.bz_fmj_item_tv_4, "施工单位(外电)", item.getConstructors());
+        holder.setText(R.id.bz_fmj_item_tv_status, TextUtilsMy.getStatusStr(item.isStatus()));
         holder.setTextColor(R.id.bz_fmj_item_tv_status, TextUtilsMy.getStatusColor(item.isStatus()));
     }
 

@@ -1,5 +1,6 @@
 package com.haocang.waterlink.utils;
 
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.text.InputFilter;
 import android.text.TextUtils;
@@ -538,9 +539,10 @@ public class TextUtilsMy {
     }
 
     public static String getStatusStr(boolean status) {
-        return status?"正常":"异常";
+        return status ? "正常" : "异常";
     }
+
     public static int getStatusColor(boolean status) {
-        return status?R.color.normal:R.color.exception;
+        return Color.parseColor(status ? "#76BA67" : "#F56917");
     }
 }
