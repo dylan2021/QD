@@ -5,19 +5,34 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:paddingLeft="@dimen/main_margin_left_x"
-    android:paddingTop="@dimen/main_margin_left_x">
+    android:paddingTop="@dimen/dp_10">
 
-    <TextView
-        android:id="@+id/bz_fmj_item_tv_title"
-        style="@style/px28_212121_bold"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableRight="@drawable/btg_icon_arrow_right_selected"
-        android:drawablePadding="@dimen/dp_10"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:paddingRight="@dimen/main_margin_left_x"
-        android:singleLine="true" />
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/bz_fmj_item_tv_title"
+            style="@style/px28_212121_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableRight="@mipmap/ic_next"
+            android:drawablePadding="@dimen/dp_10"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingRight="@dimen/main_margin_left_x"
+            android:singleLine="true" />
+
+        <TextView
+            android:id="@+id/bz_fmj_item_tv_status"
+            style="@style/px26_999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/dp_30" />
+    </RelativeLayout>
 
 
     <TextView
@@ -27,7 +42,7 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
-        android:paddingTop="@dimen/dp_7"
+        android:paddingTop="@dimen/dp_6"
         android:paddingRight="@dimen/main_margin_left_x" />
 
     <TextView
@@ -37,17 +52,7 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
-        android:paddingTop="@dimen/dp_4"
-        android:paddingRight="@dimen/main_margin_left_x" />
-
-    <TextView
-        android:id="@+id/bz_fmj_item_tv_4"
-        style="@style/px26_999"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:paddingTop="@dimen/dp_4"
+        android:paddingTop="@dimen/dp_3"
         android:paddingRight="@dimen/main_margin_left_x" />
 
     <TextView
@@ -57,16 +62,18 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
-        android:paddingTop="@dimen/dp_4"
+        android:paddingTop="@dimen/dp_3"
         android:paddingRight="@dimen/main_margin_left_x" />
 
     <TextView
-        android:id="@+id/bz_fmj_item_tv_status"
+        android:id="@+id/bz_fmj_item_tv_4"
         style="@style/px26_999"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/dp_7"
-        android:paddingBottom="@dimen/dp_10" />
+        android:lineSpacingExtra="@dimen/dp_3"
+        android:paddingBottom="@dimen/dp_10"
+        android:paddingTop="@dimen/dp_3"
+        android:paddingRight="@dimen/main_margin_left_x" />
 
     <View
         android:layout_width="match_parent"

@@ -543,6 +543,11 @@ public class TextUtilsMy {
     }
 
     public static int getStatusColor(boolean status) {
-        return Color.parseColor(status ? "#76BA67" : "#F56917");
+        return Color.parseColor(status ? "#45b97c" : "#F56917");
+    }
+
+    public static String getWellType(int wellType) {
+        String[] wellTypeArr = {"","排水排泥", "进排气", "检修", "分水", "流量监测", "调控", "检修排气"};
+        return wellType < wellTypeArr.length ? wellTypeArr[wellType] : "其他";
     }
 }

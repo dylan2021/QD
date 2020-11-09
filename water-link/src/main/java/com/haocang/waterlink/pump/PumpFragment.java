@@ -57,7 +57,7 @@ public class PumpFragment extends Fragment implements View.OnClickListener, Base
         View view = inflater.from(getActivity()).inflate(R.layout.fragment_home_pump, null);
         initView(view);
 
-        map.put("pageSize", "10");
+        map.put("pageSize", 10);
         map.put("currentPage", 1);
         getData();
         return view;
@@ -71,7 +71,7 @@ public class PumpFragment extends Fragment implements View.OnClickListener, Base
         refreshLayout = view.findViewById(R.id.pulltorefreshlayout);
         refreshLayout.setRefreshListener(this);
         equimentRv = view.findViewById(R.id.recyclerview);
-        adapter = new BZ_FMJ_Adapter(R.layout.adapter_home_bz_fmj);
+        adapter = new BZ_FMJ_Adapter(R.layout.adapter_home_bz_fmj, isTypeBZ);
         equimentRv.setLayoutManager(new LinearLayoutManager(context));
         equimentRv.setAdapter(adapter);
 
@@ -84,22 +84,23 @@ public class PumpFragment extends Fragment implements View.OnClickListener, Base
 
     @Override
     public void refresh() {
-        map.put("currentPage", 1);
+        map.put("pageSize", 10);
         getData();
     }
 
     private void getData() {
-        adapter.clear();
         CommonModel<BZ_FMJ_ListBean> progressModel = new CommonModelImpl<>();
+        String url = isTypeBZ ? HomeUrlConst.URL_BZ : HomeUrlConst.URL_FMJ;
         progressModel.setContext(context)
                 .setEntityType(BZ_FMJ_ListBean.class)
-                .setUrl(HomeUrlConst.URL_BZ_FMJ)
+                .setUrl(url)
                 .setParamMap(map)
                 .setEntityListener(new GetEntityListener<BZ_FMJ_ListBean>() {
                     @Override
                     public void success(final BZ_FMJ_ListBean entity) {
                         TextUtilsMy.finish(refreshLayout);
                         Log.d("请求数据", "请求数据:" + entity.getTotal());
+                        adapter.clear();
                         adapter.addAll(entity.getItems());
                         adapter.notifyDataSetChanged();
                     }
@@ -116,7 +117,7 @@ public class PumpFragment extends Fragment implements View.OnClickListener, Base
 
     @Override
     public void loadMore() {
-        map.put("currentPage", Integer.valueOf(map.get("currentPage").toString()) + 1);
+        map.put("pageSize", Integer.valueOf(map.get("pageSize").toString()) +10);
         getData();
     }
 }

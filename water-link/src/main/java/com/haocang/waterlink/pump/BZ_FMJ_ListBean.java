@@ -1,5 +1,7 @@
 package com.haocang.waterlink.pump;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class BZ_FMJ_ListBean {
@@ -24,24 +26,7 @@ public class BZ_FMJ_ListBean {
     }
 
     public static class ItemsBean {
-        /**
-         * id : 33
-         * pumpName : 主线泵站
-         * processId : 10
-         * processName : 主线泵站
-         * contractor : 青岛市水利工程建设开发总公司
-         * constructors : 中国电建集团核电工程有限公司
-         * supervisor : null
-         * longitude : null
-         * latitude : null
-         * userId : null
-         * status : false
-         * remark : null
-         * startTime : null
-         * complateTime : null
-         * designer : null
-         * supervisorUnit : 青岛市工程建设监理有限责任公司
-         */
+
 
         private int id;
         private String pumpName;
@@ -50,8 +35,6 @@ public class BZ_FMJ_ListBean {
         private String contractor;
         private String constructors;
         private Object supervisor;
-        private Object longitude;
-        private Object latitude;
         private Object userId;
         private boolean status;
         private Object remark;
@@ -59,6 +42,18 @@ public class BZ_FMJ_ListBean {
         private Object complateTime;
         private Object designer;
         private String supervisorUnit;
+        private String wellName;
+        private Object lineId;
+        private String lineName;
+        private int wellType;
+        private String groundHeight;
+        private String designTube;
+        private String topHeight;
+        private String bottemHeight;
+        private String buriedDepth;
+        private double longitude;
+        private double latitude;
+        private String stake;
 
         public int getId() {
             return id;
@@ -116,21 +111,6 @@ public class BZ_FMJ_ListBean {
             this.supervisor = supervisor;
         }
 
-        public Object getLongitude() {
-            return longitude;
-        }
-
-        public void setLongitude(Object longitude) {
-            this.longitude = longitude;
-        }
-
-        public Object getLatitude() {
-            return latitude;
-        }
-
-        public void setLatitude(Object latitude) {
-            this.latitude = latitude;
-        }
 
         public Object getUserId() {
             return userId;
@@ -187,5 +167,87 @@ public class BZ_FMJ_ListBean {
         public void setSupervisorUnit(String supervisorUnit) {
             this.supervisorUnit = supervisorUnit;
         }
+
+        public String getWellName() {
+            return wellName;
+        }
+
+        public void setWellName(String wellName) {
+            this.wellName = wellName;
+        }
+
+        public Object getLineId() {
+            return lineId;
+        }
+
+        public void setLineId(Object lineId) {
+            this.lineId = lineId;
+        }
+
+        public String getLineName() {
+            return lineName;
+        }
+
+        public void setLineName(String lineName) {
+            this.lineName = lineName;
+        }
+
+        public int getWellType() {
+            return wellType;
+        }
+
+        public void setWellType(int wellType) {
+            this.wellType = wellType;
+        }
+
+        public String getGroundHeight() {
+            return groundHeight;
+        }
+
+        public void setGroundHeight(String groundHeight) {
+            this.groundHeight = groundHeight;
+        }
+
+        public String getDesignTube() {
+            return designTube;
+        }
+
+        public void setDesignTube(String designTube) {
+            this.designTube = designTube;
+        }
+
+        public String getTopHeight() {
+            return topHeight;
+        }
+
+        public void setTopHeight(String topHeight) {
+            this.topHeight = topHeight;
+        }
+
+        public String getBottemHeight() {
+            return bottemHeight;
+        }
+
+        public void setBottemHeight(String bottemHeight) {
+            this.bottemHeight = bottemHeight;
+        }
+
+        public String getBuriedDepth() {
+            return buriedDepth;
+        }
+
+        public void setBuriedDepth(String buriedDepth) {
+            this.buriedDepth = buriedDepth;
+        }
+
+        public String getStake() {
+            return stake;
+        }
+
+        public void setStake(String stake) {
+            this.stake = stake;
+        }
+
+
     }
 }
