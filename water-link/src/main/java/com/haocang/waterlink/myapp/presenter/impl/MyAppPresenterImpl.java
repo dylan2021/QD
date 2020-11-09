@@ -4,7 +4,7 @@ import com.google.gson.reflect.TypeToken;
 import com.haocang.base.base.CommonModel;
 import com.haocang.base.base.impl.CommonModelImpl;
 import com.haocang.base.utils.GetListListener;
-import com.haocang.waterlink.constant.HomeMethodConfig;
+import com.haocang.waterlink.constant.HomeUrlConst;
 import com.haocang.waterlink.constant.WaterLinkConstant;
 import com.haocang.waterlink.home.bean.MenuEntity;
 import com.haocang.waterlink.myapp.iview.MyAppView;
@@ -29,7 +29,7 @@ public class MyAppPresenterImpl implements MyAppPresenter {
         progressModel
                 .setListType(type)
                 .setHasDialog(false)
-                .setUrl(HomeMethodConfig.HOME_ALL_MENU)
+                .setUrl(HomeUrlConst.HOME_ALL_MENU)
                 .setListListener(new GetListListener<MenuEntity>() {
                     @Override
                     public void success(List<MenuEntity> list) {
@@ -49,7 +49,7 @@ public class MyAppPresenterImpl implements MyAppPresenter {
         progressModel
                 .setListType(type)
                 .setHasDialog(false)
-                .setUrl(HomeMethodConfig.HOME_MENUS)
+                .setUrl(HomeUrlConst.HOME_MENUS)
                 .setListListener(new GetListListener<MenuEntity>() {
                     @Override
                     public void success(List<MenuEntity> list) {

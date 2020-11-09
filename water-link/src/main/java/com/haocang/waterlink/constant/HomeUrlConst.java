@@ -1,6 +1,6 @@
 package com.haocang.waterlink.constant;
 
-public class HomeMethodConfig {
+public class HomeUrlConst {
 
     public static final String HOME_MENUS = "uaa/api/app-menus/homepage";//获取首页菜单
 
@@ -9,4 +9,5 @@ public class HomeMethodConfig {
     public static final String EXPERIMENT_LIST = "loong/api/datainput-forms";
 
     public static final String EXPERIMENT_DATA = "loong/api/datainput-records/data";
+    public static final String URL_BZ_FMJ = "equipment/api/pump-condition?";
 }

@@ -8,9 +8,8 @@ import com.haocang.base.base.impl.CommonModelImpl;
 import com.haocang.base.config.LibConfig;
 import com.haocang.base.http.AddParameters;
 import com.haocang.base.http.OkHttpClientManager;
-import com.haocang.base.utils.GetEntityListener;
 import com.haocang.base.utils.GetListListener;
-import com.haocang.waterlink.constant.HomeMethodConfig;
+import com.haocang.waterlink.constant.HomeUrlConst;
 import com.haocang.waterlink.home.bean.MenuEntity;
 import com.haocang.waterlink.myapp.iview.MyAppEditView;
 import com.haocang.waterlink.myapp.presenter.MyAppEditPresenter;
@@ -19,9 +18,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import okhttp3.Response;
 
@@ -42,7 +39,7 @@ public class MyAppEditPresenterImpl implements MyAppEditPresenter {
         }
         AddParameters addParameters = new AddParameters();
         new OkHttpClientManager()
-                .setUrl(HomeMethodConfig.HOME_MENUS)
+                .setUrl(HomeUrlConst.HOME_MENUS)
                 .setRequestMethod(LibConfig.HTTP_POST)
                 .setRequestBody(addParameters.formBodyByObject(object))
                 .setOnNetWorkReponse(new OkHttpClientManager.OnNetworkResponse() {
@@ -69,7 +66,7 @@ public class MyAppEditPresenterImpl implements MyAppEditPresenter {
         progressModel
                 .setListType(type)
                 .setHasDialog(false)
-                .setUrl(HomeMethodConfig.HOME_MENUS)
+                .setUrl(HomeUrlConst.HOME_MENUS)
                 .setListListener(new GetListListener<MenuEntity>() {
                     @Override
                     public void success(List<MenuEntity> list) {

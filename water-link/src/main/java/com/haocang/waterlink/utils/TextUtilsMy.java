@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.haocang.waterlink.R;
+import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
@@ -529,5 +530,17 @@ public class TextUtilsMy {
             return true;
         }
         return false;
+    }
+
+    public static void finish(PullToRefreshLayout refreshLayout) {
+        refreshLayout.finishRefresh();
+        refreshLayout.finishLoadMore();
+    }
+
+    public static String getStatusStr(boolean status) {
+        return status?"正常":"异常";
+    }
+    public static int getStatusColor(boolean status) {
+        return status?R.color.normal:R.color.exception;
     }
 }

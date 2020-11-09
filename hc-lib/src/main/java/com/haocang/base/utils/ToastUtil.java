@@ -21,8 +21,14 @@ import android.widget.Toast;
  */
 public class ToastUtil {
 
-    public static void makeText(Context ctx, String content) {
-        if (ctx != null && content != null)
-            Toast.makeText(ctx, content, Toast.LENGTH_LONG).show();
+    public static void makeText(Context context, String text) {
+        if (context != null && text != null)
+            Toast.makeText(context, text, Toast.LENGTH_LONG).show();
+    }
+
+    public static void makeText(Context context, int id) {
+        if (context != null) {
+            makeText(context, context.getString(id));
+        }
     }
 }

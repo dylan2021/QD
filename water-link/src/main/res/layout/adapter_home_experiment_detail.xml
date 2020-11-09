@@ -69,7 +69,7 @@
                     android:background="@null"
                     android:maxLength="20"
                     android:maxLines="1"
-                    android:textColor="@color/color_21"
+                    android:textColor="@color/color212121"
                     android:textSize="@dimen/sp_15" />
             </LinearLayout>
 

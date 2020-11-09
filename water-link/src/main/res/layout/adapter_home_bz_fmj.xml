@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/main_margin_left_x"
+    android:paddingTop="@dimen/main_margin_left_x">
+
+    <TextView
+        android:id="@+id/bz_fmj_item_tv_title"
+        style="@style/px28_212121_bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="@dimen/main_margin_left_x"
+        android:drawablePadding="@dimen/dp_10"
+        android:drawableRight="@drawable/ic_next"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:singleLine="true" />
+
+
+    <TextView
+        android:id="@+id/bz_fmj_item_tv_1"
+        style="@style/px26_999"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingRight="@dimen/main_margin_left_x"
+        android:paddingTop="@dimen/dp_7" />
+
+    <TextView
+        android:id="@+id/bz_fmj_item_tv_2"
+        style="@style/px26_999"
+        android:layout_width="match_parent"
+        android:paddingRight="@dimen/main_margin_left_x"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingTop="@dimen/dp_4" />
+
+    <TextView
+        android:id="@+id/bz_fmj_item_tv_4"
+        android:paddingRight="@dimen/main_margin_left_x"
+        style="@style/px26_999"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingTop="@dimen/dp_4" />
+    <TextView
+        android:id="@+id/bz_fmj_item_tv_3"
+        android:paddingRight="@dimen/main_margin_left_x"
+        style="@style/px26_999"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingTop="@dimen/dp_4" />
+    <TextView
+        android:id="@+id/bz_fmj_item_tv_status"
+        style="@style/px26_999"
+        android:layout_width="match_parent"
+        android:paddingBottom="@dimen/dp_10"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/dp_7" />
+
+    <View
+        android:layout_width="match_parent"
+        android:background="@color/divider_color"
+        android:layout_height="@dimen/dp_1"/>
+</LinearLayout>

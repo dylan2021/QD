@@ -21,7 +21,7 @@
                 android:layout_height="wrap_content"
                 android:text="添加图片(最多4张)"
                 android:textStyle="bold"
-                android:textColor="@color/color_21"
+                android:textColor="@color/color212121"
                 android:textSize="14sp" />
 
             <ImageView

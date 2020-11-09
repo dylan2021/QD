@@ -42,8 +42,7 @@ import com.haocang.base.utils.PictureUtils;
 import com.haocang.base.utils.ToastUtil;
 import com.haocang.offline.util.OffLineOutApiUtil;
 import com.haocang.waterlink.R;
-import com.haocang.waterlink.constant.HomeMethodConfig;
-import com.haocang.waterlink.constant.WaterLinkConstant;
+import com.haocang.waterlink.constant.HomeUrlConst;
 import com.haocang.waterlink.constant.bean.HomeConstants;
 import com.haocang.waterlink.home.bean.MenuEntity;
 import com.haocang.waterlink.login.config.LoginMethodConstants;
@@ -156,7 +155,7 @@ public class MyHomeFragment extends Fragment implements View.OnClickListener, My
         progressModel
                 .setListType(type)
                 .setHasDialog(false)
-                .setUrl(HomeMethodConfig.HOME_ALL_MENU)
+                .setUrl(HomeUrlConst.HOME_ALL_MENU)
                 .setListListener(new GetListListener<MenuEntity>() {
                     @Override
                     public void success(List<MenuEntity> list) {

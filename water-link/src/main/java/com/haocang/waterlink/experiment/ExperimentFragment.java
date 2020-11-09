@@ -1,6 +1,5 @@
 package com.haocang.waterlink.experiment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -19,15 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.haocang.base.adapter.BaseAdapter;
 import com.haocang.base.utils.ARouterUtil;
-import com.haocang.maonlib.base.config.HCLicConstant;
 import com.haocang.waterlink.R;
 import com.haocang.waterlink.experiment.adapter.HomeExperimentAdapter;
 import com.haocang.waterlink.experiment.bean.ExperimentListBean;
 import com.haocang.waterlink.experiment.presenter.ExperimentPresenter;
 import com.haocang.waterlink.experiment.presenter.ExperimentPresenterImpl;
-import com.haocang.waterlink.home.bean.MenuEntity;
-import com.haocang.waterlink.pump.adapter.HomePumpAdapter;
-import com.haocang.waterlink.utils.HomeJumpUtil;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
 
@@ -92,7 +87,6 @@ public class ExperimentFragment extends Fragment implements View.OnClickListener
         });
 
         mMap = new HashMap<>();
-//        type=hour&siteId=&queryName=&beginDate=&endDate=&pageSize=10&currentPage=1&siteName=&cycleId=
         mMap.put("type","hour");
         mMap.put("pageSize","10");
         mMap.put("currentPage",1);
@@ -123,6 +117,7 @@ public class ExperimentFragment extends Fragment implements View.OnClickListener
     }
 
     public void setData(ExperimentListBean entity){
+        adapter.clear();
         adapter.addAll(entity.getItems());
         adapter.notifyDataSetChanged();
         pullToRefreshLayout.finishLoadMore();

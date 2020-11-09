@@ -18,6 +18,43 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="px28_212121_bold">
+        <item name="android:textSize">@dimen/dp_14</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/color212121</item>
+    </style>
+
+    <style name="px26_666_bold">
+        <item name="android:textSize">@dimen/dp_13</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/color666</item>
+    </style>
+
+    <style name="px26_666">
+        <item name="android:textSize">@dimen/dp_13</item>
+        <item name="android:textColor">@color/color666</item>
+    </style>
+
+    <style name="px22_999">
+        <item name="android:textSize">@dimen/dp_11</item>
+        <item name="android:textColor">@color/color999</item>
+    </style>
+
+    <style name="px24_999">
+        <item name="android:textSize">@dimen/dp_12</item>
+        <item name="android:textColor">@color/color999</item>
+    </style>
+
+    <style name="px26_999">
+        <item name="android:textSize">@dimen/dp_13</item>
+        <item name="android:textColor">@color/color999</item>
+    </style>
+
+    <style name="px24_a5a5a5">
+        <item name="android:textSize">@dimen/dp_12</item>
+        <item name="android:textColor">@color/color_a5a5a5</item>
+    </style>
+
     <style name="TabLayoutTextStyle">
         <item name="android:textSize">15sp</item>
     </style>
@@ -39,10 +76,12 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
     </style>
+
     <style name="color666_sp15">
         <item name="android:textSize">@dimen/sp_15</item>
-        <item name="android:textColor">@color/color_666</item>
+        <item name="android:textColor">@color/color666</item>
     </style>
+
     <style name="a5a5a5_sp15">
         <item name="android:textSize">@dimen/sp_15</item>
         <item name="android:textColor">@color/color_a5a5a5</item>

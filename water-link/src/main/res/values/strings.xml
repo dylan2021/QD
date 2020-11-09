@@ -136,4 +136,5 @@
     <string name="home_menu_cancle">取消</string>
 
     <string name="hint_login_account">请输入用户名</string>
+    <string name="request_faild_retry">请求失败,请稍后重试</string>
 </resources>

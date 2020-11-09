@@ -81,7 +81,16 @@ public class BaseHolder extends RecyclerView.ViewHolder {
         }
         return this;
     }
-
+    public BaseHolder setText(final Integer viewId,String key, String value) {
+        textView = getView(viewId);
+        if (value == null || "null".equals(value)) {
+            value = "";
+        }
+        if (textView != null) {
+            textView.setText(key+"："+value);
+        }
+        return this;
+    }
     public BaseHolder setTextColor(Integer viewId, int color) {
         textView = getView(viewId);
         textView.setTextColor(color);
