@@ -1,5 +1,6 @@
 package com.haocang.waterlink.pump;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,13 +19,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.haocang.base.adapter.BaseAdapter;
 import com.haocang.base.base.CommonModel;
 import com.haocang.base.base.impl.CommonModelImpl;
 import com.haocang.base.utils.GetEntityListener;
 import com.haocang.base.utils.ToastUtil;
 import com.haocang.waterlink.R;
 import com.haocang.waterlink.constant.HomeUrlConst;
-import com.haocang.waterlink.pump.adapter.BZ_FMJ_Adapter;
 import com.haocang.waterlink.utils.TextUtilsMy;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
@@ -75,6 +76,23 @@ public class PumpFragment extends Fragment implements View.OnClickListener, Base
         equimentRv.setLayoutManager(new LinearLayoutManager(context));
         equimentRv.setAdapter(adapter);
 
+        adapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
+            @Override
+            public void onClick(View view, int position, Object item) {
+                BZ_FMJ_ListBean.ItemsBean info = (BZ_FMJ_ListBean.ItemsBean) item;
+                Intent intent = new Intent(context,BZ_FMJ_DeviceListActivity.class);
+                intent.putExtra("processId",info.getProcessId());
+                intent.putExtra("title",info.getProcessName());
+                intent.putExtra("isTypeBZ",isTypeBZ);
+                startActivity(intent);
+
+            }
+
+            @Override
+            public void onLongClick(View view, int position, Object item) {
+
+            }
+        });
     }
 
     @Override

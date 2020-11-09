@@ -26,8 +26,6 @@ public class BZ_FMJ_ListBean {
     }
 
     public static class ItemsBean {
-
-
         private int id;
         private String pumpName;
         private int processId;

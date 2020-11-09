@@ -1,4 +1,4 @@
-package com.haocang.waterlink.pump.adapter;
+package com.haocang.waterlink.pump;
 
 import com.haocang.base.adapter.BaseAdapter;
 import com.haocang.base.adapter.BaseHolder;
