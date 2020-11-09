@@ -9,6 +9,7 @@ public class HomeUrlConst {
     public static final String EXPERIMENT_LIST = "loong/api/datainput-forms";
 
     public static final String EXPERIMENT_DATA = "loong/api/datainput-records/data";
-    public static final String URL_BZ = "equipment/api/pump-condition?";
-    public static final String URL_FMJ = "equipment/api/valveWell-condition?";
+    public static final String URL_BZ = "equipment/api/pump-condition";
+    public static final String URL_FMJ = "equipment/api/valveWell-condition";
+    public static final String URL_BZ_FMJ_DEVICE_LIST = "equipment/api/equipments/pump-well";
 }

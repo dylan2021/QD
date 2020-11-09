@@ -36,7 +36,7 @@ import java.util.HashMap;
    泵站列表,阀门井列表
  */
 @Route(path = "/pump/pumplist")
-public class PumpFragment extends Fragment implements View.OnClickListener, BaseRefreshListener {
+public class BZ_FMJ_Fragment extends Fragment implements View.OnClickListener, BaseRefreshListener {
     private EditText queryEdt;
     private PullToRefreshLayout refreshLayout;
     private RecyclerView equimentRv;
@@ -72,7 +72,7 @@ public class PumpFragment extends Fragment implements View.OnClickListener, Base
         refreshLayout = view.findViewById(R.id.pulltorefreshlayout);
         refreshLayout.setRefreshListener(this);
         equimentRv = view.findViewById(R.id.recyclerview);
-        adapter = new BZ_FMJ_Adapter(R.layout.adapter_home_bz_fmj, isTypeBZ);
+        adapter = new BZ_FMJ_Adapter(R.layout.item_bz_fmj, isTypeBZ);
         equimentRv.setLayoutManager(new LinearLayoutManager(context));
         equimentRv.setAdapter(adapter);
 

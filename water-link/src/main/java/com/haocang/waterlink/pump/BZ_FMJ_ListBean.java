@@ -52,6 +52,9 @@ public class BZ_FMJ_ListBean {
         private double longitude;
         private double latitude;
         private String stake;
+        public String name;
+        public String code;
+        public String typeName;
 
         public int getId() {
             return id;

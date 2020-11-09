@@ -16,8 +16,8 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_marginLeft="@dimen/main_margin_left_x"
-            android:layout_marginRight="@dimen/main_margin_left_x"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/layout_search_bg_gray"
