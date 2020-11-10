@@ -23,7 +23,7 @@ public class BZ_FMJ_Adapter extends BaseAdapter<BZ_FMJ_ListBean.ItemsBean> {
         if (item == null) {
             return;
         }
-        holder.setText(R.id.bz_fmj_item_tv_1, "区域", item.getProcessName());
+        holder.setText(R.id.bz_fmj_item_tv_1, "区域位置", item.getProcessName());
         holder.setText(R.id.bz_fmj_item_tv_status, TextUtilsMy.getStatusStr(item.isStatus()));
         holder.setTextColor(R.id.bz_fmj_item_tv_status, TextUtilsMy.getStatusColor(item.isStatus()));
         if (isTypeBZ) {//泵站

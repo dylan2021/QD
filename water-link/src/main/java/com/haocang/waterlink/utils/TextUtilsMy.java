@@ -12,8 +12,11 @@ import com.haocang.waterlink.R;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import java.util.regex.Matcher;
@@ -547,7 +550,34 @@ public class TextUtilsMy {
     }
 
     public static String getWellType(int wellType) {
-        String[] wellTypeArr = {"","排水排泥", "进排气", "检修", "分水", "流量监测", "调控", "检修排气"};
+        String[] wellTypeArr = {"", "排水排泥", "进排气", "检修", "分水", "流量监测", "调控", "检修排气"};
         return wellType < wellTypeArr.length ? wellTypeArr[wellType] : "其他";
+    }
+
+    public static String makeUp2_kuohao(String value, String unit) {
+        if (!isEmpty(unit)) {
+            value = value + "(" + unit + ")";
+        }
+        return value;
+    }
+    public static String makeUp2(String value, String unit) {
+        if (!isEmpty(unit)) {
+            value = value + " " + unit + "";
+        }
+        return value;
+    }
+
+    public static String getTime(String datadt) {
+        return isEmpty(datadt) ? "" : datadt.replace("T", " ").replace("Z", "");
+    }
+
+    public static String getDatType(String datype) {
+        //State 状态信号 Digtal 数值信号
+        return "State".equals(datype) ? "状态信号" : "数值信号";
+    }
+
+    public static String getDataSource(String source) {
+        //AUTO 自动采集   INPUT 人工录入  CALC 数据计算。
+        return "AUTO ".equals(source) ? "自动采集" : "INPUT".equals(source) ? "人工录入" : "数据计算";
     }
 }

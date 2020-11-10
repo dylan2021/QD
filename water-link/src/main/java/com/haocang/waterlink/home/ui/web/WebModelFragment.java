@@ -55,15 +55,15 @@ public class WebModelFragment extends Fragment {
         webSettings.setAllowUniversalAccessFromFileURLs(true);
         webSettings.setAppCacheEnabled(true);
         webView.setWebChromeClient(new WebChromeClient());
-        webView.setWebViewClient(new WebViewClient(){
+        webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
-                if (dialog!=null&&dialog.isShowing()){
+                if (dialog != null && dialog.isShowing()) {
                     dialog.cancel();
                 }
                 super.onPageFinished(view, url);
             }
         });
-        webView.loadUrl("http://www.qdhsdd.com:18106/#/screenbim");
+        webView.loadUrl("http://www.qdhsdd.com:18106/#/mapapp");
     }
 }

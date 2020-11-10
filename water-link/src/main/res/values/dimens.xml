@@ -2,11 +2,13 @@
 <resources>
     <integer name="homehead_note_textsize">12</integer>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="dp_2">2dp</dimen>
     <dimen name="dp_3">3dp</dimen>
     <dimen name="dp_4">4dp</dimen>
     <dimen name="dp_5">5dp</dimen>
     <dimen name="dp_10">10dp</dimen>
     <dimen name="dp_30">30dp</dimen>
+    <dimen name="next_margin_right">30dp</dimen>
     <dimen name="dp_25">25dp</dimen>
     <dimen name="dp_12">12dp</dimen>
     <dimen name="item_height_25">25dp</dimen>

@@ -1,11 +1,8 @@
 package com.haocang.waterlink.pump;
 
 import android.content.Intent;
-import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
-import com.haocang.base.adapter.BaseAdapter;
 import com.haocang.base.base.CommonModel;
 import com.haocang.base.base.impl.CommonModelImpl;
 import com.haocang.base.ui.BaseActivity;
@@ -22,15 +19,15 @@ import java.util.HashMap;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-//泵站,阀门井,的设备的列表
-public class BZ_FMJ_DeviceListActivity extends BaseActivity {
+//设备下的测点列表
+public class BZ_FMJ_PointListActivity extends BaseActivity {
 
-    private int processId;
+    private int id;
     private Intent i;
     private boolean isTypeBZ;
-    private BZ_FMJ_DeviceListActivity context;
+    private BZ_FMJ_PointListActivity context;
     private PullToRefreshLayout refreshLayout;
-    private BZ_FMJ_DeviceListAdapter adapter;
+    private BZ_FMJ_PointListAdapter adapter;
     private RecyclerView rv;
 
     @Override
@@ -38,16 +35,16 @@ public class BZ_FMJ_DeviceListActivity extends BaseActivity {
         setContentView(R.layout.activity_bz_fmj_device_list);
         context = this;
         i = getIntent();
-        processId = i.getIntExtra("processId", 0);
+        id = i.getIntExtra("id", 0);
         isTypeBZ = i.getBooleanExtra("isTypeBZ", true);
         initView();
         getData();
     }
 
     private void initView() {
-        ((TextView) findViewById(R.id.title_common_tv)).setText(i.getStringExtra("title")+"设备");
+        ((TextView) findViewById(R.id.title_common_tv)).setText(i.getStringExtra("title"));
         rv = findViewById(R.id.recyclerview);
-        adapter = new BZ_FMJ_DeviceListAdapter(R.layout.item_bz_fmj_device, isTypeBZ);
+        adapter = new BZ_FMJ_PointListAdapter(R.layout.item_bz_fmj_device_point, isTypeBZ);
         rv.setLayoutManager(new LinearLayoutManager(context));
         rv.setAdapter(adapter);
         refreshLayout = findViewById(R.id.pulltorefreshlayout);
@@ -56,27 +53,10 @@ public class BZ_FMJ_DeviceListActivity extends BaseActivity {
             public void refresh() {
                 getData();
             }
-
             @Override
             public void loadMore() {
                 ToastUtil.makeText(context,getString(R.string.no_more_data));
                 TextUtilsMy.finish(refreshLayout);
-            }
-        });
-        adapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
-            @Override
-            public void onClick(View view, int position, Object item) {
-                BZ_FMJ_ListBean.ItemsBean info = (BZ_FMJ_ListBean.ItemsBean) item;
-                Intent intent = new Intent(context,BZ_FMJ_PointListActivity.class);
-                intent.putExtra("id",info.getId());
-                intent.putExtra("title",info.name);
-                intent.putExtra("isTypeBZ",isTypeBZ);
-                startActivity(intent);
-            }
-
-            @Override
-            public void onLongClick(View view, int position, Object item) {
-
             }
         });
 
@@ -84,11 +64,8 @@ public class BZ_FMJ_DeviceListActivity extends BaseActivity {
 
     private void getData() {
         HashMap<Object, Object> map = new HashMap<>();
-        map.put("pageSize", 1000);
-        map.put("currentPage", 1);
-        map.put("processIds", processId);
         CommonModel<BZ_FMJ_ListBean> progressModel = new CommonModelImpl<>();
-        String url = HomeUrlConst.URL_BZ_FMJ_DEVICE_LIST;
+        String url = HomeUrlConst.URL_BZ_FMJ_POINT_LIST+id;
         progressModel.setContext(context)
                 .setEntityType(BZ_FMJ_ListBean.class)
                 .setUrl(url)
@@ -98,7 +75,7 @@ public class BZ_FMJ_DeviceListActivity extends BaseActivity {
                     public void success(final BZ_FMJ_ListBean entity) {
                         TextUtilsMy.finish(refreshLayout);
                         adapter.clear();
-                        adapter.addAll(entity.getItems());
+                        adapter.addAll(entity.equMpoints);
                         adapter.notifyDataSetChanged();
                     }
 

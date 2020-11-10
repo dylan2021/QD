@@ -137,4 +137,5 @@
 
     <string name="hint_login_account">请输入用户名</string>
     <string name="request_faild_retry">请求失败,请稍后重试</string>
+    <string name="no_more_data">已经到底了哦</string>
 </resources>

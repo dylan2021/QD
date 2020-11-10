@@ -1,13 +1,12 @@
 package com.haocang.waterlink.pump;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 
 public class BZ_FMJ_ListBean {
 
     private int total;
     private List<ItemsBean> items;
+    public List<EquMpointsBean> equMpoints;
 
     public int getTotal() {
         return total;
@@ -25,6 +24,22 @@ public class BZ_FMJ_ListBean {
         this.items = items;
     }
 
+    public static class EquMpointsBean {//测点列表
+        public int id;
+        public int siteId;
+        public String siteName;
+        public String mpointId;
+        public String mpointName;
+        public int categoryId;
+        public String categoryName;
+        public String datasource;
+        public String datype;
+        public String unit;
+        public String value;
+        public String datadt;
+        public boolean disabled;
+        public boolean status;
+    }
     public static class ItemsBean {
         private int id;
         private String pumpName;
