@@ -8,7 +8,7 @@ import com.haocang.waterlink.utils.TextUtilsMy;
 /**
  * 泵站,阀门井 设备列表
  */
-public class BZ_FMJ_DeviceListAdapter extends BaseAdapter<BZ_FMJ_ListBean.ItemsBean> {
+public class BZ_FMJ_DeviceListAdapter extends BaseAdapter<BZ_FMJ_Bean.ItemsBean> {
     private boolean isTypeBZ;
 
     public BZ_FMJ_DeviceListAdapter(final int layoutId, boolean isBZ) {
@@ -17,7 +17,7 @@ public class BZ_FMJ_DeviceListAdapter extends BaseAdapter<BZ_FMJ_ListBean.ItemsB
     }
 
     @Override
-    protected void convert(final BaseHolder holder, final BZ_FMJ_ListBean.ItemsBean item) {
+    protected void convert(final BaseHolder holder, final BZ_FMJ_Bean.ItemsBean item) {
         if (item == null) {
             return;
         }

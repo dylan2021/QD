@@ -2,7 +2,7 @@ package com.haocang.waterlink.pump;
 
 import java.util.List;
 
-public class BZ_FMJ_ListBean {
+public class BZ_FMJ_Bean {
 
     private int total;
     private List<ItemsBean> items;

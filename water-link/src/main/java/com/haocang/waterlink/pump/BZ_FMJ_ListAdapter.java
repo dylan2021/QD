@@ -2,24 +2,22 @@ package com.haocang.waterlink.pump;
 
 import com.haocang.base.adapter.BaseAdapter;
 import com.haocang.base.adapter.BaseHolder;
-import com.haocang.base.bean.EquimentEntity;
 import com.haocang.waterlink.R;
-import com.haocang.waterlink.pump.BZ_FMJ_ListBean;
 import com.haocang.waterlink.utils.TextUtilsMy;
 
 /**
  * 泵站列表
  */
-public class BZ_FMJ_Adapter extends BaseAdapter<BZ_FMJ_ListBean.ItemsBean> {
+public class BZ_FMJ_ListAdapter extends BaseAdapter<BZ_FMJ_Bean.ItemsBean> {
     private boolean isTypeBZ;
 
-    public BZ_FMJ_Adapter(final int layoutId, boolean isBZ) {
+    public BZ_FMJ_ListAdapter(final int layoutId, boolean isBZ) {
         super(layoutId);
         isTypeBZ = isBZ;
     }
 
     @Override
-    protected void convert(final BaseHolder holder, final BZ_FMJ_ListBean.ItemsBean item) {
+    protected void convert(final BaseHolder holder, final BZ_FMJ_Bean.ItemsBean item) {
         if (item == null) {
             return;
         }

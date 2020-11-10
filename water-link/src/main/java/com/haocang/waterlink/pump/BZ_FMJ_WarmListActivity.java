@@ -2,9 +2,9 @@ package com.haocang.waterlink.pump;
 
 import android.content.Intent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
+import com.haocang.base.adapter.BaseAdapter;
 import com.haocang.base.base.CommonModel;
 import com.haocang.base.base.impl.CommonModelImpl;
 import com.haocang.base.ui.BaseActivity;
@@ -21,15 +21,15 @@ import java.util.HashMap;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-//设备下的测点列表
-public class BZ_FMJ_PointListActivity extends BaseActivity {
+//泵站,阀门井,的设备的列表
+public class BZ_FMJ_WarmListActivity extends BaseActivity {
 
     private int id;
     private Intent i;
-    private boolean isTypeBZ, isShowWarm;
-    private BZ_FMJ_PointListActivity context;
+    private boolean isTypeBZ;
+    private BZ_FMJ_WarmListActivity context;
     private PullToRefreshLayout refreshLayout;
-    private BZ_FMJ_PointListAdapter adapter;
+    private BZ_FMJ_WarmListAdapter adapter;
     private RecyclerView rv;
     private String title;
 
@@ -40,16 +40,15 @@ public class BZ_FMJ_PointListActivity extends BaseActivity {
         i = getIntent();
         id = i.getIntExtra("id", 0);
         isTypeBZ = i.getBooleanExtra("isTypeBZ", true);
-        isShowWarm = i.getBooleanExtra("isShowWarm", false);
         title = i.getStringExtra("title");
         initView();
         getData();
     }
 
     private void initView() {
-        ((TextView) findViewById(R.id.title_common_tv)).setText(title + "测点");
+        ((TextView) findViewById(R.id.title_common_tv)).setText(i.getStringExtra("title")+"预警");
         rv = findViewById(R.id.recyclerview);
-        adapter = new BZ_FMJ_PointListAdapter(R.layout.item_bz_fmj_device_point, isTypeBZ);
+        adapter = new BZ_FMJ_WarmListAdapter(R.layout.item_bz_fmj_device_warm, isTypeBZ);
         rv.setLayoutManager(new LinearLayoutManager(context));
         rv.setAdapter(adapter);
         refreshLayout = findViewById(R.id.pulltorefreshlayout);
@@ -61,27 +60,10 @@ public class BZ_FMJ_PointListActivity extends BaseActivity {
 
             @Override
             public void loadMore() {
-                ToastUtil.makeText(context, getString(R.string.no_more_data));
+                ToastUtil.makeText(context,getString(R.string.no_more_data));
                 TextUtilsMy.finish(refreshLayout);
             }
         });
-
-        //显示预警
-        if (isShowWarm) {
-            Button warmBt = findViewById(R.id.warm_list_bt);
-            warmBt.setVisibility(View.VISIBLE);
-            warmBt.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context,BZ_FMJ_WarmListActivity.class);
-                    intent.putExtra("id",id);
-                    intent.putExtra("title",title);
-                    intent.putExtra("isTypeBZ",isTypeBZ);
-                    startActivity(intent);
-                }
-            });
-        }
-
     }
 
     private void getData() {

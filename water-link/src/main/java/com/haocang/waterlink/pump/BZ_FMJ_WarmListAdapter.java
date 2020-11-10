@@ -4,14 +4,16 @@ import com.haocang.base.adapter.BaseAdapter;
 import com.haocang.base.adapter.BaseHolder;
 import com.haocang.waterlink.R;
 import com.haocang.waterlink.utils.TextUtilsMy;
+import com.haocang.waterlink.widgets.BorderLabelTextView;
+import com.luozm.captcha.Utils;
 
 /**
- * 泵站列表
+ * 泵站,阀门井 设备列表
  */
-public class BZ_FMJ_PointListAdapter extends BaseAdapter<BZ_FMJ_Bean.EquMpointsBean> {
+public class BZ_FMJ_WarmListAdapter extends BaseAdapter<BZ_FMJ_Bean.EquMpointsBean> {
     private boolean isTypeBZ;
 
-    public BZ_FMJ_PointListAdapter(final int layoutId, boolean isBZ) {
+    public BZ_FMJ_WarmListAdapter(final int layoutId, boolean isBZ) {
         super(layoutId);
         isTypeBZ = isBZ;
     }
@@ -31,6 +33,13 @@ public class BZ_FMJ_PointListAdapter extends BaseAdapter<BZ_FMJ_Bean.EquMpointsB
                 + "\n数据来源：" + TextUtilsMy.getDataSource(item.datasource)
                 + "\n数据分类：" + item.categoryName;
         holder.setText(R.id.bz_fmj_item_tv_1, itemTotalStr);
+
+        BorderLabelTextView statusTv = (BorderLabelTextView) holder.getView(R.id.status_tv);
+
+   /*     statusTv.setText(Utils.getStatusText(status));
+        int color = Utils.getStatusColor(context, status);
+        statusTv.setTextColor(color);
+        statusTv.setStrokeColor(color);*/
     }
 
     public void clear() {

@@ -36,12 +36,12 @@ import java.util.HashMap;
    泵站列表,阀门井列表
  */
 @Route(path = "/pump/pumplist")
-public class BZ_FMJ_Fragment extends Fragment implements View.OnClickListener, BaseRefreshListener {
+public class BZ_FMJ_ListFragment extends Fragment implements View.OnClickListener, BaseRefreshListener {
     private EditText queryEdt;
     private PullToRefreshLayout refreshLayout;
     private RecyclerView equimentRv;
     private TextView titleNameTv;
-    private BZ_FMJ_Adapter adapter;
+    private BZ_FMJ_ListAdapter adapter;
     private boolean isTypeBZ = true;
     @Autowired
     String title;
@@ -72,14 +72,14 @@ public class BZ_FMJ_Fragment extends Fragment implements View.OnClickListener, B
         refreshLayout = view.findViewById(R.id.pulltorefreshlayout);
         refreshLayout.setRefreshListener(this);
         equimentRv = view.findViewById(R.id.recyclerview);
-        adapter = new BZ_FMJ_Adapter(R.layout.item_bz_fmj, isTypeBZ);
+        adapter = new BZ_FMJ_ListAdapter(R.layout.item_bz_fmj, isTypeBZ);
         equimentRv.setLayoutManager(new LinearLayoutManager(context));
         equimentRv.setAdapter(adapter);
 
         adapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
             @Override
             public void onClick(View view, int position, Object item) {
-                BZ_FMJ_ListBean.ItemsBean info = (BZ_FMJ_ListBean.ItemsBean) item;
+                BZ_FMJ_Bean.ItemsBean info = (BZ_FMJ_Bean.ItemsBean) item;
                 Intent intent = new Intent(context,BZ_FMJ_DeviceListActivity.class);
                 intent.putExtra("processId",info.getProcessId());
                 intent.putExtra("title",info.getProcessName());
@@ -107,15 +107,15 @@ public class BZ_FMJ_Fragment extends Fragment implements View.OnClickListener, B
     }
 
     private void getData() {
-        CommonModel<BZ_FMJ_ListBean> progressModel = new CommonModelImpl<>();
+        CommonModel<BZ_FMJ_Bean> progressModel = new CommonModelImpl<>();
         String url = isTypeBZ ? HomeUrlConst.URL_BZ : HomeUrlConst.URL_FMJ;
         progressModel.setContext(context)
-                .setEntityType(BZ_FMJ_ListBean.class)
+                .setEntityType(BZ_FMJ_Bean.class)
                 .setUrl(url)
                 .setParamMap(map)
-                .setEntityListener(new GetEntityListener<BZ_FMJ_ListBean>() {
+                .setEntityListener(new GetEntityListener<BZ_FMJ_Bean>() {
                     @Override
-                    public void success(final BZ_FMJ_ListBean entity) {
+                    public void success(final BZ_FMJ_Bean entity) {
                         TextUtilsMy.finish(refreshLayout);
                         Log.d("请求数据", "请求数据:" + entity.getTotal());
                         adapter.clear();

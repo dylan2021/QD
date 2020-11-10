@@ -1,7 +1,6 @@
 package com.haocang.waterlink.pump;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -66,10 +65,11 @@ public class BZ_FMJ_DeviceListActivity extends BaseActivity {
         adapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
             @Override
             public void onClick(View view, int position, Object item) {
-                BZ_FMJ_ListBean.ItemsBean info = (BZ_FMJ_ListBean.ItemsBean) item;
+                BZ_FMJ_Bean.ItemsBean info = (BZ_FMJ_Bean.ItemsBean) item;
                 Intent intent = new Intent(context,BZ_FMJ_PointListActivity.class);
                 intent.putExtra("id",info.getId());
                 intent.putExtra("title",info.name);
+                intent.putExtra("isShowWarm",!info.isStatus());//是否有预警 status:true 没有
                 intent.putExtra("isTypeBZ",isTypeBZ);
                 startActivity(intent);
             }
@@ -87,15 +87,15 @@ public class BZ_FMJ_DeviceListActivity extends BaseActivity {
         map.put("pageSize", 1000);
         map.put("currentPage", 1);
         map.put("processIds", processId);
-        CommonModel<BZ_FMJ_ListBean> progressModel = new CommonModelImpl<>();
+        CommonModel<BZ_FMJ_Bean> progressModel = new CommonModelImpl<>();
         String url = HomeUrlConst.URL_BZ_FMJ_DEVICE_LIST;
         progressModel.setContext(context)
-                .setEntityType(BZ_FMJ_ListBean.class)
+                .setEntityType(BZ_FMJ_Bean.class)
                 .setUrl(url)
                 .setParamMap(map)
-                .setEntityListener(new GetEntityListener<BZ_FMJ_ListBean>() {
+                .setEntityListener(new GetEntityListener<BZ_FMJ_Bean>() {
                     @Override
-                    public void success(final BZ_FMJ_ListBean entity) {
+                    public void success(final BZ_FMJ_Bean entity) {
                         TextUtilsMy.finish(refreshLayout);
                         adapter.clear();
                         adapter.addAll(entity.getItems());
