@@ -560,6 +560,7 @@ public class TextUtilsMy {
         }
         return value;
     }
+
     public static String makeUp2(String value, String unit) {
         if (!isEmpty(unit)) {
             value = value + " " + unit + "";
@@ -574,6 +575,20 @@ public class TextUtilsMy {
     public static String getDatType(String datype) {
         //State 状态信号 Digtal 数值信号
         return "State".equals(datype) ? "状态信号" : "数值信号";
+    }
+
+    public static String getWarmStatus(String status) {
+        //报警状态；Remove：已解除 Unremove：未解除
+        return "Remove".equals(status) ? "已解除" : "未解除";
+    }
+
+    public static String getWarmMethod(String method) {
+       // Auto：自动 AutoOrManual:自动或人工   Manual  人工
+        return "AUTO ".equals(method) ? "自动" : "Manual".equals(method) ? "人工" : "自动或人工";
+    }
+
+    public static int getWarmStatusColor(String status) {
+        return Color.parseColor("Remove".equals(status) ? "#a5a5a5" : "#F56917");
     }
 
     public static String getDataSource(String source) {

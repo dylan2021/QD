@@ -39,7 +39,9 @@ public class BZ_FMJ_Bean {
         public String datadt;
         public boolean disabled;
         public boolean status;
+
     }
+
     public static class ItemsBean {
         private int id;
         private String pumpName;
@@ -70,6 +72,14 @@ public class BZ_FMJ_Bean {
         public String name;
         public String code;
         public String typeName;
+
+        //预警
+        public String alarmName;
+        public String alarmLevel;
+        public String alarmStatus;
+        public String duration;
+        public String alarmTriggerTime;
+        public String disarmMethod;
 
         public int getId() {
             return id;

@@ -68,8 +68,10 @@ public class BZ_FMJ_WarmListActivity extends BaseActivity {
 
     private void getData() {
         HashMap<Object, Object> map = new HashMap<>();
+        map.put("equId",id);
+        map.put("alarmStatus","Unremove");
         CommonModel<BZ_FMJ_Bean> progressModel = new CommonModelImpl<>();
-        String url = HomeUrlConst.URL_BZ_FMJ_POINT_LIST + id;
+        String url = HomeUrlConst.URL_BZ_FMJ_WARM_LIST;
         progressModel.setContext(context)
                 .setEntityType(BZ_FMJ_Bean.class)
                 .setUrl(url)
@@ -79,7 +81,7 @@ public class BZ_FMJ_WarmListActivity extends BaseActivity {
                     public void success(final BZ_FMJ_Bean entity) {
                         TextUtilsMy.finish(refreshLayout);
                         adapter.clear();
-                        adapter.addAll(entity.equMpoints);
+                        adapter.addAll(entity.getItems());
                         adapter.notifyDataSetChanged();
                     }
 
