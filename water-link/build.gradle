@@ -109,7 +109,7 @@ dependencies {
 //    api 'com.haocang:app-mango-repair-androidx:0.0.0001-SNAPSHOT@aar'
 //    api 'com.haocang:app-mango-fault-androidx:0.0.0006-SNAPSHOT@aar'
 //    api 'com.haocang:app-mango-curve-androidx:0.0.0001-SNAPSHOT@aar'
-    api 'com.haocang:app-mango-monitor-androidx:0.0.0004-SNAPSHOT@aar'
+
     api 'com.haocang:app-mango-message-androidx:0.0.0002-SNAPSHOT@aar'
     api 'com.haocang:app-mango-maintain:0.0.0012-SNAPSHOT@aar'
     api 'com.haocang:app-mango-report:0.0.0014-SNAPSHOT@aar'

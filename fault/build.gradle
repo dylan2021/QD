@@ -98,7 +98,6 @@ dependencies {
     api project(path: ':repair-link')
     api 'com.haocang:app-mango-maintain:0.0.0012-SNAPSHOT@aar'
 //    api 'com.haocang:app-mango-monitor:0.0.0056-01-SNAPSHOT@aar'
-    api 'com.haocang:app-mango-monitor-androidx:0.0.0004-SNAPSHOT@aar'
     implementation 'com.github.pinguo-zhouwei:MZBannerView:v2.0.2'
     api 'com.haocang:app-mango-inventory:0.0.0004-SNAPSHOT@aar'
     api 'com.hyman:flowlayout-lib:1.1.2'
@@ -108,4 +107,8 @@ dependencies {
     api project(path: ':watermark-link')
     //    api 'com.haocang:app-hc-lib:0.0.1-SNAPSHOT@aar'
 //    implementation project(':off-line')
+
+    //api 'com.haocang:app-mango-monitor-androidx:0.0.0004-SNAPSHOT@aar'
+    //新版
+    api 'com.haocang:app-mango-monitor-androidx:0.0.0013-SNAPSHOT@aar'
 }
