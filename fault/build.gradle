@@ -110,5 +110,5 @@ dependencies {
 
     //api 'com.haocang:app-mango-monitor-androidx:0.0.0004-SNAPSHOT@aar'
     //新版
-    api 'com.haocang:app-mango-monitor-androidx:0.0.0013-SNAPSHOT@aar'
+    api 'com.haocang:app-mango-monitor-androidx:0.0.0015-SNAPSHOT@aar'
 }

@@ -7,188 +7,84 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="155dp"
+        android:layout_height="130dp"
         android:layout_marginRight="15dp"
+        android:orientation="vertical"
         android:background="@drawable/icon_patrol_rectangles">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginRight="30dp"
-            android:gravity="center_vertical"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/name_tv"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="#ff3c3c3c"
+                android:textSize="17sp" />
 
-                <ImageView
-                    android:id="@+id/patrol_icon_iv"
-                    android:layout_width="19dp"
-                    android:layout_height="20dp"
-                    android:layout_marginRight="4dp" />
-
-                <TextView
-                    android:id="@+id/name_tv"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:textColor="#ff3c3c3c"
-                    android:textSize="17sp" />
-
-                <TextView
-                    android:id="@+id/patrol_state_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="15sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/patrol_state_tv"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1.6"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="开始："
-                        android:textColor="#9b9b9b"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:id="@+id/patrol_dt_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:singleLine="true"
-                        android:textColor="#ff3c3c3c"
-                        android:textSize="15sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="执行人："
-                        android:textColor="#9b9b9b"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:id="@+id/person_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:singleLine="true"
-                        android:textColor="#ff3c3c3c"
-                        android:textSize="15sp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1.6"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="结束："
-                        android:textColor="#9b9b9b"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:id="@+id/patrol_date_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#ff3c3c3c"
-                        android:textSize="15sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="巡检点："
-                        android:textColor="#9b9b9b"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:id="@+id/patrol_point_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#ff3c3c3c"
-                        android:textSize="15sp" />
-                </LinearLayout>
-            </LinearLayout>
+                android:textSize="15sp" />
 
         </LinearLayout>
-    </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/follow_ibtn"
-        android:layout_width="21dp"
-        android:layout_height="21dp"
-        android:layout_gravity="right"
-        android:layout_marginTop="14dp"
-        android:layout_marginRight="19dp"
-        android:background="@drawable/icon_patrol_star_blue"
-        android:padding="7dp" />
 
-    <LinearLayout
-        android:id="@+id/patrol_assignment_ll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right|bottom"
-        android:layout_marginRight="28dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/icon_patrol_circle"
-        android:gravity="center_vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:text="分派"
-            android:textColor="#ff0cabdf"
-            android:textSize="15sp" />
+            android:layout_marginRight="10dp"
+            android:layout_weight="1.6"
+            android:orientation="horizontal">
 
-        <View
-            android:layout_width="15dp"
-            android:layout_height="14dp"
-            android:layout_marginLeft="3dp"
-            android:background="@drawable/icon_patrol_arrow" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="开始："
+                android:textColor="#9b9b9b"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/patrol_dt_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="#ff3c3c3c"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1.6"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="结束："
+                android:textColor="#9b9b9b"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/patrol_date_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff3c3c3c"
+                android:textSize="15sp" />
+        </LinearLayout>
+
     </LinearLayout>
+
 </FrameLayout>
