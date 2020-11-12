@@ -20,6 +20,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.haocang.base.config.ArouterPathConstants;
 import com.haocang.base.utils.SpaceItemDecoration;
 import com.haocang.base.utils.TimeUtil;
+import com.haocang.base.utils.ToastUtil;
 import com.haocang.patrol.R;
 import com.haocang.patrol.manage.adapter.PatrolAdapter;
 import com.haocang.patrol.manage.bean.PatrolTaskListDTO;
@@ -96,11 +97,12 @@ public class PatrolListFragment extends Fragment
 
     public void getData() {
         mAdapter.clear();
-        List<PatrolTaskListDTO> list=new ArrayList<>();
-        list.add(new PatrolTaskListDTO());
-        list.add(new PatrolTaskListDTO());
+        List<PatrolTaskListDTO> list = new ArrayList<>();
+        list.add(new PatrolTaskListDTO("2020-11-22日度巡检", 10905437, "王平路"));
+        list.add(new PatrolTaskListDTO("2020-11-23日度巡检", 10905438,
+                "张子涛"));
         mAdapter.addAll(list);
-
+        ToastUtil.makeText(context,"已刷新");
         pullToRefreshLayout.finishRefresh();
         pullToRefreshLayout.finishLoadMore();
     }

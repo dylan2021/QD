@@ -39,37 +39,29 @@ import java.util.Map;
 
 public class PatrolAdapter extends BaseRecyclerAdapter<PatrolTaskListDTO> {
     private Context mContext;
-    private Map<String, String> statusMap;
 
     public PatrolAdapter(@LayoutRes final int layoutId,
                          final Context ctx) {
         super(layoutId);
         mContext = ctx;
-        String[] patrolStatusLabelArray = AppApplication.getContext().getResources().getStringArray(R.array.patrol_status_labels_all);
-        String[] patrolStatusKeysArray = AppApplication.getContext().getResources().getStringArray(R.array.patrol_status_keys_all);
-        statusMap = new HashMap<>();
-        for (int i = 0; i < patrolStatusLabelArray.length && i < patrolStatusKeysArray.length; i++) {
-            statusMap.put(patrolStatusKeysArray[i], patrolStatusLabelArray[i]);
-        }
     }
 
     @Override
-    protected void onBindViewHolder(final SmartViewHolder holder, final PatrolTaskListDTO food,
+    protected void onBindViewHolder(final SmartViewHolder holder, final PatrolTaskListDTO info,
                                     final int position) {
+        if (info==null) {
+            return;
+        }
+        holder.text(R.id.name_tv, info.getName());
 
-        TextView stateTv = holder.itemView.findViewById(R.id.patrol_state_tv);
-        stateTv.setText("我的爱的的发");
-        holder.text(R.id.name_tv, "姓名");
-        holder.text(R.id.patrol_dt_tv, "shijian");
-        holder.text(R.id.patrol_date_tv, "时间2");
+        holder.text(R.id.patrol_dt_tv, info.getExecutorId()+"");
+        holder.text(R.id.patrol_date_tv, info.getExecutorName());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, CommonActivity.class);
-                intent.putExtra("taskId", mList.get(position).getId());
-                intent.putExtra("taskName", food.getName());
-                intent.putExtra("state", mList.get(position).getExecuteStatus());
+                intent.putExtra("taskName", info.getName());
                 mContext.startActivity(intent);
             }
         });
@@ -77,6 +69,7 @@ public class PatrolAdapter extends BaseRecyclerAdapter<PatrolTaskListDTO> {
 
     public void clear() {
         mList.clear();
+        notifyDataSetChanged();
     }
 
 

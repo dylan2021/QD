@@ -11,6 +11,12 @@ public class PatrolTaskListDTO {
     public static final String TO_BE_EXECUTED = "toBeExecuted";
     public static final String EXECUTING = "executing";
 
+    public PatrolTaskListDTO(String name, Integer executorId, String executorName) {
+        this.name = name;
+        this.executorId = executorId;
+        this.executorName = executorName;
+    }
+
     private Integer id;/*巡检ID*/
 
     private String name;/*巡检任务名称*/
@@ -28,9 +34,6 @@ public class PatrolTaskListDTO {
     private Date startTime;    /*巡检开始时间*/
 
     private Date endTime;    /*巡检结束时间*/
-    /**
-     * 组织ID
-     */
     private Integer orgId;
 
     public Integer getOrgId() {
