@@ -48,9 +48,6 @@
         </provider>
 
         <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="oMWhshSGmwksOa01PoU9WAPeSvV2CwC3" />
-        <meta-data
             android:name="speechkey"
             android:value="5ab8b9ec" />
 

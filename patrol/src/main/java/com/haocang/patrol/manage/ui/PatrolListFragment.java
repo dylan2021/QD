@@ -98,8 +98,8 @@ public class PatrolListFragment extends Fragment
     public void getData() {
         mAdapter.clear();
         List<PatrolTaskListDTO> list = new ArrayList<>();
-        list.add(new PatrolTaskListDTO("2020-11-22日度巡检", 10905437, "王平路"));
-        list.add(new PatrolTaskListDTO("2020-11-23日度巡检", 10905438,
+        list.add(new PatrolTaskListDTO("日度巡检(2020-11-20)", 10905437, "李军"));
+        list.add(new PatrolTaskListDTO("日度巡检(2020-11-21)", 10905438,
                 "张子涛"));
         mAdapter.addAll(list);
         pullToRefreshLayout.finishRefresh();

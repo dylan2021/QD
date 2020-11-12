@@ -211,3 +211,7 @@
 #混淆前后的映射
 -printmapping proguard/mapping.txt
 ########记录生成的日志数据，gradle build时 在本项目根目录输出-end######
+-keep class com.baidu.** {*;}
+-keep class vi.com.** {*;}
+-keep class com.baidu.vi.** {*;}
+-dontwarn com.baidu.**

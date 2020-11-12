@@ -52,20 +52,23 @@ public class PatrolAdapter extends BaseRecyclerAdapter<PatrolTaskListDTO> {
     @Override
     protected void onBindViewHolder(final SmartViewHolder holder, final PatrolTaskListDTO info,
                                     final int position) {
-        if (info==null) {
+        if (info == null) {
             return;
         }
-        String name = info.getName();
+        final String name = info.getName();
         holder.text(R.id.name_tv, name);
 
-        holder.text(R.id.patrol_dt_tv, info.getExecutorId()+"");
-        holder.text(R.id.patrol_date_tv, info.getExecutorName());
+        holder.text(R.id.patrol_dt_tv, info.getExecutorId() + "");
+        final String executorName = info.getExecutorName();
+        holder.text(R.id.patrol_date_tv, executorName);
 
         holder.findViewById(R.id.see_map_bt).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, MapActivity.class);
-                intent.putExtra("taskName", info.getName());
+                intent.putExtra("id", position);
+                intent.putExtra("name", executorName);
+                intent.putExtra("taskName", name);
                 mContext.startActivity(intent);
             }
         });
