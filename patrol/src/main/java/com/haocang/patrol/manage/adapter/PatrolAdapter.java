@@ -1,5 +1,6 @@
 package com.haocang.patrol.manage.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.baidu.mapapi.map.BaiduMap;
 import com.bigkoo.alertview.AlertView;
 import com.haocang.base.adapter.BaseRecyclerAdapter;
 import com.haocang.base.adapter.SmartViewHolder;
@@ -24,6 +26,7 @@ import com.haocang.patrol.R;
 import com.haocang.patrol.manage.bean.PatrolConstans;
 import com.haocang.patrol.manage.bean.PatrolTaskListDTO;
 import com.haocang.patrol.manage.ui.AllocateFragment;
+import com.haocang.patrol.manage.ui.MapActivity;
 import com.haocang.patrol.patrolinhouse.ui.PatrolInHouseFragment;
 import com.haocang.patrol.patroloutside.ui.PatrolOutsideFragment;
 
@@ -52,15 +55,16 @@ public class PatrolAdapter extends BaseRecyclerAdapter<PatrolTaskListDTO> {
         if (info==null) {
             return;
         }
-        holder.text(R.id.name_tv, info.getName());
+        String name = info.getName();
+        holder.text(R.id.name_tv, name);
 
         holder.text(R.id.patrol_dt_tv, info.getExecutorId()+"");
         holder.text(R.id.patrol_date_tv, info.getExecutorName());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.findViewById(R.id.see_map_bt).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, CommonActivity.class);
+                Intent intent = new Intent(mContext, MapActivity.class);
                 intent.putExtra("taskName", info.getName());
                 mContext.startActivity(intent);
             }

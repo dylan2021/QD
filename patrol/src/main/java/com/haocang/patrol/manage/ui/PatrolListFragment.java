@@ -102,7 +102,6 @@ public class PatrolListFragment extends Fragment
         list.add(new PatrolTaskListDTO("2020-11-23日度巡检", 10905438,
                 "张子涛"));
         mAdapter.addAll(list);
-        ToastUtil.makeText(context,"已刷新");
         pullToRefreshLayout.finishRefresh();
         pullToRefreshLayout.finishLoadMore();
     }
@@ -119,11 +118,13 @@ public class PatrolListFragment extends Fragment
     @Override
     public void refresh() {
         getData();
+        ToastUtil.makeText(context,"刷新成功");
     }
 
     @Override
     public void loadMore() {
         getData();
+        ToastUtil.makeText(context,"已经到底了哦");
     }
 
     /**

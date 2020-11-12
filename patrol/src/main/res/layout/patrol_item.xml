@@ -89,7 +89,7 @@
             android:background="@color/color_gray5"></View>
 
         <TextView
-            android:id="@+id/patrol_state_tv"
+            android:id="@+id/see_map_bt"
             android:layout_width="match_parent"
             android:layout_height="33dp"
             android:gravity="center"
