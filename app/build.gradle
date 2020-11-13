@@ -13,8 +13,8 @@ android {
         applicationId "com.haocang.hsdd"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 197
-        versionName "2.1.2.0003"
+        versionCode 198
+        versionName "2.1.2.0004"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled true
@@ -63,6 +63,7 @@ android {
         debug {
             signingConfig signingConfigs.release
         }
+        
         release {
             minifyEnabled false
 //            shrinkResources true

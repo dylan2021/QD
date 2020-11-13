@@ -99,7 +99,7 @@ public class MapActivity extends BaseActivity {
         }
         MapStatus mMapStatus = new MapStatus.Builder()
                 //要移动的点
-                .target(startP)
+                .target(endP)
                 .zoom(16.5f)
                 .build();
         mBaiduMap.setMapStatus(MapStatusUpdateFactory.newMapStatus(mMapStatus));
