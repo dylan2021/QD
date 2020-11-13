@@ -4,15 +4,19 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Color;
 import android.nfc.NfcAdapter;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.InfoWindow;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.Overlay;
 import com.baidu.mapapi.map.OverlayOptions;
@@ -21,6 +25,8 @@ import com.baidu.mapapi.map.TextOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.haocang.base.ui.BaseActivity;
 import com.haocang.patrol.R;
+
+import org.feezu.liuli.timeselector.Utils.TextUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +41,8 @@ public class MapActivity extends BaseActivity {
     private BaiduMap mBaiduMap;
     private Intent i;
     private int position;
-    private String name;
+    private String name, code;
+    private String taskName;
 
     @Override
     protected void doOnCreate() {
@@ -43,6 +50,8 @@ public class MapActivity extends BaseActivity {
         i = getIntent();
         position = i.getIntExtra("id", 0);
         name = i.getStringExtra("name");
+        code = i.getStringExtra("code");
+        taskName = i.getStringExtra("taskName");
         setView();
         initLoc();
     }
@@ -50,7 +59,7 @@ public class MapActivity extends BaseActivity {
 
     private void setView() {
         TextView titleNameTv = findViewById(R.id.title_common_tv);
-        titleNameTv.setText(i.getStringExtra("taskName"));
+        titleNameTv.setText(taskName);
 
         mMapView = findViewById(R.id.map_view);
         mBaiduMap = mMapView.getMap();
@@ -91,7 +100,7 @@ public class MapActivity extends BaseActivity {
         }
         MapStatus mMapStatus = new MapStatus.Builder()
                 //要移动的点
-                .target(p4)
+                .target(endP)
                 .zoom(16.5f)
                 .build();
         mBaiduMap.setMapStatus(MapStatusUpdateFactory.newMapStatus(mMapStatus));
@@ -116,26 +125,68 @@ public class MapActivity extends BaseActivity {
         //在地图上添加Marker，并显示
         mBaiduMap.addOverlay(option);
 
+
+        //名字
+        Bundle bundle = new Bundle();
+        bundle.putString("name", name);
+
         //人图标
         BitmapDescriptor b = BitmapDescriptorFactory
                 .fromResource(R.drawable.ic_loc_my);
         OverlayOptions optionWPL = new MarkerOptions()
                 .position(endP)
+                .extraInfo(bundle)
                 .icon(b);
         mBaiduMap.addOverlay(optionWPL);
 
-        //名字
         endP = new LatLng(endP.latitude - 0.0004, endP.longitude);
         OverlayOptions mTextOptions = new TextOptions()
                 .text(name) //文字内容
                 .bgColor(mainColor) //背景色
                 .fontSize(24) //字号
+                .extraInfo(bundle)
                 .fontColor(Color.parseColor("#ffffff")) //文字颜色
                 .rotate(0) //旋转角度
                 .position(endP);
 
 //在地图上显示文字覆盖物
-         mBaiduMap.addOverlay(mTextOptions);
+        mBaiduMap.addOverlay(mTextOptions);
+
+        mBaiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                Bundle bundle = marker.getExtraInfo();
+                if (bundle != null) {
+                    String name = bundle.getString("name");
+                    if (!TextUtil.isEmpty(name)) {
+                        mBaiduMap.hideInfoWindow();
+                        //显示信息窗
+                        View v = getLayoutInflater().inflate(R.layout.layout_info_map_window, null);
+                        TextView titleTv = (TextView) v.findViewById(R.id.name_tv);
+                        TextView content_tv = (TextView) v.findViewById(R.id.content_tv);
+                        titleTv.setText("当前巡检人：" + name);
+                        String itemTotalStr = "所属组织：青岛黄水东调"
+                                + "\n所属部门：运维部"
+                                + "\n工单名称：" + taskName
+                                + "\n巡检编号：" + code
+                                + "\n手  机  号：" + (position == 0?"15984786756":"13765987269")
+                                + "\n巡检内容：" + "查看泵站运行状态";
+                        content_tv.setText(itemTotalStr);
+                        BitmapDescriptor infoWB = BitmapDescriptorFactory.fromView(v);
+
+                        //定义信息窗
+                        InfoWindow infoWindow = new InfoWindow(infoWB, marker.getPosition(), -60, null
+                        );
+                        //显示信息窗
+                        mBaiduMap.showInfoWindow(infoWindow);
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+        });
+
     }
 
 

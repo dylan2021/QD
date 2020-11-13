@@ -23,14 +23,14 @@
 
             <TextView
                 android:id="@+id/name_tv"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ellipsize="end"
                 android:paddingRight="10dp"
                 android:singleLine="true"
                 android:textColor="#212121"
-                android:textSize="17sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
 

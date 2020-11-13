@@ -58,7 +58,8 @@ public class PatrolAdapter extends BaseRecyclerAdapter<PatrolTaskListDTO> {
         final String name = info.getName();
         holder.text(R.id.name_tv, name);
 
-        holder.text(R.id.patrol_dt_tv, info.getExecutorId() + "");
+        final String executorId = info.getExecutorId()+"";
+        holder.text(R.id.patrol_dt_tv, executorId );
         final String executorName = info.getExecutorName();
         holder.text(R.id.patrol_date_tv, executorName);
 
@@ -67,6 +68,7 @@ public class PatrolAdapter extends BaseRecyclerAdapter<PatrolTaskListDTO> {
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, MapActivity.class);
                 intent.putExtra("id", position);
+                intent.putExtra("code", executorId);
                 intent.putExtra("name", executorName);
                 intent.putExtra("taskName", name);
                 mContext.startActivity(intent);

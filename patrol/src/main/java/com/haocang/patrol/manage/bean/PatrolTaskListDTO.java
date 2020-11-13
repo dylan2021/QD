@@ -70,17 +70,9 @@ public class PatrolTaskListDTO {
         this.id = id;
     }
 
-    /**
-     * 任务名称字数限制
-     */
-    private final int taskNameLimitCount = 14;
 
     public String getName() {
-        String taskName = name;
-        if (taskName != null && taskName.length() > taskNameLimitCount) {
-            taskName = taskName.substring(0, taskNameLimitCount);
-        }
-        return taskName;
+        return name;
     }
 
     public void setName(String name) {
@@ -225,7 +217,7 @@ public class PatrolTaskListDTO {
         if (PatrolTaskListDTO.UNALLOCATED.equals(getExecuteStatus())) {
             canAllocate = true;
         }
-        if ((PatrolTaskListDTO.TO_BE_EXECUTED.equals(getExecuteStatus())||PatrolTaskListDTO.EXECUTING.equals(getExecuteStatus()))
+        if ((PatrolTaskListDTO.TO_BE_EXECUTED.equals(getExecuteStatus()) || PatrolTaskListDTO.EXECUTING.equals(getExecuteStatus()))
                 && getExecutorId() == AppApplication.getInstance().getUserEntity().getId()) {
             canAllocate = true;
         }
