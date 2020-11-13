@@ -60,6 +60,15 @@ public class MapActivity extends BaseActivity {
     private void setView() {
         TextView titleNameTv = findViewById(R.id.title_common_tv);
         titleNameTv.setText(taskName);
+        TextView rightTv = findViewById(R.id.common_tv);
+        rightTv.setVisibility(View.VISIBLE);
+        rightTv.setText("巡检任务");
+        rightTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         mMapView = findViewById(R.id.map_view);
         mBaiduMap = mMapView.getMap();
@@ -175,7 +184,7 @@ public class MapActivity extends BaseActivity {
                         BitmapDescriptor infoWB = BitmapDescriptorFactory.fromView(v);
 
                         //定义信息窗
-                        InfoWindow infoWindow = new InfoWindow(infoWB, marker.getPosition(), -60, null
+                        InfoWindow infoWindow = new InfoWindow(infoWB, marker.getPosition(), -65, null
                         );
                         //显示信息窗
                         mBaiduMap.showInfoWindow(infoWindow);

@@ -2,4 +2,8 @@
 <resources>
     <dimen name="patrol_list_space">8dip</dimen>
     <dimen name="patrol_allocate_space">1dip</dimen>
+    <dimen name="main_margin_left_x">30px</dimen>
+    <dimen name="dp_10">20px</dimen>
+    <dimen name="dp_2">5px</dimen>
+    <dimen name="dp_1">1px</dimen>
 </resources>

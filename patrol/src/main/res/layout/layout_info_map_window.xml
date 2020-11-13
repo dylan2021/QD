@@ -25,9 +25,9 @@
         android:id="@+id/content_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:lineSpacingExtra="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
+        android:lineSpacingExtra="10px"
+        android:paddingTop="12px"
+        android:paddingBottom="15px"
         android:textColor="#999999"
-        android:textSize="15sp" />
+        android:textSize="14sp" />
 </LinearLayout>

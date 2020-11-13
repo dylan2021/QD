@@ -1,6 +1,7 @@
 package com.haocang.patrol.manage.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -42,8 +43,7 @@ import java.util.List;
  */
 @Route(path = ArouterPathConstants.Patrol.PATROL_LIST)
 public class PatrolListFragment extends Fragment
-        implements BaseRefreshListener,
-        View.OnClickListener {
+        implements BaseRefreshListener{
     private PatrolAdapter mAdapter;
     private Context context;
     private RecyclerView mRecyclerView;
@@ -82,9 +82,16 @@ public class PatrolListFragment extends Fragment
         noDataFl = view.findViewById(R.id.no_data_fl);
         TextView titleNameTv = view.findViewById(R.id.title_common_tv);
         titleNameTv.setText(getResources().getString(R.string.patrol_manage));
-        TextView commonIv = view.findViewById(R.id.common_tv);
-        commonIv.setText("巡检任务");
-        commonIv.setOnClickListener(this);
+        TextView rightTv = view.findViewById(R.id.common_tv);
+        rightTv.setVisibility(View.VISIBLE);
+        rightTv.setText("巡检任务");
+        rightTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, TaskListActivity.class);
+                startActivity(intent);
+            }
+        });
         mRecyclerView = view.findViewById(R.id.recyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -104,15 +111,6 @@ public class PatrolListFragment extends Fragment
         mAdapter.addAll(list);
         pullToRefreshLayout.finishRefresh();
         pullToRefreshLayout.finishLoadMore();
-    }
-
-    @Override
-    public void onClick(final View v) {
-        int i = v.getId();
-        if (i == R.id.common_tv) {
-            //todo 进入巡检任务列表
-
-        }
     }
 
     @Override
