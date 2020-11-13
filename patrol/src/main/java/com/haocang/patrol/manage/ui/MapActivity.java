@@ -13,6 +13,7 @@ import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.InfoWindow;
+import com.baidu.mapapi.map.MapPoi;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
@@ -60,16 +61,6 @@ public class MapActivity extends BaseActivity {
     private void setView() {
         TextView titleNameTv = findViewById(R.id.title_common_tv);
         titleNameTv.setText(taskName);
-        TextView rightTv = findViewById(R.id.common_tv);
-        rightTv.setVisibility(View.VISIBLE);
-        rightTv.setText("巡检任务");
-        rightTv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
         mMapView = findViewById(R.id.map_view);
         mBaiduMap = mMapView.getMap();
     }
@@ -81,10 +72,10 @@ public class MapActivity extends BaseActivity {
 
         //构建折线点坐标
         LatLng endP;
-        LatLng p1 = new LatLng(36.317105, 120.151746);
+        LatLng p1 = new LatLng(36.317096,120.151824);
         LatLng p2 = new LatLng(36.31347, 120.149446);
         LatLng p3 = new LatLng(36.311841, 120.146895);
-        LatLng p4 = new LatLng(36.310707, 120.147542);
+        LatLng startP = new LatLng(36.310707, 120.147542);
 
         LatLng p5 = new LatLng(36.307973, 120.14941);
         LatLng p6 = new LatLng(36.305501, 120.15038);
@@ -92,24 +83,23 @@ public class MapActivity extends BaseActivity {
         List<LatLng> points = new ArrayList<LatLng>();
 
         if (position == 0) {
-            endP = new LatLng(36.323517, 120.154135);
+            endP = new LatLng(36.318768, 120.151878);
             points.add(endP);
             points.add(p1);
             points.add(p2);
             points.add(p3);
-            points.add(p4);
+            points.add(startP);
         } else {
             endP = new LatLng(36.300513, 120.152267);
-            points.add(p4);
+            points.add(startP);
             points.add(p5);
             points.add(p6);
             points.add(p7);
             points.add(endP);
-
         }
         MapStatus mMapStatus = new MapStatus.Builder()
                 //要移动的点
-                .target(endP)
+                .target(startP)
                 .zoom(16.5f)
                 .build();
         mBaiduMap.setMapStatus(MapStatusUpdateFactory.newMapStatus(mMapStatus));
@@ -129,7 +119,7 @@ public class MapActivity extends BaseActivity {
                 .fromResource(R.drawable.ic_map_start_blue);
         //构建MarkerOption，用于在地图上添加Marker
         OverlayOptions option = new MarkerOptions()
-                .position(p4)
+                .position(startP)
                 .icon(bitmap);
         //在地图上添加Marker，并显示
         mBaiduMap.addOverlay(option);
@@ -161,6 +151,17 @@ public class MapActivity extends BaseActivity {
 //在地图上显示文字覆盖物
         mBaiduMap.addOverlay(mTextOptions);
 
+        mBaiduMap.setOnMapClickListener(new BaiduMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                mBaiduMap.hideInfoWindow();
+            }
+
+            @Override
+            public boolean onMapPoiClick(MapPoi mapPoi) {
+                return false;
+            }
+        });
         mBaiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
@@ -178,13 +179,13 @@ public class MapActivity extends BaseActivity {
                                 + "\n所属部门：运维部"
                                 + "\n工单名称：" + taskName
                                 + "\n巡检编号：" + code
-                                + "\n手  机  号：" + (position == 0?"15984786756":"13765987269")
+                                + "\n手  机  号：" + (position == 0 ? "15984786756" : "13765987269")
                                 + "\n巡检内容：" + "查看泵站运行状态";
                         content_tv.setText(itemTotalStr);
                         BitmapDescriptor infoWB = BitmapDescriptorFactory.fromView(v);
 
                         //定义信息窗
-                        InfoWindow infoWindow = new InfoWindow(infoWB, marker.getPosition(), -65, null
+                        InfoWindow infoWindow = new InfoWindow(infoWB, marker.getPosition(), -70, null
                         );
                         //显示信息窗
                         mBaiduMap.showInfoWindow(infoWindow);
