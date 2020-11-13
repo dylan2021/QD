@@ -19,31 +19,48 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 //设备下的测点列表
-public class TaskListActivity extends BaseActivity {
+public class TaskDetailPointListActivity extends BaseActivity {
 
     private int id;
     private Intent i;
-    private TaskListActivity context;
+    private boolean isTypeBZ, isShowWarm;
+    private TaskDetailPointListActivity context;
     private PullToRefreshLayout refreshLayout;
     private TaskListAdapter adapter;
     private RecyclerView rv;
     private String title;
+    private String taskName;
+    private String name;
 
     @Override
     protected void doOnCreate() {
-        setContentView(R.layout.activity_task_list);
+        setContentView(R.layout.activity_task_detail);
         context = this;
         i = getIntent();
         id = i.getIntExtra("id", 0);
-        title = i.getStringExtra("title");
+        taskName = i.getStringExtra("taskName");
+        name = i.getStringExtra("name");
         initView();
+        initTopView();
         getData();
     }
 
+    private void initTopView() {
+        String str1 = taskName
+                + "\n运营"
+                + "\n" + name
+                + "\n1"
+                + "\n未完成"
+                + "\n2020-11-22 08:30:00"
+                + "\n5.6小时";
+        TextView tv1 = findViewById(R.id.task_detail_tv_1);
+        tv1.setText(str1);
+    }
+
     private void initView() {
-        ((TextView) findViewById(R.id.title_common_tv)).setText("巡检任务列表");
+        ((TextView) findViewById(R.id.title_common_tv)).setText(taskName + "详情");
         rv = findViewById(R.id.recyclerview);
-        adapter = new TaskListAdapter(R.layout.item_task_list, true);
+        adapter = new TaskListAdapter(R.layout.item_task_list, false);
         rv.setLayoutManager(new LinearLayoutManager(context));
         rv.setAdapter(adapter);
         refreshLayout = findViewById(R.id.pulltorefreshlayout);
@@ -64,13 +81,8 @@ public class TaskListActivity extends BaseActivity {
 
         adapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
             @Override
-            public void onClick(View view, int position, Object i) {
-                PatrolTaskListDTO item=(PatrolTaskListDTO)i;
-                Intent intent = new Intent(context, TaskDetailPointListActivity.class);
-                intent.putExtra("id", item.getExecutorId());
-                intent.putExtra("name", item.getExecutorName());
-                intent.putExtra("taskName", item.getName());
-                startActivity(intent);
+            public void onClick(View view, int position, Object item) {
+
             }
 
             @Override
@@ -83,9 +95,8 @@ public class TaskListActivity extends BaseActivity {
     private void getData() {
         adapter.clear();
         List<PatrolTaskListDTO> list = new ArrayList<>();
-        list.add(new PatrolTaskListDTO("2020-11-20日度巡检", 10905437, "李军"));
-        list.add(new PatrolTaskListDTO("2020-11-21日度巡检", 10905438,
-                "张子涛"));
+        list.add(new PatrolTaskListDTO("1#泵站", 2337, "河道#34处"));
+        list.add(new PatrolTaskListDTO("1#粗格栅", 2338, "1#泵站_右防护栏"));
         adapter.addAll(list);
         adapter.notifyDataSetChanged();
 

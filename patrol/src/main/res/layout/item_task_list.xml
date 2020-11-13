@@ -9,14 +9,15 @@
 
 
     <TextView
-        android:id="@+id/bz_fmj_item_tv_title"
+        android:id="@+id/item_tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:drawablePadding="@dimen/dp_10"
         android:ellipsize="end"
-        android:textSize="28px"
+        android:textSize="30px"
         android:textStyle="bold"
+        android:drawableEnd="@drawable/ic_next_gray"
         android:textColor="#212121"
         android:maxLines="1"
         android:paddingRight="@dimen/main_margin_left_x"
@@ -29,9 +30,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:lineSpacingExtra="@dimen/dp_2"
-        android:paddingTop="10px"
+        android:paddingTop="12px"
         android:paddingRight="@dimen/main_margin_left_x"
-        android:paddingBottom="@dimen/dp_10" />
+        android:paddingBottom="15px" />
 
     <View
         android:layout_width="match_parent"

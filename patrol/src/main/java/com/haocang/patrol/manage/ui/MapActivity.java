@@ -49,9 +49,9 @@ public class MapActivity extends BaseActivity {
         setContentView(R.layout.activity_map);
         i = getIntent();
         position = i.getIntExtra("id", 0);
+        taskName = i.getStringExtra("taskName");
         name = i.getStringExtra("name");
         code = i.getStringExtra("code");
-        taskName = i.getStringExtra("taskName");
         setView();
         initLoc();
     }
