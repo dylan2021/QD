@@ -24,7 +24,7 @@
                 android:background="@color/color_gray5"
                 android:gravity="center_vertical"
                 android:paddingLeft="20px"
-                android:text="任务信息"
+                android:text="巡检点信息"
                 android:textColor="@color/mainColor"
                 android:textSize="26px"></TextView>
 
@@ -43,7 +43,7 @@
                     android:paddingLeft="20px"
                     android:textStyle="bold"
                     android:textSize="26px"
-                    android:text="@string/task_detail_title_str"
+                    android:text="@string/task_point_title_str"
                     android:textColor="#212121"
                   />
 
@@ -65,7 +65,7 @@
                 android:background="@color/color_gray5"
                 android:gravity="center_vertical"
                 android:paddingLeft="20px"
-                android:text="巡检点信息"
+                android:text="步骤信息"
                 android:textColor="@color/mainColor"
                 android:textSize="26px"></TextView>
 

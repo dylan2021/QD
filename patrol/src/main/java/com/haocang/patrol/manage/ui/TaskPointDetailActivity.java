@@ -19,48 +19,42 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 //设备下的测点列表
-public class TaskDetailPointListActivity extends BaseActivity {
+public class TaskPointDetailActivity extends BaseActivity {
 
     private int id;
     private Intent i;
     private boolean isTypeBZ, isShowWarm;
-    private TaskDetailPointListActivity context;
+    private TaskPointDetailActivity context;
     private PullToRefreshLayout refreshLayout;
     private TaskListAdapter adapter;
     private RecyclerView rv;
-    private String title;
-    private String taskName;
-    private String name;
+    private String title,msg;
 
     @Override
     protected void doOnCreate() {
-        setContentView(R.layout.activity_task_detail);
+        setContentView(R.layout.activity_point_detail);
         context = this;
         i = getIntent();
         id = i.getIntExtra("id", 0);
-        taskName = i.getStringExtra("taskName");
-        name = i.getStringExtra("name");
+        title = i.getStringExtra("title");
+        msg = i.getStringExtra("msg");
         initView();
         initTopView();
         getData();
     }
 
     private void initTopView() {
-        String str1 = taskName
-                + "\n运营"
-                + "\n" + name
-                + "\n1"
-                + "\n未完成"
-                + "\n2020-11-22 08:30:00"
-                + "\n5.6小时";
+        String str1 = title
+                + "\n描述信息_" + title
+                + "\n"+msg;
         TextView tv1 = findViewById(R.id.task_detail_tv_1);
         tv1.setText(str1);
     }
 
     private void initView() {
-        ((TextView) findViewById(R.id.title_common_tv)).setText(taskName + "详情");
+        ((TextView) findViewById(R.id.title_common_tv)).setText(title + "详情");
         rv = findViewById(R.id.recyclerview);
-        adapter = new TaskListAdapter(R.layout.item_task_list, false);
+        adapter = new TaskListAdapter(R.layout.item_task_list, 2);
         rv.setLayoutManager(new LinearLayoutManager(context));
         rv.setAdapter(adapter);
         refreshLayout = findViewById(R.id.pulltorefreshlayout);
@@ -95,8 +89,10 @@ public class TaskDetailPointListActivity extends BaseActivity {
     private void getData() {
         adapter.clear();
         List<PatrolTaskListDTO> list = new ArrayList<>();
-        list.add(new PatrolTaskListDTO("1#泵站", 2337, "河道#34处"));
-        list.add(new PatrolTaskListDTO("1#粗格栅", 2338, "1#泵站_右防护栏"));
+        list.add(new PatrolTaskListDTO("井盖缺失", 132, "河道#34处_9#井"));
+        list.add(new PatrolTaskListDTO("污水漫溢", 133, "河道#34处_2#污水厂"));
+        list.add(new PatrolTaskListDTO("警示标示", 134, "河道#34处"));
+        list.add(new PatrolTaskListDTO("水质情况", 137, "河道#34处"));
         adapter.addAll(list);
         adapter.notifyDataSetChanged();
 

@@ -68,4 +68,5 @@
     <string name="patrol_assign_fail">分配失败</string>
     <string name="patrol_upload_failed">上传失败</string>
     <string name="task_detail_title_str">任务名称： \n所属组织： \n执行人员： \n持续时间： \n任务状态： \n执行时间： \n实际耗时：</string>
+    <string name="task_point_title_str">巡检点名称：\n描述： \n区域位置：</string>
 </resources>
