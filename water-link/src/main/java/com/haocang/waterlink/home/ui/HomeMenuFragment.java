@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ *
  */
 public class HomeMenuFragment extends Fragment implements HomeMenuView {
     /**
@@ -95,12 +96,6 @@ public class HomeMenuFragment extends Fragment implements HomeMenuView {
         if (menuList != null && menuList.size() > 0) {
             list.addAll(menuList);
         }
-//        MenuEntity entity = new MenuEntity();
-//        entity.setName("更多");
-//        entity.setId(0);
-//        entity.setUrl(WaterLinkConstant.HOME_MY_APP);
-//        entity.setReson(R.mipmap.icon_home_menu_more);
-//        list.add(entity);
         adapter.addAll(list);
         adapter.notifyDataSetChanged();
     }

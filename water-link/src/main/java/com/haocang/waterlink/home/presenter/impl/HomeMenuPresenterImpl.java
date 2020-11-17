@@ -29,164 +29,110 @@ import java.util.List;
  * 修改时间：
  */
 public class HomeMenuPresenterImpl implements HomeMenuPresenter {
-    /**
-     * V层.
-     */
     private HomeMenuView homeIView;
 
-    /**
-     * 构造方法.
-     *
-     * @param homeIView .
-     */
     public HomeMenuPresenterImpl(final HomeMenuView homeIView) {
         this.homeIView = homeIView;
     }
 
     String key[] = {"model"
-            ,"pump"
-            ,"shaft"
-            ,"curve"
-            ,"curve"
-            ,"patrol"
-            ,"repair"
-            ,"faultpost"
-            ,"fault"
-            ,"experiment"
-//            ,"monitor"
-//            ,"maintain"
+            , "pump"
+            , "shaft"
+            , "curve"
+            , "curve"
+            , "patrol"
+            , "repair"
+            , "faultpost"
+            , "fault"
+            , "experiment"
+            , "warm"
+            , "warm"
+            , "warm"
     };
     int id[] = {
             9042
-            ,9042
-            ,9043
-            ,132
-            ,131
-            ,134
-            ,135
-            ,136
-            ,137
-            ,138
-//            ,137
-//            ,138
+            , 9042
+            , 9043
+            , 132
+            , 131
+            , 134
+            , 135
+            , 136
+            , 137
+            , 138
+            , 0
+            , 1
+            , 2
     };
     int appType[] = {0
-            ,0
-            ,0
-            ,0
-            ,0
-            ,0
-            ,0
-            ,0
-            ,0
-            ,0
-//            ,0
-//            ,0
+            , 0
+            , 0
+            , 0
+            , 0
+            , 0
+            , 0
+            , 0
+            , 0
+            , 0
+            , 0
+            , 0
+            , 0
     };
     int icon[] = {
             R.drawable.model
-            ,R.drawable.pump
-            ,R.drawable.shaft
-            ,R.drawable.water
-            ,R.drawable.power
-            ,R.drawable.map
-            ,R.drawable.repair_menu
-            ,R.drawable.fault_upload
-            ,R.drawable.presented
-            ,R.drawable.experiment
-//            ,0,0,0,0,0
-//            ,0
-//            ,0
+            , R.drawable.pump
+            , R.drawable.shaft
+            , R.drawable.water
+            , R.drawable.power
+            , R.drawable.map
+            , R.drawable.repair_menu
+            , R.drawable.fault_upload
+            , R.drawable.presented
+            , R.drawable.experiment
+            , R.drawable.monitor_alarm_red
+            , R.drawable.monitor_alarm_red
+            , R.drawable.monitor_alarm_red
     };
     String name[] = {
-            "模型信息"
-            ,"泵站工况"
-            ,"阀门井工况"
-            ,"水质查询"
-            ,"能耗查询"
-            ,"巡检管理"
-            ,"维修管理"
-            ,"缺陷申报"
-            ,"派工管理"
-            ,"人工实验抄录"
-//            ,"实时监测"
-//            ,"养护管理"
+            "专题图查询"
+            , "泵站工况"
+            , "阀门井工况"
+            , "水质查询"
+            , "能耗查询"
+            , "巡检管理"
+            , "维修管理"
+            , "缺陷申报"
+            , "派工管理"
+            , "提交抄表数据"
+            , "实时报警状态"
+            , "报警数据查询"
+            , "实时状态查询"
     };
     String url[] = {
             "/model/modelmsg"
-            ,"/pump/pumplist"
-            ,"/pump/pumplist"
-            ,"/curve/main"
-            ,"/curve/two"
-            ,"/patrol/list"
-            ,"/repair/list"
-            ,"/fault/post"
-            ,"/fault/list"
-            ,"/experiment/experiment"
-//            ,"/monitor/home/"
-//            ,"/maintain/list"
+            , "/pump/pumplist"
+            , "/pump/pumplist"
+            , "/curve/main"
+            , "/curve/two"
+            , "/patrol/list"
+            , "/repair/list"
+            , "/fault/post"
+            , "/fault/list"
+            , "/experiment/experiment"
+            , "/warm/warmStatus"
+            , "/warm/warmStatus"
+            , "/warm/warmStatus"
     };
-
-
-//    String key[] = {"curve","curve","patrol","faultpost","fault","repair"
-//            ,"model"
-//            ,"pump"
-////            ,"monitor"
-////            ,"maintain"
-//    };
-//    int id[] = {9042,9042,132,131,134,135
-//            ,136
-//            ,137
-////            ,137
-////            ,138
-//    };
-//    int appType[] = {0,0,0,0,0,0
-//            ,0
-//            ,0
-////            ,0
-////            ,0
-//    };
-//    int icon[] = {
-//        R.drawable.water,R.drawable.power,0,0,0,0,0
-//            ,0
-////            ,0
-//    };
-//    String iconUrl[] = {
-//            "uaa/api/static/image/menu/app/water.png"
-//            ,"uaa/api/static/image/menu/app/power.png"
-//            ,"uaa/api/static/image/menu/app/patrol.png"
-//            ,"uaa/api/static/image/menu/app/faultpost.png"
-//            ,"uaa/api/static/image/menu/app/fault.png"
-//            ,"uaa/api/static/image/menu/app/repair.png"
-//            ,"uaa/api/static/image/menu/app/repair.png"
-//            ,"uaa/api/static/image/menu/app/repair.png"
-////            ,"uaa/api/static/image/menu/app/repair.png"
-////            ,"uaa/api/static/image/menu/app/maintain.png"
-//    };
-//    String name[] = {"水质数据查询","能耗数据查询","巡检管理","缺陷申报","派工管理","维修管理"
-//            ,"模型信息"
-//            ,"泵站工况"
-////            ,"实时监测"
-////            ,"养护管理"
-//    };
-//    String url[] = {"/curve/main","/curve/two","/patrol/list","/fault/post","/fault/list","/repair/list"
-//            ,"/model/modelmsg"
-//            ,"/pump/pumplist"
-////            ,"/monitor/home/"
-////            ,"/maintain/list"
-//    };
 
     @Override
     public void getHomeMenuData() {
-
         List<MenuEntity> list = new ArrayList<>();
-
         for (int i = 0; i < key.length; i++) {
             MenuEntity entity = new MenuEntity();
             entity.setKey(key[i]);
             entity.setId(id[i]);
             entity.setAppType(appType[i]);
-            entity.setIcon(icon[i]+"");
+            entity.setIcon(icon[i] + "");
 //            entity.setIconUrl(HCLicConstant.ADDRESS_IP+iconUrl[i]);
             entity.setName(name[i]);
             entity.setTarget("_self");
@@ -194,51 +140,6 @@ public class HomeMenuPresenterImpl implements HomeMenuPresenter {
             list.add(entity);
         }
         listener.success(list);
-        
-        
-
-
-//        MenuEntity entity2 = new MenuEntity();
-//        entity2.setKey("curve");
-//        entity2.setAppType(0);
-//        entity2.setId(9042);
-//        entity2.setIcon("https://sh.hc-yun.com:22001/uaa/api/static/image/menu/app/curve.png");
-//        entity2.setIconUrl("https://sh.hc-yun.com:22001/uaa/api/static/image/menu/app/curve.png");
-//        entity2.setName("能耗数据查询");
-//        entity2.setTarget("_self");
-//        entity2.setUrl("/curve/two");
-////        entity2.set
-//        //能耗数据查询
-////        entity1.setState("2");
-//        list.add(entity2);
-//
-//
-//        MenuEntity entity3 = new MenuEntity();
-//        entity3.setKey("patrol");
-//        entity3.setAppType(0);
-//        entity3.setId(132);
-//        entity3.setIcon("http://122.114.2.195:17401/uaa/api/static/image/menu/app/patrol.png");
-//        entity3.setIconUrl("http://122.114.2.195:17401/uaa/api/static/image/menu/app/patrol.png");
-//        entity3.setName("巡检管理");
-//        entity3.setTarget("_self");
-//        entity3.setUrl("/patrol/list");
-//        list.add(entity3);
-
-
-
-
-//        CommonModel<MenuEntity> progressModel = new CommonModelImpl<>();
-//        Type type = new TypeToken<List<MenuEntity>>() {
-//        }.getType();
-//        progressModel.setContext(homeIView.getContexts())
-//                .setListType(type)
-//                .setHasDialog(false)
-////                .setUrl(MethodConstants.Uaa.MENUS_APP)
-//                .setUrl(HomeMethodConfig.HOME_MENUS)
-//                .setListListener(listener)
-//                .getList();
-
-
     }
 
     @Override

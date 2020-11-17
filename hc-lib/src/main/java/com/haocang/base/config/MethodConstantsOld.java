@@ -224,7 +224,7 @@ public class MethodConstantsOld {
         public static final String BASE_TASK_LIST = "base/api/tasks";
 
         /**
-         * 获取首页待办任务.
+         * 获取首页巡检人员手机端.
          */
         public static final String BASE_TASKS_TODO = "base/api/tasks/todo";
 

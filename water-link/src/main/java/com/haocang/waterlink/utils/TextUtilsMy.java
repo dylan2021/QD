@@ -571,6 +571,20 @@ public class TextUtilsMy {
     public static String getTime(String datadt) {
         return isEmpty(datadt) ? "" : datadt.replace("T", " ").replace("Z", "");
     }
+    public static String getTimeT8(String timeStrTZ) {
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            date = format.parse(timeStrTZ.replace("T", " ").replace("Z", ""));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.HOUR_OF_DAY, +8);
+        String time = format.format(calendar.getTime());
+        return time;
+    }
 
     public static String getDatType(String datype) {
         //State 状态信号 Digtal 数值信号

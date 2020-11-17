@@ -40,7 +40,7 @@ public class WebModelFragment extends Fragment {
         dialog = new ProgressBarDialog(getActivity());
         dialog.show();
         titletv = view.findViewById(R.id.home_title_tv);
-        titletv.setText("模型信息");
+        titletv.setText("专题图查询");
         view.findViewById(R.id.sccan_iv).setVisibility(View.GONE);
         view.findViewById(R.id.back_v).setOnClickListener(new View.OnClickListener() {
             @Override

@@ -15,7 +15,10 @@ import com.haocang.curve.collection.bean.PointList;
 import com.haocang.curve.collection.bean.SignleCurve;
 import com.haocang.curve.collection.iview.SignleCollectionView;
 import com.haocang.curve.main.bean.CurveConstans;
+import com.haocang.curve.main.util.MyUtils;
 import com.haocang.curve.more.bean.PointEntity;
+
+import org.feezu.liuli.timeselector.Utils.TextUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -147,8 +150,9 @@ public class GignlePointCollectionAdapter
         holder.siteCodeTv.setText(entity.getMpointId());
         holder.siteNumTv.setText("当前值:"+entity.getValue()+entity.getUnit());
 //        String dataDt[] = entity.getDatadt().split("T");
-        if (entity.getDatadt()!=null) {
-            holder.siteTimeTv.setText(entity.getDatadt().replace("T", " ").replace("Z", ""));
+        String datadt = entity.getDatadt();
+        if (datadt !=null) {
+            holder.siteTimeTv.setText(MyUtils.getTimeT8(datadt));
         }
         String dataSource = entity.getDatasource();
         if (dataSource.equals("AUTO")){

@@ -54,7 +54,7 @@ public class MethodConstants {
         public static String BASE_TASKS = "portal/api/tasks";//获取当前用户任务列表
         public static String ONLINE_PERSON = "portal/api/dispatch-users";//在线用户
         public static String BASE_CONCERN_LIST = "portal/api/concerns";//关注列表
-        public static String BASE_TASKS_TODO = "portal/api/tasks/todo";//获取首页待办任务.
+        public static String BASE_TASKS_TODO = "portal/api/tasks/todo";//获取首页巡检人员手机端.
 
         /**
          * 根据巡检点id 获取当前人可执行或者代巡检任务

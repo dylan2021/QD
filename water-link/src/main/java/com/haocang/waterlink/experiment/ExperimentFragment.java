@@ -30,7 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-//人工实验抄录
+//提交抄表数据
 @Route(path = "/experiment/experiment")
 public class ExperimentFragment extends Fragment implements View.OnClickListener, BaseRefreshListener,TextView.OnEditorActionListener{
 
@@ -53,7 +53,7 @@ public class ExperimentFragment extends Fragment implements View.OnClickListener
 
     private void initView(View view) {
         titleNameTv = view.findViewById(R.id.title_common_tv);
-        titleNameTv.setText("人工实验抄录");
+        titleNameTv.setText("提交抄表数据");
         queryEdt = view.findViewById(R.id.query_et);
         view.findViewById(R.id.search_v).setOnClickListener(this);
         pullToRefreshLayout = view.findViewById(R.id.pulltorefreshlayout);

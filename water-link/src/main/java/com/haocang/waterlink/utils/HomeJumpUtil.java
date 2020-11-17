@@ -93,6 +93,7 @@ public class HomeJumpUtil {
         Map<String, Object> map = new HashMap<>();
         map.put("fragmentUri", fragmentUri);
         map.put("title", entity.getName());
+        map.put("id", entity.getId());
         if (!TextUtils.isEmpty(params)) {
             map.put("params", params);
         }

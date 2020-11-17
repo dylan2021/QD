@@ -26,6 +26,8 @@ public class CommonActivity extends BaseActivity {
     String faultId;//缺陷id
     @Autowired
     String title;
+    @Autowired
+    int id;
 
     @Override
     protected void doOnCreate() {
@@ -34,7 +36,7 @@ public class CommonActivity extends BaseActivity {
         try {
             if (fragmentUri != null && !"".equals(fragmentUri)) {
                 Postcard pc = ARouter.getInstance().build(fragmentUri);
-                fragment = (Fragment) pc.withString("title", title).navigation();
+                fragment = (Fragment) pc.withString("title", title).withInt("id",id).navigation();
             }
         } catch (Exception e) {
             e.printStackTrace();

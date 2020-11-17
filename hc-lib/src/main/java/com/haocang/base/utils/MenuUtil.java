@@ -27,7 +27,7 @@ import java.util.List;
  */
 public class MenuUtil {
     /**
-     * 待办任务 和任务 左边菜单控制
+     * 巡检人员手机端 和任务 左边菜单控制
      *
      * @return
      */

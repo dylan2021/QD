@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/main_margin_left_x"
+    android:paddingTop="@dimen/dp_10">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/bz_fmj_item_tv_title"
+            style="@style/px28_212121_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableRight="@mipmap/ic_next"
+            android:drawablePadding="@dimen/dp_10"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingRight="@dimen/main_margin_left_x"
+            android:singleLine="true" />
+
+        <TextView
+            android:id="@+id/bz_fmj_item_tv_status"
+            style="@style/px26_999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/next_margin_right" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/bz_fmj_item_tv_1"
+        style="@style/px26_999"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingTop="@dimen/dp_6"
+        android:paddingRight="@dimen/main_margin_left_x" />
+
+    <TextView
+        android:id="@+id/bz_fmj_item_tv_2"
+        style="@style/px26_999"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:paddingBottom="@dimen/dp_10"
+        android:maxLines="1"
+        android:paddingTop="@dimen/dp_2"
+        android:paddingRight="@dimen/main_margin_left_x" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/divider_color" />
+</LinearLayout>
