@@ -138,8 +138,8 @@
         <item>/model/modelmsg</item>
         <item>/pump/pumplist</item>
         <item>/experiment/experiment</item>
-        <item>/warm/warmStatus</item>
-        <item>/warm/warmStatus</item>
+        <item>/alarm/main</item>
+        <item>/alarm/main</item>
         <item>/warm/warmStatus</item>
 
     </string-array>

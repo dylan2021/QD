@@ -47,7 +47,7 @@ public class MenuAdapter extends BaseAdapter<MenuEntity> {
         } else if (!TextUtils.isEmpty(entity.getIcon()) && !entity.getIcon().equals("0")) {
             iconLl.setBackgroundResource(R.mipmap.icon_home_menu_bg);
             iconIv.setImageResource(Integer.valueOf(entity.getIcon()));
-//            Glide.with(ctx).load(entity.getIcon()).apply(options).into(iconIv);
+//            Glide.with(ctx).load( entity.getIcon()).apply(options).into(iconIv);
             nameTv.setTextColor(Color.parseColor("#58637C"));
         } else if (!TextUtils.isEmpty(entity.getIconUrl())) {
             iconLl.setBackgroundResource(R.mipmap.icon_home_menu_bg);

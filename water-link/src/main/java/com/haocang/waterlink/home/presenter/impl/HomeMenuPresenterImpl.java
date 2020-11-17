@@ -44,8 +44,8 @@ public class HomeMenuPresenterImpl implements HomeMenuPresenter {
             , "faultpost"
             , "fault"
             , "experiment"
-            , "warm"
-            , "warm"
+            , "alarm"
+            , "alarm"
             , "warm"
     };
     int id[] = {
@@ -118,8 +118,8 @@ public class HomeMenuPresenterImpl implements HomeMenuPresenter {
             , "/fault/post"
             , "/fault/list"
             , "/experiment/experiment"
-            , "/warm/warmStatus"
-            , "/warm/warmStatus"
+            , "/alarm/main"
+            , "/alarm/main"
             , "/warm/warmStatus"
     };
 
