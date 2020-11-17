@@ -3,7 +3,6 @@ package com.haocang.waterlink.home.presenter.impl;
 import android.content.Context;
 
 import com.haocang.base.utils.GetListListener;
-import com.haocang.maonlib.base.config.HCLicConstant;
 import com.haocang.waterlink.R;
 import com.haocang.waterlink.home.bean.MenuEntity;
 import com.haocang.waterlink.home.iview.HomeMenuView;
@@ -60,9 +59,9 @@ public class HomeMenuPresenterImpl implements HomeMenuPresenter {
             , 136
             , 137
             , 138
-            , 0
             , 1
             , 2
+            , 3
     };
     int appType[] = {0
             , 0
@@ -89,12 +88,12 @@ public class HomeMenuPresenterImpl implements HomeMenuPresenter {
             , R.drawable.fault_upload
             , R.drawable.presented
             , R.drawable.experiment
-            , R.drawable.monitor_alarm_red
-            , R.drawable.monitor_alarm_red
-            , R.drawable.monitor_alarm_red
+            , R.drawable.ic_warm_0
+            , R.drawable.ic_warm_1
+            , R.drawable.ic_warm_2
     };
     String name[] = {
-            "专题图查询"
+            "专题图"
             , "泵站工况"
             , "阀门井工况"
             , "水质查询"
@@ -103,10 +102,10 @@ public class HomeMenuPresenterImpl implements HomeMenuPresenter {
             , "维修管理"
             , "缺陷申报"
             , "派工管理"
-            , "提交抄表数据"
-            , "实时报警状态"
-            , "报警数据查询"
-            , "实时状态查询"
+            , "数据录入"
+            , "实时报警"
+            , "报警数据"
+            , "实时状态"
     };
     String url[] = {
             "/model/modelmsg"

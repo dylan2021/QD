@@ -21,6 +21,7 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import java.util.ArrayList;
 import java.util.List;
 
+//底部导航
 @Route(path = WaterLinkConstant.HOME)
 public class NavigationActivity extends BaseActivity {
     private BottomNavigationViewEx bnve;

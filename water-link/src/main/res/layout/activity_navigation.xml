@@ -10,10 +10,10 @@
     <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
         android:id="@+id/bnve"
         android:layout_width="match_parent"
-        app:itemIconSize="20dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/white"
+        app:itemIconSize="20dp"
         app:itemTextColor="@color/navigation_font_item_home"
         app:menu="@menu/home_menu_navigation" />
 

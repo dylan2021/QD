@@ -111,7 +111,7 @@
 
     <string-array name="home_menu_name">
         <item>com.haocang.waterlink.home.ui.HomeFragment</item>
-        <item>com.haocang.datamonitor.alarm.ui.AlarmFragment</item>
+    <!--    <item>com.haocang.datamonitor.alarm.ui.AlarmFragment</item>-->
         <item>com.haocang.waterlink.follow.ui.FollowNewFragment</item>
         <!--        <item>com.haocang.waterlink.taskboard.ui.TaskNewBoardFragment</item>-->
         <item>com.haocang.messge.ui2.MessgeTabLayouFragment</item>

@@ -6,10 +6,10 @@
         android:icon="@drawable/navigation_menu_item_home"
         android:title="@string/home" />
 
-    <item
+<!--    <item
         android:id="@+id/alarm"
         android:icon="@drawable/navigation_menu_item_alarm"
-        android:title="@string/alarm" />
+        android:title="@string/alarm" />-->
 
     <item
         android:id="@+id/follow"

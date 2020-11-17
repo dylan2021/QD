@@ -66,7 +66,7 @@
     <string name="patrol_week">周</string>
     <string name="equiment_reset">重置</string>
     <string name="equiment_done">完成</string>
-    <string name="alarm">报警</string>
+   <!-- <string name="alarm">报警</string>-->
     <string name="message">消息</string>
     <string name="follow">关注</string>
     <string name="my">我的</string>
