@@ -32,8 +32,8 @@
             android:layout_marginLeft="9dp"
             android:text="@string/task"
             android:textColor="#212121"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textSize="15sp"
+            />
 
         <TextView
             android:layout_width="0dp"

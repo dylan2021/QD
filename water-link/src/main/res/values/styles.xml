@@ -97,8 +97,8 @@
 
     <style name="self_v">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">1dp</item>
-        <item name="android:background">#f6f6f6</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/color_gray5</item>
         <item name="android:layout_marginRight">15dp</item>
         <item name="android:layout_marginLeft">15dp</item>
     </style>
@@ -106,7 +106,7 @@
     <style name="self_tv">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:textColor">#ff3c3c3c</item>
+        <item name="android:textColor">#212121</item>
         <item name="android:textSize">15sp</item>
         <item name="android:layout_marginLeft">20dp</item>
         <item name="android:layout_height">wrap_content</item>

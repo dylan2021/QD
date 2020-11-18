@@ -95,7 +95,6 @@ public class MyHomeFragment extends Fragment implements View.OnClickListener, My
     private Intent intent;
     private UserInfoPresenter userInfoPresenter;
     private LinearLayout voicersetLl;
-    private View voicersetV;
 
     /**
      * 初始化.
@@ -122,7 +121,6 @@ public class MyHomeFragment extends Fragment implements View.OnClickListener, My
      * @param view .
      */
     private void initView(final View view) {
-        voicersetV = view.findViewById(R.id.self_voicerset_v);
         userInfoPresenter = new UserInfoPresenterImpl(this);
         intent = new Intent(getActivity(), CommonActivity.class);
         headIv = view.findViewById(R.id.my_head_iv);
@@ -179,7 +177,6 @@ public class MyHomeFragment extends Fragment implements View.OnClickListener, My
             voicersetLl.setVisibility(View.VISIBLE);
         } else {
             voicersetLl.setVisibility(View.GONE);
-            voicersetV.setVisibility(View.GONE);
         }
     }
 
