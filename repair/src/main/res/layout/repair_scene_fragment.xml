@@ -13,7 +13,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:text="@string/repair_declare_remark"
-        android:textColor="@color/color_menu_ft"
+        android:textColor="@color/color212121"
         android:textSize="@dimen/fs16" />
 
 
@@ -43,7 +43,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:text="@string/repair_new_scene"
-        android:textColor="@color/color_menu_ft"
+        android:textColor="@color/color212121"
         android:textSize="@dimen/fs16" />
 
     <androidx.recyclerview.widget.RecyclerView

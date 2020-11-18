@@ -48,11 +48,11 @@ import java.util.List;
 public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int PICTURE = 0;
     private static final int VIDEO = 1;
-    private Context ctx;
+    private Context context;
     private List<PictureInfo> mList = new ArrayList<>();
 
-    public PictureAdapter(Context ctx) {
-        this.ctx = ctx;
+    public PictureAdapter(Context context) {
+        this.context = context;
     }
 
     private boolean isDeleteDisplay = true;
@@ -61,10 +61,10 @@ public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == PICTURE) {
-            View view = LayoutInflater.from(ctx).inflate(R.layout.adapter_picture, null);
+            View view = LayoutInflater.from(context).inflate(R.layout.adapter_picture, null);
             return new PictureHolder(view);
         } else if (viewType == VIDEO) {
-            View view = LayoutInflater.from(ctx).inflate(R.layout.adapter_video, null);
+            View view = LayoutInflater.from(context).inflate(R.layout.adapter_video, null);
             return new VideoViewHolder(view);
         }
         return null;
@@ -72,36 +72,43 @@ public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, final int position) {
+        final PictureInfo picInfo = mList.get(position);
+        if (null == picInfo) {
+            return;
+        }
+        //--------------------  图片  -------------------------------------------
+        final String picClassName = PictureNewPreviewFragment.class.getName();
         if (holder instanceof PictureHolder) {
             ImageView pictureIv = ((PictureHolder) holder).pictureIv;
             ImageView deleteIv = ((PictureHolder) holder).deleteIv;
             if (!isDeleteDisplay) {
                 deleteIv.setVisibility(View.GONE);
             }
-//            showPicture(position, pictureIv);
-            if (!TextUtils.isEmpty(mList.get(position).getThumbnailUrl())) {
-                Glide.with(ctx).load(mList.get(position).getThumbnailUrl()).apply(options).into(pictureIv);
-            } else if (!TextUtils.isEmpty(mList.get(position).getImgUrl())) {
-                Glide.with(ctx).load(mList.get(position).getImgUrl()).apply(options).into(pictureIv);
+            String localImgPath = picInfo.getLocalImgPath();
+            if (!TextUtils.isEmpty(picInfo.getThumbnailUrl())) {
+                Glide.with(context).load(picInfo.getThumbnailUrl()).apply(options).into(pictureIv);
+            } else if (!TextUtils.isEmpty(picInfo.getImgUrl())) {
+                Glide.with(context).load(picInfo.getImgUrl()).apply(options).into(pictureIv);
             } else {
-                Glide.with(ctx).load(mList.get(position).getLocalImgPath()).apply(options).into(pictureIv);
+                Glide.with(context).load(localImgPath).apply(options).into(pictureIv);
             }
             pictureIv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(ctx, CommonActivity.class);
-                    if (!TextUtils.isEmpty(mList.get(position).getLocalImgPath())) {
-                        intent.putExtra("picturePath", mList.get(position).getLocalImgPath());
+                    //点击图片
+                    Intent intent = new Intent(context, CommonActivity.class);
+                    if (!TextUtils.isEmpty(localImgPath)) {
+                        intent.putExtra("picturePath", localImgPath);
                     } else {
-                        intent.putExtra("picturePath", mList.get(position).getImgUrl());
+                        intent.putExtra("picturePath", picInfo.getImgUrl());
                     }
                     if (isDeleteDisplay) {
                         intent.putExtra("displayDelete", "delete");
                     }
                     intent.putExtra("position", position + "");
                     intent.putExtra("url", new Gson().toJson(getFilesList()));
-                    intent.putExtra("fragmentName", PictureNewPreviewFragment.class.getName());
-                    ctx.startActivity(intent);
+                    intent.putExtra("fragmentName", picClassName);
+                    context.startActivity(intent);
                 }
             });
             deleteIv.setOnClickListener(new View.OnClickListener() {
@@ -112,41 +119,43 @@ public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 }
             });
 
+            //--------------------  视频  -------------------------------------------
         } else if (holder instanceof VideoViewHolder) {
-
             ImageView videoThumbnailIv = ((VideoViewHolder) holder).videoThumbnailIv;
             ImageView deleteIv = ((VideoViewHolder) holder).deleteIv;
             if (!isDeleteDisplay) {
                 deleteIv.setVisibility(View.GONE);
             }
-            if (!TextUtils.isEmpty(mList.get(position).getVideoPath())) {
+            final String videoPath = picInfo.getVideoPath();
+            if (!TextUtils.isEmpty(videoPath)) {
                 showVideoThumbnail(position, videoThumbnailIv);
-            } else if (!TextUtils.isEmpty(mList.get(position).getThumbnailUrl())) {
-                Glide.with(ctx).load(mList.get(position).getThumbnailUrl()).apply(options).into(videoThumbnailIv);
-            } else if (!TextUtils.isEmpty(mList.get(position).getNetWordVideoPath())) {
-                Glide.with(ctx).load(R.drawable.ic_picture_default).apply(options).into(videoThumbnailIv);
+            } else if (!TextUtils.isEmpty(picInfo.getThumbnailUrl())) {
+                Glide.with(context).load(picInfo.getThumbnailUrl()).apply(options).into(videoThumbnailIv);
+            } else if (!TextUtils.isEmpty(picInfo.getNetWordVideoPath())) {
+                Glide.with(context).load(R.drawable.ic_picture_default).apply(options).into(videoThumbnailIv);
                 showVideoThumbnail2(position, videoThumbnailIv);
-            } else if (!TextUtils.isEmpty(mList.get(position).getVideoUrl())) {
+            } else if (!TextUtils.isEmpty(picInfo.getVideoUrl())) {
                 showVideoThumbnail2(position, videoThumbnailIv);
             }
             videoThumbnailIv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(ctx, CommonActivity.class);
-                    if (mList.get(position).getVideoPath() != null) {
-                        intent.putExtra("videoPath", mList.get(position).getVideoPath());
-                    } else if (!TextUtils.isEmpty(mList.get(position).getVideoUrl())) {
-                        intent.putExtra("networkVideoPath", mList.get(position).getVideoUrl());
+                    //点击视频
+                    Intent intent = new Intent(context, CommonActivity.class);
+                    if (videoPath != null) {
+                        intent.putExtra("videoPath", videoPath);
+                    } else if (!TextUtils.isEmpty(picInfo.getVideoUrl())) {
+                        intent.putExtra("networkVideoPath", picInfo.getVideoUrl());
                     } else {
-                        intent.putExtra("networkVideoPath", mList.get(position).getNetWordVideoPath());
+                        intent.putExtra("networkVideoPath", picInfo.getNetWordVideoPath());
                     }
                     if (isDeleteDisplay) {
                         intent.putExtra("displayDelete", "delete");
                     }
                     intent.putExtra("url", new Gson().toJson(getFilesList()));
                     intent.putExtra("position", position + "");
-                    intent.putExtra("fragmentName", PictureNewPreviewFragment.class.getName());
-                    ctx.startActivity(intent);
+                    intent.putExtra("fragmentName", picClassName);
+                    context.startActivity(intent);
 
                 }
             });
@@ -168,9 +177,9 @@ public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             @Override
             protected String doInBackground(final Void... voids) {
                 if (!TextUtils.isEmpty(mList.get(position).getNetWordVideoPath())) {
-                    builder = Glide.with(ctx).load(FileUtils.getNetWorkVideoThumbnail(mList.get(position).getNetWordVideoPath()));
+                    builder = Glide.with(context).load(FileUtils.getNetWorkVideoThumbnail(mList.get(position).getNetWordVideoPath()));
                 } else {
-                    builder = Glide.with(ctx).load(FileUtils.getNetWorkVideoThumbnail(mList.get(position).getVideoUrl()));
+                    builder = Glide.with(context).load(FileUtils.getNetWorkVideoThumbnail(mList.get(position).getVideoUrl()));
                 }
                 return null;
             }
@@ -187,7 +196,7 @@ public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
             @Override
             protected String doInBackground(final Void... voids) {
-                builder = Glide.with(ctx).load(FileUtils.getVideoThumbnail(mList.get(position).getVideoPath()));
+                builder = Glide.with(context).load(FileUtils.getVideoThumbnail(mList.get(position).getVideoPath()));
                 return null;
             }
 

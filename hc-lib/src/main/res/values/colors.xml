@@ -36,7 +36,8 @@
     <color name="color_list_divider">#f2f2f2</color>
     <color name="color_nav_dark">#8c898b</color>
 
-    <color name="color_menu_ft">#282828</color>
+    <color name="color212121">#212121</color>
+    <color name="color_menu_ft">#212121</color>
     <color name="color_messge_ft">#4A4A4A</color>
     <color name="equiment_details_fs">#666666</color>
     <color name="color_back">#5B5B5B</color>

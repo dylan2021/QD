@@ -89,7 +89,7 @@ public class FaultSceneFragment extends Fragment {
         pictureAdapter.notifyDataSetChanged();
     }
 
-
+/*
     private void addItem(String path) {
         PictureInfo entity = new PictureInfo();
         if (StringUtils.isPicture(path)) {
@@ -102,6 +102,6 @@ public class FaultSceneFragment extends Fragment {
             pictureAdapter.addItemWithoutNotifyList(entity);
         }
 
-    }
+    }*/
 
 }

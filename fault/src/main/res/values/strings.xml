@@ -69,7 +69,7 @@
     <string name="title_activity_fault_filter">FaultFilterActivity</string>
     <string name="fault_servity">严重程度</string>
     <string name="permissions_camera">此功能需要相机和存储权限才能使用</string>
-    <string name="fault_see_to">查看现场记录</string>
+    <string name="fault_see_to">查看</string>
     <string name="fault_seletor_equ">请选择一台设备</string>
     <string name="fault_seletor_servity">请选择紧急程度</string>
     <string name="fault_seletor_reason">请选择故障原因</string>

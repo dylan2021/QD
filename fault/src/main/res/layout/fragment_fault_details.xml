@@ -106,6 +106,8 @@
                     style="@style/fault_manager_details_tv2" />
             </LinearLayout>
 
+            <View style="@style/fault_manager_hint" />
+
             <LinearLayout style="@style/fault_manager_details_ll">
 
                 <TextView
@@ -118,12 +120,13 @@
 
             </LinearLayout>
 
+            <View style="@style/fault_manager_hint" />
+
             <LinearLayout style="@style/fault_manager_details_ll">
 
                 <TextView
                     style="@style/fault_manager_details_tv"
                     android:text="处  理  人" />
-
 
                 <TextView
                     android:id="@+id/processing_name_tv"
@@ -144,26 +147,28 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="10px"
                     android:layout_weight="1"
                     android:gravity="right"
                     android:text="@string/fault_see_to"
-                    android:textColor="@color/color_underline_bg"
-                    android:textSize="@dimen/fs14" />
+                    android:textColor="@color/mainColor"
+                    android:textSize="@dimen/fs16" />
 
                 <View
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:background="@drawable/ic_equiment_right" />
             </LinearLayout>
 
+            <View style="@style/fault_manager_hint" />
 
             <LinearLayout
                 android:id="@+id/fault_processing_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginBottom="10dp"
                 android:background="#F6FAFB"
                 android:gravity="center_vertical"
@@ -222,13 +227,13 @@
 
                 <ImageView
                     android:id="@+id/falut_state_iv"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_marginRight="10dp" />
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginRight="10px" />
 
                 <View
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:background="@drawable/ic_equiment_right" />
             </LinearLayout>
         </LinearLayout>
