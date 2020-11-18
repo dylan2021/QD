@@ -2,16 +2,20 @@ package com.haocang.fault.post.ui.utils;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -66,14 +70,8 @@ public class PostEquipmentFragment extends Fragment implements OkHttpClientManag
     private boolean isRefresh = true;//区分是刷新还是加载更多
     private PostProcessingPersonAdapter mAdapter;
     private RecyclerView mRecyclerView;
-
     public static final int REQUESTCODE = 1032;
-
     private TextView titleNameTv;
-
-    /**
-     * 查询输入框
-     */
     private EditText queryEt;
 
     @Nullable
@@ -99,6 +97,17 @@ public class PostEquipmentFragment extends Fragment implements OkHttpClientManag
         view.findViewById(R.id.common_complete_tv).setOnClickListener(this);
         view.findViewById(R.id.search_v).setOnClickListener(this);
         queryEt = view.findViewById(R.id.patrol_query_et);
+        queryEt.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH || (event != null
+                        && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+                    search();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     private void getData() {
@@ -222,18 +231,19 @@ public class PostEquipmentFragment extends Fragment implements OkHttpClientManag
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.search_v) {
-            search();
         } else {
             complete();
         }
     }
 
+    //搜索
     private void search() {
         if (!OffLineOutApiUtil.isNetWork()) {
             refresh();
         } else {
-            if (!TextUtils.isEmpty(queryEt.getText().toString())) {
-                List<LabelEntity> list = getQueryList(queryEt.getText().toString());
+            String str = queryEt.getText().toString();
+            if (!TextUtils.isEmpty(str)) {
+                List<LabelEntity> list = getQueryList(str);
                 mAdapter.clear();
                 mAdapter.addAll(list);
                 mAdapter.notifyDataSetChanged();
@@ -258,13 +268,7 @@ public class PostEquipmentFragment extends Fragment implements OkHttpClientManag
         getActivity().finish();
     }
 
-
-    /**
-     * 搜索后的列表
-     *
-     * @param queryName
-     * @return
-     */
+    //搜索数据返回
     public List<LabelEntity> getQueryList(String queryName) {
         List<LabelEntity> li = new ArrayList<>();
         SynDataManager synDataManager = new SynDataManager();

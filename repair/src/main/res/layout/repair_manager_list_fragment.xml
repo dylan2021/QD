@@ -43,7 +43,7 @@
                 android:gravity="center_vertical"
                 android:hint="@string/repair_manager_search"
                 android:textColor="@color/color_task_ft"
-                android:textColorHint="@color/color_task_ft"
+                android:textColorHint="@color/color_hint"
                 android:textSize="@dimen/fs14" />
         </LinearLayout>
     </LinearLayout>

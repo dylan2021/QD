@@ -113,7 +113,7 @@
                 android:imeOptions="actionSearch"
                 android:singleLine="true"
                 android:textColor="@color/color_task_ft"
-                android:textColorHint="@color/color_task_ft"
+                android:textColorHint="@color/color_hint"
                 android:textCursorDrawable="@drawable/base_cursor_shape"
                 android:textSize="@dimen/fs14" />
 

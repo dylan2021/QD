@@ -6,6 +6,8 @@ import android.text.TextUtils;
 import com.haocang.base.R;
 import com.haocang.base.config.AppApplication;
 
+import org.feezu.liuli.timeselector.Utils.TextUtil;
+
 import java.math.BigDecimal;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -157,6 +159,9 @@ public class StringUtils {
 
 
     public static String utfCode(String value) {
+        if (TextUtil.isEmpty(value)) {
+            value="";
+        }
         try {
             value = URLEncoder.encode(value, "utf-8");
         } catch (Exception ex) {

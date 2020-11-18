@@ -111,7 +111,7 @@ public class SignleCollectionFragment extends Fragment implements SignleCollecti
         queryEt.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_SEND || (event != null
+                if (actionId == EditorInfo.IME_ACTION_SEARCH || (event != null
                         && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
                     refresh();
                     return true;

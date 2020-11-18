@@ -2,10 +2,13 @@ package com.haocang.waterlink.pump;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -23,6 +26,7 @@ import com.haocang.base.adapter.BaseAdapter;
 import com.haocang.base.base.CommonModel;
 import com.haocang.base.base.impl.CommonModelImpl;
 import com.haocang.base.utils.GetEntityListener;
+import com.haocang.base.utils.StringUtils;
 import com.haocang.base.utils.ToastUtil;
 import com.haocang.waterlink.R;
 import com.haocang.waterlink.constant.HomeUrlConst;
@@ -36,8 +40,8 @@ import java.util.HashMap;
    泵站列表,阀门井列表
  */
 @Route(path = "/pump/pumplist")
-public class BZ_FMJ_ListFragment extends Fragment implements View.OnClickListener, BaseRefreshListener {
-    private EditText queryEdt;
+public class BZ_FMJ_ListFragment extends Fragment implements BaseRefreshListener {
+    private EditText queryEt;
     private PullToRefreshLayout refreshLayout;
     private RecyclerView equimentRv;
     private TextView titleNameTv;
@@ -67,8 +71,7 @@ public class BZ_FMJ_ListFragment extends Fragment implements View.OnClickListene
     private void initView(View view) {
         titleNameTv = view.findViewById(R.id.title_common_tv);
         titleNameTv.setText(title);
-        queryEdt = view.findViewById(R.id.patrol_query_et);
-        view.findViewById(R.id.search_v).setOnClickListener(this);
+
         refreshLayout = view.findViewById(R.id.pulltorefreshlayout);
         refreshLayout.setRefreshListener(this);
         equimentRv = view.findViewById(R.id.recyclerview);
@@ -80,10 +83,10 @@ public class BZ_FMJ_ListFragment extends Fragment implements View.OnClickListene
             @Override
             public void onClick(View view, int position, Object item) {
                 BZ_FMJ_Bean.ItemsBean info = (BZ_FMJ_Bean.ItemsBean) item;
-                Intent intent = new Intent(context,BZ_FMJ_DeviceListActivity.class);
-                intent.putExtra("processId",info.getProcessId());
-                intent.putExtra("title",info.getProcessName());
-                intent.putExtra("isTypeBZ",isTypeBZ);
+                Intent intent = new Intent(context, BZ_FMJ_DeviceListActivity.class);
+                intent.putExtra("processId", info.getProcessId());
+                intent.putExtra("title", info.getProcessName());
+                intent.putExtra("isTypeBZ", isTypeBZ);
                 startActivity(intent);
 
             }
@@ -93,11 +96,21 @@ public class BZ_FMJ_ListFragment extends Fragment implements View.OnClickListene
 
             }
         });
-    }
 
-    @Override
-    public void onClick(View v) {
-        //搜索
+        queryEt = view.findViewById(R.id.patrol_query_et);
+        queryEt.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH || (event != null
+                        && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+                    String searchStr = queryEt.getText().toString();
+                    map.put("query", StringUtils.utfCode(searchStr));
+                    refresh();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     @Override
@@ -117,7 +130,6 @@ public class BZ_FMJ_ListFragment extends Fragment implements View.OnClickListene
                     @Override
                     public void success(final BZ_FMJ_Bean entity) {
                         TextUtilsMy.finish(refreshLayout);
-                        Log.d("请求数据", "请求数据:" + entity.getTotal());
                         adapter.clear();
                         adapter.addAll(entity.getItems());
                         adapter.notifyDataSetChanged();
@@ -126,7 +138,6 @@ public class BZ_FMJ_ListFragment extends Fragment implements View.OnClickListene
                     @Override
                     public void fail(final String err) {
                         TextUtilsMy.finish(refreshLayout);
-                        Log.d("请求数据", "请求失败:" + err);
                         ToastUtil.makeText(context, R.string.request_faild_retry);
                     }
                 })
@@ -135,7 +146,7 @@ public class BZ_FMJ_ListFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void loadMore() {
-        map.put("pageSize", Integer.valueOf(map.get("pageSize").toString()) +10);
+        map.put("pageSize", Integer.valueOf(map.get("pageSize").toString()) + 10);
         getData();
     }
 }
