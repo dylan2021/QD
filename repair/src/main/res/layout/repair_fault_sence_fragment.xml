@@ -32,7 +32,7 @@
             android:layout_weight="1"
             android:background="@null"
             android:gravity="top"
-            android:hint="无内容"
+            android:hint="无"
             android:maxLines="99999"
             android:scrollbars="vertical"
             android:textColor="@color/color_messge_ft"

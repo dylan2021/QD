@@ -53,7 +53,7 @@ public class ExperimentFragment extends Fragment implements View.OnClickListener
 
     private void initView(View view) {
         titleNameTv = view.findViewById(R.id.title_common_tv);
-        titleNameTv.setText("提交抄表数据");
+        titleNameTv.setText("数据录入");
         queryEdt = view.findViewById(R.id.query_et);
         view.findViewById(R.id.search_v).setOnClickListener(this);
         pullToRefreshLayout = view.findViewById(R.id.pulltorefreshlayout);

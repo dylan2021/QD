@@ -150,13 +150,13 @@
                     android:layout_marginRight="10px"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:text="@string/fault_see_to"
+                    android:text="查看"
                     android:textColor="@color/mainColor"
                     android:textSize="@dimen/fs16" />
 
                 <View
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="25px"
+                    android:layout_height="25px"
                     android:background="@drawable/ic_equiment_right" />
             </LinearLayout>
 
@@ -232,8 +232,9 @@
                     android:layout_marginRight="10px" />
 
                 <View
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="25px"
+                    android:layout_marginRight="5dp"
+                    android:layout_height="25px"
                     android:background="@drawable/ic_equiment_right" />
             </LinearLayout>
         </LinearLayout>

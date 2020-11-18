@@ -5,8 +5,7 @@
     android:background="#000000"
     android:orientation="vertical">
 
-    <include layout="@layout/title_common"
-        />
+    <include layout="@layout/title_common" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
