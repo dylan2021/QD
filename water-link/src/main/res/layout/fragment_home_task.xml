@@ -6,6 +6,13 @@
     android:background="#FFFFFF"
     android:orientation="vertical">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="15px"
+        android:layout_marginTop="8px"
+        android:layout_marginBottom="7px"
+        android:background="@color/color_gray5" />
+
     <LinearLayout
         android:id="@+id/jump_ll"
         android:layout_width="match_parent"
@@ -24,8 +31,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="9dp"
             android:text="@string/task"
-            android:textColor="#ff3c3c3c"
-            android:textSize="20sp" />
+            android:textColor="#212121"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="0dp"
@@ -52,8 +60,8 @@
         android:id="@+id/nodata_tv"
         android:layout_width="match_parent"
         android:layout_height="132dp"
-        android:gravity="center"
         android:layout_marginTop="10dip"
+        android:gravity="center"
         android:text="无任务"
         android:textColor="#c8c7c7"
         android:textSize="15sp" />

@@ -26,7 +26,6 @@ public class HomeSetUpAdapter extends BaseAdapter<HomeSetUpEntity> {
         super(R.layout.adapter_home_setup);
     }
 
-
     @Override
     protected void convert(final BaseHolder holder, final HomeSetUpEntity item) {
         holder.setText(R.id.name_tv, item.getName());
