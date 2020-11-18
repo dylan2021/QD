@@ -120,7 +120,7 @@ public class HomeMenuPresenterImpl implements HomeMenuPresenter {
             , "/experiment/experiment"
             , "/alarm/main"
             , "/alarm/main"
-            , "/warm/warmStatus"
+            , "/curve/three"
     };
 
     @Override

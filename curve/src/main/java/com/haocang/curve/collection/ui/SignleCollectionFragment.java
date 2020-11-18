@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +36,7 @@ import com.haocang.curve.collection.presenter.SignleCollectionPresenter;
 import com.haocang.curve.collection.presenter.impl.SignleCollectionPresenterImpl;
 import com.haocang.curve.main.bean.CurveConstans;
 import com.haocang.curve.more.bean.PointEntity;
-import com.haocang.maonlib.base.config.HCLicConstant;
+import com.haocang.maonlib.base.config.MangoConst;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
 
@@ -88,19 +87,18 @@ public class SignleCollectionFragment extends Fragment implements SignleCollecti
         map.put("datype", "");
         map.put("datasource", "AUTO,INPUT,CALC");
         map.put("currentPage", "1");
-        if (HCLicConstant.JUMP_STATIC.equals("1")) {
+        if (MangoConst.CURVE_TYPE.equals("1")) {
             map.put("categoryId", "1");
-        } else {
+        } else if (MangoConst.CURVE_TYPE.equals("2")) {
             map.put("categoryId", "3");
+        } else {//测点列表
+            map.put("datasource", "AUTO");
         }
 
         initView(view);
+        initData();
         return view;
     }
-
-    /**
-     * @param view 根View.
-     */
     private void initView(final View view) {
         RecyclerView recyclerView = view.findViewById(R.id.recyclerview);
         mAdapter = new GignleCollectionAdapter(this);
@@ -115,16 +113,15 @@ public class SignleCollectionFragment extends Fragment implements SignleCollecti
         pullToRefreshLayout = view.findViewById(R.id.pulltorefreshlayout);
         pullToRefreshLayout.setRefreshListener(this);
         view.findViewById(R.id.see_curve_tv).setOnClickListener(this);
-        initList();
+
     }
 
     private List<SignleCurve> selectedList;
     private List<String> selectPointIdList = new ArrayList<>();
 
     private List<PointList> selectedPointList;
-    private List<String> selectIdList = new ArrayList<>();
 
-    private void initList() {
+    private void initData() {
         Type type = new TypeToken<List<PointEntity>>() {
         }.getType();
         List<PointEntity> selectedPoints = new Gson()
@@ -135,9 +132,10 @@ public class SignleCollectionFragment extends Fragment implements SignleCollecti
             for (PointEntity entity : selectedPoints) {
                 SignleCurve curve = new SignleCurve();
                 curve.setName(entity.getMpointName());
-                if (!TextUtils.isEmpty(entity.getMpointId())) {
-                    //todo  实时监测 曲线 的pointid字段名称 不同 ，所以要判断
-                    curve.setId(Integer.parseInt(entity.getMpointId()));
+                String mpointId = entity.getMpointId();
+                if (!TextUtils.isEmpty(mpointId)) {
+                    // 转化接口请求的mpointId为曲线需要的id
+                    curve.setId(Integer.parseInt(mpointId));
                 } else {
                     curve.setId(entity.getId());
                 }
@@ -146,7 +144,7 @@ public class SignleCollectionFragment extends Fragment implements SignleCollecti
                 curve.setSiteName(entity.getSiteName());
                 curve.setParentName(entity.getSiteName());
                 selectedList.add(curve);
-                selectPointIdList.add(CurveConstans.CHARTNAME_PRE + entity.getMpointId());
+                selectPointIdList.add(CurveConstans.CHARTNAME_PRE + mpointId);
             }
         }
         signleCollectionPresenter.addSelectedPoints();

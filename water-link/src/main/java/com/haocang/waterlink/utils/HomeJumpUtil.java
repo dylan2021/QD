@@ -2,13 +2,10 @@ package com.haocang.waterlink.utils;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import android.util.Log;
 
-import com.haocang.base.config.ArouterPathConstants;
 import com.haocang.base.utils.ARouterUtil;
 import com.haocang.base.utils.ToastUtil;
-import com.haocang.curve.collection.ui.SignleCollectionFragment;
-import com.haocang.maonlib.base.config.HCLicConstant;
+import com.haocang.maonlib.base.config.MangoConst;
 import com.haocang.waterlink.R;
 import com.haocang.waterlink.home.bean.MenuEntity;
 
@@ -68,23 +65,16 @@ public class HomeJumpUtil {
         if ("/monitor/main".equals(fragmentUri)) {
             fragmentUri = "/monitor/home/";
         }
-        if ("/curve/main".equals(fragmentUri)) {
-//            fragmentUri = ArouterPathConstants.Curve.CURVE_COLLECTION;
+
+        if (fragmentUri.startsWith("/curve")) {
             fragmentUri = "/curve/SignleCollectionFragment";
             Map<String, Object> map = new HashMap<>();
             map.put("fragmentUri", fragmentUri);
             map.put("main", "main");
-            HCLicConstant.JUMP_STATIC = "1";
-            ARouterUtil.toFragment(map);
-            return;
-        }
-        if ("/curve/two".equals(fragmentUri)) {
-//            fragmentUri = ArouterPathConstants.Curve.CURVE_COLLECTION;
-            fragmentUri = "/curve/SignleCollectionFragment";
-            Map<String, Object> map = new HashMap<>();
-            map.put("fragmentUri", fragmentUri);
-            map.put("main", "main");
-            HCLicConstant.JUMP_STATIC = "2";
+            boolean  isOne= "/curve/main".equals(fragmentUri);
+            boolean  isTwo= "/curve/two".equals(fragmentUri);
+            MangoConst.CURVE_TYPE =  isOne? "1" :isTwo? "2":"3";
+
             ARouterUtil.toFragment(map);
             return;
         }

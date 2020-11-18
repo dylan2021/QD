@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.MenuItem;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -16,7 +15,7 @@ import com.haocang.base.config.AppApplication;
 import com.haocang.base.config.LibConfig;
 import com.haocang.base.ui.CommonActivity;
 import com.haocang.equipmentar.constants.EquipmentARConstants;
-import com.haocang.maonlib.base.config.HCLicConstant;
+import com.haocang.maonlib.base.config.MangoConst;
 import com.haocang.offline.bean.user.OffLineUserEntity;
 import com.haocang.offline.util.OffLineOutApiUtil;
 import com.haocang.waterlink.R;
@@ -68,8 +67,8 @@ public class GuiActivity extends Activity {
         }
 //        QQShareUtil.mAppid = "1106964590";
         CrashReport.initCrashReport(getApplicationContext(), "010cddf759", false);//开启闪退收集系统
-        EquipmentARConstants.setKey(HCLicConstant.AR_KEY);
-        HCLicConstant.setAddressIp();
+        EquipmentARConstants.setKey(MangoConst.AR_KEY);
+        MangoConst.setAddressIp();
         setContentView(R.layout.activity_gui);
         ctx = GuiActivity.this;
         LibConfig.CONTINUITY_INTERVAL = 180;

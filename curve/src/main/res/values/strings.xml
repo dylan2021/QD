@@ -4,7 +4,7 @@
     <string name="curve_signle">单数据曲线</string>
     <string name="curve_collection">收藏曲线</string>
     <string name="curve_pick_more">曲线选择</string>
-    <string name="curve_name">请输入名称</string>
+    <string name="curve_name">测点名称</string>
     <string name="curve_title">数据曲线分析</string>
     <string name="curve_pick_collection">我的收藏</string>
     <string name="curve_refresh">刷新</string>

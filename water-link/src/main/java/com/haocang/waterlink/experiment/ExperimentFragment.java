@@ -76,7 +76,7 @@ public class ExperimentFragment extends Fragment implements View.OnClickListener
                 map.put("formId", bean.getId());
                 map.put("cycleId", bean.getCycleId());
 //                map.put("formId", bean.getId());
-//                HCLicConstant.JUMP_STATIC = "1";
+//                HCLicConstant.CURVE_TYPE = "1";
                 ARouterUtil.toFragment(map);
             }
 

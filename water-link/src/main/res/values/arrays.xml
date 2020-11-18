@@ -140,7 +140,7 @@
         <item>/experiment/experiment</item>
         <item>/alarm/main</item>
         <item>/alarm/main</item>
-        <item>/warm/warmStatus</item>
+        <item>/curve/three</item>
 
     </string-array>
 </resources>

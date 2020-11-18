@@ -18,26 +18,12 @@ import com.haocang.base.config.LibConstants;
  */
 
 
-public class HCLicConstant {
-
-//    public static final String ADDRESS_IP = "https://mg.hc-yun.com:443/";//正式库
-//    public static final String ADDRESS_IP = "https://sh.hc-yun.com:22001/";
-//    public static final String ADDRESS_IP = "http://123.235.49.242:18105/";
-
-//    public static final String ADDRESS_IP = "http://122.114.2.195:16901/";//蓝鸟
-    //    public static final String ADDRESS_IP = "http://122.114.164.168:6111/";
+public class MangoConst {
     public static final String AR_KEY = "ZOLNOWTFOIwZoDi0WMWFq7zGJojQbEpT7yJfiGcdwUdeL7iUCXaQ6k5ENbFADQRfZzqKKs3PferLPtZAdqgcslCKJZnqvmUV0u8tae80eg9girlPqcEOqW8qHZCbeqTJlcSKMyrXyhxdyJ8rp4XWWf11t46UaTeUAVQsmEguQsTZodI02l7b6Dm4g7TaeuJMufeaxKg3";
-
     public static void setAddressIp() {
         LibConstants.setAddressIp(LibConstants.ADDRESS_IP);
     }
 
-    public static void setAddressIp(String ip) {
-        LibConstants.setAddressIp(ip);
-    }
-
-
-
-    public static String JUMP_STATIC = "1";
+    public static String CURVE_TYPE = "1";
 
 }

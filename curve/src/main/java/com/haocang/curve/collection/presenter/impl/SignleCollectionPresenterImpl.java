@@ -105,16 +105,12 @@ public class SignleCollectionPresenterImpl
 
     @Override
     public void getPoint(Map<String, Object> map) {
-
-//        Map<String, Object> map = new HashMap<>();
         if (!TextUtils.isEmpty(signleCollectionView.getQueryName())) {
-            map.put("queryName",
-                    StringUtils.utfCode(signleCollectionView.getQueryName()));
+            map.put("queryName", StringUtils.utfCode(signleCollectionView.getQueryName()));
         }else {
             map.remove("queryName");
         }
-        CommonModel<PointList> progressModel
-                = new CommonModelImpl<>();
+        CommonModel<PointList> progressModel = new CommonModelImpl<>();
         Type type = new TypeToken<List<PointList>>() {
         }.getType();
         progressModel
