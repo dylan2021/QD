@@ -65,11 +65,11 @@
 
     <string-array name="tab_list">
         <item>数据组合</item>
-        <item>数据测点</item>
+      <!--  <item>数据测点</item>-->
         <item>设备台账</item>
         <item>缺陷工单</item>
         <item>维修工单</item>
-        <item>巡检工单</item>
+      <!--  <item>巡检工单</item>-->
     </string-array>
 
     <string-array name="task_tab_list">

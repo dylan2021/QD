@@ -50,11 +50,11 @@ public class FollowNewFragment extends Fragment {
     private ImageView radioIv;
 
     private DataCombinationFragment dataCombinationFragment;
-    private DataPointFragment dataPointFragment;
+   /* private DataPointFragment dataPointFragment;*/
     private FollowEquipmentFragment followEquipmentFragment;
     private FollowFaultFragment followFaultFragment;
     private FollowRepairFragment followRepairFragment;
-    private FollowPatrolFragment followPatrolFragment;
+   // private FollowPatrolFragment followPatrolFragment;
 
     @Nullable
     @Override
@@ -73,14 +73,14 @@ public class FollowNewFragment extends Fragment {
         recyclerview.setLayoutManager(layoutManager);
         recyclerview.setAdapter(adapter);
         viewPager = view.findViewById(R.id.viewpager);
-        viewPager.setOffscreenPageLimit(6);
+        viewPager.setOffscreenPageLimit(4);
 //        tabLayout.setupWithViewPager(viewPager);
         dataCombinationFragment = new DataCombinationFragment();
         dataCombinationFragment.setImageView(radioIv);
         dataCombinationFragment.setFirstFlag(true);
 
-        dataPointFragment = new DataPointFragment();
-        dataPointFragment.setImageView(radioIv);
+  /*      dataPointFragment = new DataPointFragment();
+        dataPointFragment.setImageView(radioIv);*/
 
         followEquipmentFragment = new FollowEquipmentFragment();
         followEquipmentFragment.setImageView(radioIv);
@@ -91,15 +91,15 @@ public class FollowNewFragment extends Fragment {
         followRepairFragment = new FollowRepairFragment();
         followRepairFragment.setImageView(radioIv);
 
-        followPatrolFragment = new FollowPatrolFragment();
-        followPatrolFragment.setImageView(radioIv);
+     /*   followPatrolFragment = new FollowPatrolFragment();
+        followPatrolFragment.setImageView(radioIv);*/
 
         fragmentList.add(dataCombinationFragment);
-        fragmentList.add(dataPointFragment);
+        //fragmentList.add(dataPointFragment);
         fragmentList.add(followEquipmentFragment);
         fragmentList.add(followFaultFragment);
         fragmentList.add(followRepairFragment);
-        fragmentList.add(followPatrolFragment);
+        //fragmentList.add(followPatrolFragment);
         pagerAdapter = new FollowViewPageAdapter(getActivity().getSupportFragmentManager(), fragmentList);
         viewPager.setAdapter(pagerAdapter);
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -149,16 +149,14 @@ public class FollowNewFragment extends Fragment {
         if (position == 0) {
             dataCombinationFragment.getData();
         } else if (position == 1) {
-            dataPointFragment.refresh();
-        } else if (position == 2) {
             followEquipmentFragment.refresh();
-        } else if (position == 3) {
+        } else if (position == 2) {
             followFaultFragment.refresh();
-        } else if (position == 4) {
+        } else if (position == 3) {
             followRepairFragment.refresh();
-        } else if (position == 5) {
+        } /*else if (position == 4) {
             followPatrolFragment.refresh();
-        }
+        }*/
     }
 
     private void getTabList() {
