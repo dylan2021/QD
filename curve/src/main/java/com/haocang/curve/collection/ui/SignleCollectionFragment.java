@@ -16,6 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -64,64 +65,33 @@ import java.util.Map;
  */
 
 @Route(path = "/curve/SignleCollectionFragment")
-public class SignleCollectionFragment extends
-        Fragment implements SignleCollectionView, View.OnClickListener,
+public class SignleCollectionFragment extends Fragment implements SignleCollectionView, View.OnClickListener,
         TextView.OnEditorActionListener, BaseRefreshListener {
-
-    /**
-     *
-     */
     private GignleCollectionAdapter mAdapter;
-
-
-    /**
-     *
-     */
     private GignlePointCollectionAdapter mPointAdapter;
-
-    /**
-     *
-     */
     private SignleCollectionPresenter signleCollectionPresenter;
-
-    /**
-     *
-     */
     private PullToRefreshLayout pullToRefreshLayout;
-
-    /**
-     *
-     */
     private EditText queryEt;
-
-    /**
-     * @param inflater
-     * @param container
-     * @param savedInstanceState
-     * @return
-     */
-
-
     Map<String, Object> map = new HashMap<>();
+    private FragmentActivity context;
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull final LayoutInflater inflater,
-                             @Nullable final ViewGroup container,
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container,
                              @Nullable final Bundle savedInstanceState) {
+        context = getActivity();
         View view = inflater.inflate(R.layout.curve_signlecollection_fragment, null);
 
-        ((TextView)view.findViewById(R.id.title_common_tv)).setText("数据列表");
+        ((TextView) view.findViewById(R.id.title_common_tv)).setText("数据列表");
 
-        map.put("pageSize","10");
-        map.put("datype","");
-        map.put("datasource","AUTO,INPUT,CALC");
-        map.put("currentPage","1");
-        if (HCLicConstant.JUMP_STATIC.equals("1")){
-//            queryName=&datype=&datasource=AUTO,INPUT,CALC&categoryId=1&pageSize=10&currentPage=1
-            map.put("categoryId","1");
-        }else {
-            map.put("categoryId","3");
+        map.put("pageSize", "10");
+        map.put("datype", "");
+        map.put("datasource", "AUTO,INPUT,CALC");
+        map.put("currentPage", "1");
+        if (HCLicConstant.JUMP_STATIC.equals("1")) {
+            map.put("categoryId", "1");
+        } else {
+            map.put("categoryId", "3");
         }
 
 //        Log.e("type",HCLicConstant.JUMP_STATIC);
@@ -138,13 +108,12 @@ public class SignleCollectionFragment extends
 
         mPointAdapter = new GignlePointCollectionAdapter(this);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(mPointAdapter);
         queryEt = view.findViewById(R.id.query_et);
         queryEt.setOnEditorActionListener(this);
         signleCollectionPresenter = new SignleCollectionPresenterImpl(this);
         signleCollectionPresenter.getPoint(map);
-//        signleCollectionPresenter.getList();
         pullToRefreshLayout = view.findViewById(R.id.pulltorefreshlayout);
         pullToRefreshLayout.setRefreshListener(this);
         view.findViewById(R.id.see_curve_tv).setOnClickListener(this);
@@ -156,18 +125,20 @@ public class SignleCollectionFragment extends
 
     private List<PointList> selectedPointList;
     private List<String> selectIdList = new ArrayList<>();
+
     private void initList() {
         Type type = new TypeToken<List<PointEntity>>() {
         }.getType();
         List<PointEntity> selectedPoints = new Gson()
-                .fromJson(getActivity().getIntent().getStringExtra("selectedPointsStr"), type);
+                .fromJson(context.getIntent().getStringExtra("selectedPointsStr"), type);
         if (selectedPoints != null) {
             selectedList = new ArrayList<>();
             selectPointIdList.clear();
             for (PointEntity entity : selectedPoints) {
                 SignleCurve curve = new SignleCurve();
                 curve.setName(entity.getMpointName());
-                if (!TextUtils.isEmpty(entity.getMpointId())) {//todo  实时监测 曲线 的pointid字段名称 不同 ，所以要判断
+                if (!TextUtils.isEmpty(entity.getMpointId())) {
+                    //todo  实时监测 曲线 的pointid字段名称 不同 ，所以要判断
                     curve.setId(Integer.parseInt(entity.getMpointId()));
                 } else {
                     curve.setId(entity.getId());
@@ -180,67 +151,24 @@ public class SignleCollectionFragment extends
                 selectPointIdList.add(CurveConstans.CHARTNAME_PRE + entity.getMpointId());
             }
         }
-//        signleCollectionPresenter.addSelectedPoints();
-
-
-
-
-//        Type type1 = new TypeToken<List<PointList>>() {
-//        }.getType();
-//        List<PointEntity> selectedPoints = new Gson()
-//                .fromJson(getActivity().getIntent().getStringExtra("selectedPointsStr"), type1);
-//        if (selectedPoints != null) {
-//            selectedPointList = new ArrayList<>();
-//            selectIdList.clear();
-//            for (PointEntity entity : selectedPoints) {
-//                SignleCurve curve = new SignleCurve();
-//                curve.setName(entity.getMpointName());
-//                if (!TextUtils.isEmpty(entity.getMpointId())) {//todo  实时监测 曲线 的pointid字段名称 不同 ，所以要判断
-//                    curve.setId(Integer.parseInt(entity.getMpointId()));
-//                } else {
-//                    curve.setId(entity.getId());
-//                }
-//                curve.setSelect(true);
-//                curve.setType(CurveConstans.TYPE_DATA);
-//                curve.setSiteName(entity.getSiteName());
-//                curve.setParentName(entity.getSiteName());
-////                selectedPointList.add(curve);
-//                selectIdList.add(CurveConstans.CHARTNAME_PRE + entity.getMpointId());
-//            }
-//        }
         signleCollectionPresenter.addSelectedPoints();
-
-
     }
 
-    /**
-     *
-     */
     @Override
     public void refresh() {
         mPointAdapter.clear();
-        map.put("currentPage","1");
+        map.put("currentPage", "1");
         signleCollectionPresenter.getPoint(map);
     }
 
-    /**
-     *
-     */
     @Override
     public void loadMore() {
-        map.put("currentPage",(Integer.valueOf(String.valueOf(map.get("currentPage")))+1)+"");
+        map.put("currentPage", (Integer.valueOf(String.valueOf(map.get("currentPage"))) + 1) + "");
         signleCollectionPresenter.getPoint(map);
     }
 
-    /**
-     * @param textView
-     * @param actionId
-     * @param keyEvent
-     * @return
-     */
     @Override
-    public boolean onEditorAction(final TextView textView,
-                                  final int actionId,
+    public boolean onEditorAction(final TextView textView, final int actionId,
                                   final KeyEvent keyEvent) {
         if (actionId == EditorInfo.IME_ACTION_SEND
                 || (keyEvent != null
@@ -251,17 +179,11 @@ public class SignleCollectionFragment extends
         return false;
     }
 
-    /**
-     * @return 输入框文本.
-     */
     @Override
     public String getQueryName() {
         return queryEt.getText().toString();
     }
 
-    /**
-     * @param list 列表.
-     */
     @Override
     public void renderList(final List<SignleCurve> list) {
         mAdapter.clear();
@@ -271,8 +193,6 @@ public class SignleCollectionFragment extends
         pullToRefreshLayout.finishRefresh();
     }
 
-
-
     @Override
     public void renderPointList(final List<PointList> list) {
         mPointAdapter.addAll(list);
@@ -280,7 +200,6 @@ public class SignleCollectionFragment extends
         pullToRefreshLayout.finishLoadMore();
         pullToRefreshLayout.finishRefresh();
     }
-
 
     /**
      * @param entity 数据.
@@ -318,7 +237,6 @@ public class SignleCollectionFragment extends
     }
 
 
-
     @Override
     public List<PointList> getSelectedPointList() {
         return selectedPointList;
@@ -335,41 +253,18 @@ public class SignleCollectionFragment extends
     @Override
     public void onClick(final View v) {
         if (v.getId() == R.id.see_curve_tv) {
-//            List<PointEntity> pointList = mAdapter.getSelectList();
-//            if (pointList == null || pointList.size() == 0) {
-//                ToastUtil.makeText(getActivity(), "请选择曲线");
-//                return;
-//            }
-//            Type type = new TypeToken<List<PointEntity>>() {
-//            }.getType();
-////            Intent intent = new Intent(getActivity(), CommonActivity.class);
-//            String selectedPointsStr = new Gson().toJson(pointList, type);
-////            intent.putExtra("selectedPointsStr", selectedPointsStr);
-//            if (!TextUtils.isEmpty(getIsHomeJump())) {
-//                Map<String, Object> map = new HashMap<>();
-//                map.put("selectedPointsStr", selectedPointsStr);
-//                startActivityForResult(map, getActivity(), ArouterPathConstants.Curve.CURVE_MAIN, CurveConstans.PICK_COLLECTION_REQUEST_CODE);
-//            } else {
-//                Intent intent = new Intent();
-//                intent.putExtra("selectedPointsStr", selectedPointsStr);
-//                ((Activity) getContext()).setResult(CurveConstans.PICK_COLLECTION_REQUEST_CODE, intent);
-//                ((Activity) getContext()).finish();
-//            }
-
             List<PointEntity> pointList = mPointAdapter.getSelectList();
             if (pointList == null || pointList.size() == 0) {
-                ToastUtil.makeText(getActivity(), "请选择曲线");
+                ToastUtil.makeText(context, "请选择曲线");
                 return;
             }
             Type type = new TypeToken<List<PointEntity>>() {
             }.getType();
-//            Intent intent = new Intent(getActivity(), CommonActivity.class);
             String selectedPointsStr = new Gson().toJson(pointList, type);
-//            intent.putExtra("selectedPointsStr", selectedPointsStr);
             if (!TextUtils.isEmpty(getIsHomeJump())) {
                 Map<String, Object> map = new HashMap<>();
                 map.put("selectedPointsStr", selectedPointsStr);
-                startActivityForResult(map, getActivity(), ArouterPathConstants.Curve.CURVE_MAIN, CurveConstans.PICK_COLLECTION_REQUEST_CODE);
+                startActivityForResult(map, context, ArouterPathConstants.Curve.CURVE_MAIN, CurveConstans.PICK_COLLECTION_REQUEST_CODE);
             } else {
                 Intent intent = new Intent();
                 intent.putExtra("selectedPointsStr", selectedPointsStr);
@@ -402,6 +297,6 @@ public class SignleCollectionFragment extends
     }
 
     private String getIsHomeJump() {
-        return getActivity().getIntent().getStringExtra("main");
+        return context.getIntent().getStringExtra("main");
     }
 }

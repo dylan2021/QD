@@ -108,7 +108,6 @@ dependencies {
     //    api 'com.haocang:app-hc-lib:0.0.1-SNAPSHOT@aar'
 //    implementation project(':off-line')
 
-    //api 'com.haocang:app-mango-monitor-androidx:0.0.0004-SNAPSHOT@aar'
     //新版
-    api 'com.haocang:app-mango-monitor-androidx:0.0.0015-SNAPSHOT@aar'
+    api 'com.haocang:app-mango-monitor-androidx:0.0.0019-SNAPSHOT@aar'
 }
