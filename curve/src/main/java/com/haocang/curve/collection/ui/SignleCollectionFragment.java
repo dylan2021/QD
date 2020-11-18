@@ -64,8 +64,8 @@ import java.util.Map;
  */
 
 @Route(path = "/curve/SignleCollectionFragment")
-public class SignleCollectionFragment extends Fragment implements SignleCollectionView, View.OnClickListener,
-        TextView.OnEditorActionListener, BaseRefreshListener {
+public class SignleCollectionFragment extends Fragment implements SignleCollectionView,
+        View.OnClickListener, BaseRefreshListener {
     private GignleCollectionAdapter mAdapter;
     private GignlePointCollectionAdapter mPointAdapter;
     private SignleCollectionPresenter signleCollectionPresenter;
@@ -99,6 +99,7 @@ public class SignleCollectionFragment extends Fragment implements SignleCollecti
         initData();
         return view;
     }
+
     private void initView(final View view) {
         RecyclerView recyclerView = view.findViewById(R.id.recyclerview);
         mAdapter = new GignleCollectionAdapter(this);
@@ -107,7 +108,17 @@ public class SignleCollectionFragment extends Fragment implements SignleCollecti
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(mPointAdapter);
         queryEt = view.findViewById(R.id.query_et);
-        queryEt.setOnEditorActionListener(this);
+        queryEt.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEND || (event != null
+                        && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+                    refresh();
+                    return true;
+                }
+                return false;
+            }
+        });
         signleCollectionPresenter = new SignleCollectionPresenterImpl(this);
         signleCollectionPresenter.getPoint(map);
         pullToRefreshLayout = view.findViewById(R.id.pulltorefreshlayout);
@@ -164,18 +175,6 @@ public class SignleCollectionFragment extends Fragment implements SignleCollecti
     }
 
     @Override
-    public boolean onEditorAction(final TextView textView, final int actionId,
-                                  final KeyEvent keyEvent) {
-        if (actionId == EditorInfo.IME_ACTION_SEND
-                || (keyEvent != null
-                && keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
-            refresh();
-            return true;
-        }
-        return false;
-    }
-
-    @Override
     public String getQueryName() {
         return queryEt.getText().toString();
     }
@@ -191,6 +190,7 @@ public class SignleCollectionFragment extends Fragment implements SignleCollecti
 
     @Override
     public void renderPointList(final List<PointList> list) {
+        mPointAdapter.clear();
         mPointAdapter.addAll(list);
         mPointAdapter.notifyDataSetChanged();
         pullToRefreshLayout.finishLoadMore();
@@ -202,9 +202,6 @@ public class SignleCollectionFragment extends Fragment implements SignleCollecti
      */
     @Override
     public void onItemClick(final SignleCurve entity) {
-        /**
-         * 如果已经选择了8条曲线了，则不能再选择了
-         */
         if (mAdapter.getSelectList().size() >= CurveConstans.MAX_CURVE_COUNT && !entity.isSelect()) {
             ToastUtil.makeText(getContext(), getString(R.string.curve_max_limit_tip));
         } else {
@@ -216,9 +213,6 @@ public class SignleCollectionFragment extends Fragment implements SignleCollecti
 
     @Override
     public void onItemClick(PointList entity) {
-        /**
-         * 如果已经选择了8条曲线了，则不能再选择了
-         */
         if (mPointAdapter.getSelectList().size() >= CurveConstans.MAX_CURVE_COUNT && !entity.isSelect()) {
             ToastUtil.makeText(getContext(), getString(R.string.curve_max_limit_tip));
         } else {
@@ -270,11 +264,9 @@ public class SignleCollectionFragment extends Fragment implements SignleCollecti
         }
     }
 
-
     public void startActivityForResult(Map<String, Object> map, Activity activity, String path, int requestCode) {
         Postcard postcard = ARouter.getInstance().build(path);
         Iterator var4 = map.entrySet().iterator();
-
         while (var4.hasNext()) {
             Map.Entry<String, Object> entry = (Map.Entry) var4.next();
             String key = (String) entry.getKey();

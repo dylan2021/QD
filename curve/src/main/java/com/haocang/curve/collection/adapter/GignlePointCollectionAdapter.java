@@ -221,6 +221,7 @@ public class GignlePointCollectionAdapter
 
     public void clear() {
         mList.clear();
+        notifyDataSetChanged();
     }
 
     public Context getContext() {

@@ -70,20 +70,10 @@ import wendu.dsbridge.DWebView;
  * 修改时间：
  */
 @Route(path = ArouterPathConstants.Curve.CURVE_MAIN)
-public class CurveActivity extends BaseActivity
-        implements View.OnClickListener, CurveView {
-    /**
-     * 当前选择的时间.
-     */
+public class CurveActivity extends BaseActivity implements View.OnClickListener, CurveView {
     private TextView timeTv;
     private TextView titletv;
-    /**
-     * 周期选择.
-     */
     private Spinner sycleSp;
-    /**
-     * 曲线webview.
-     */
     private DWebView curveWv;
     private CurvePresenterImpl curvePresenter;
     private TextView cycleTv;

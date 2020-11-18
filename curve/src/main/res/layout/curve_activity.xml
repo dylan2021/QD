@@ -47,7 +47,7 @@
                 android:layout_width="22dip"
                 android:layout_height="22dip"
                 android:layout_marginLeft="25dip"
-                android:src="@mipmap/curve_back_to_current" />
+                android:src="@mipmap/curve_refresh" />
 
             <TextView
                 android:id="@+id/back_to_current_tv"
