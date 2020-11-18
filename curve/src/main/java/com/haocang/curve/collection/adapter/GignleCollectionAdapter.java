@@ -37,27 +37,11 @@ import java.util.List;
  */
 public class GignleCollectionAdapter
         extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    /**
-     *
-     */
     private List<SignleCurve> mList = new ArrayList<>();
-
-    /**
-     * 交互View.
-     */
     private SignleCollectionView signleCollectionView;
-
-    /**
-     * @param view 和主界面交互接口
-     */
     public GignleCollectionAdapter(final SignleCollectionView view) {
         signleCollectionView = view;
     }
-
-    /**
-     * @param position
-     * @return
-     */
     @Override
     public int getItemViewType(final int position) {
         int type = CurveConstans.TYPE_TITLE;
@@ -75,12 +59,6 @@ public class GignleCollectionAdapter
         }
         return type;
     }
-
-    /**
-     * @param parent
-     * @param viewType
-     * @return
-     */
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull final ViewGroup parent,
@@ -100,10 +78,6 @@ public class GignleCollectionAdapter
         }
     }
 
-    /**
-     * @param holder
-     * @param position
-     */
     @Override
     public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder,
                                  final int position) {
@@ -116,20 +90,12 @@ public class GignleCollectionAdapter
         }
     }
 
-    /**
-     * @param holder   holder.
-     * @param position 位置
-     */
     private void setPointTitle(final PointTitleHolder holder,
                                final int position) {
         SignleCurve entity = mList.get(position);
         holder.titleNameTv.setText(entity.getTitleName());
     }
 
-    /**
-     * @param holder   holder.
-     * @param position 位置
-     */
     private void setPointList(final PointListHolder holder,
                               final int position) {
         final SignleCurve entity = mList.get(position);
@@ -137,7 +103,6 @@ public class GignleCollectionAdapter
             @Override
             public void onClick(final View v) {
                 signleCollectionView.onItemClick(entity);
-//                onItemClickListener.onItemClickListener(entity);/
             }
         });
         holder.siteNameTv.setText(entity.getSiteName());
@@ -167,9 +132,6 @@ public class GignleCollectionAdapter
     }
 
     public class PointTitleHolder extends RecyclerView.ViewHolder {
-        /**
-         *
-         */
         private TextView titleNameTv;
 
         /**

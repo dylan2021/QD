@@ -94,7 +94,6 @@ public class SignleCollectionFragment extends Fragment implements SignleCollecti
             map.put("categoryId", "3");
         }
 
-//        Log.e("type",HCLicConstant.JUMP_STATIC);
         initView(view);
         return view;
     }
@@ -107,7 +106,6 @@ public class SignleCollectionFragment extends Fragment implements SignleCollecti
         mAdapter = new GignleCollectionAdapter(this);
 
         mPointAdapter = new GignlePointCollectionAdapter(this);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(mPointAdapter);
         queryEt = view.findViewById(R.id.query_et);

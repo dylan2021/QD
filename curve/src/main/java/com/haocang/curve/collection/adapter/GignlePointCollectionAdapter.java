@@ -42,30 +42,14 @@ import java.util.List;
  */
 public class GignlePointCollectionAdapter
         extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    /**
-     *
-     */
     private List<PointList> mList = new ArrayList<>();
-
-    /**
-     * 交互View.
-     */
     private SignleCollectionView signleCollectionView;
-
-    /**
-     * @param view 和主界面交互接口
-     */
     public GignlePointCollectionAdapter(final SignleCollectionView view) {
         signleCollectionView = view;
     }
-
-    /**
-     * @param position
-     * @return
-     */
     @Override
     public int getItemViewType(final int position) {
-        int type = CurveConstans.TYPE_TITLE;
+        int type = 0;
         if (mList != null) {
             if (mList.get(position).getType() == CurveConstans.TYPE_TITLE) {
                 type = CurveConstans.TYPE_TITLE;
@@ -81,11 +65,6 @@ public class GignlePointCollectionAdapter
         return type;
     }
 
-    /**
-     * @param parent
-     * @param viewType
-     * @return
-     */
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull final ViewGroup parent,
@@ -105,10 +84,6 @@ public class GignlePointCollectionAdapter
         }
     }
 
-    /**
-     * @param holder
-     * @param position
-     */
     @Override
     public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder,
                                  final int position) {
@@ -148,20 +123,19 @@ public class GignlePointCollectionAdapter
         holder.siteNameTv.setText(entity.getSiteName());
         holder.nameTv.setText(entity.getMpointName());
         holder.siteCodeTv.setText(entity.getMpointId());
-        holder.siteNumTv.setText("当前值:"+entity.getValue()+entity.getUnit());
-//        String dataDt[] = entity.getDatadt().split("T");
+        holder.siteNumTv.setText("当前值:" + entity.getValue() + entity.getUnit());
         String datadt = entity.getDatadt();
-        if (datadt !=null) {
+        if (datadt != null) {
             holder.siteTimeTv.setText(MyUtils.getTimeT8(datadt));
         }
         String dataSource = entity.getDatasource();
-        if (dataSource.equals("AUTO")){
+        if (dataSource.equals("AUTO")) {
             dataSource = "自动采集";
         }
-        if (dataSource.equals("INPUT")){
+        if (dataSource.equals("INPUT")) {
             dataSource = "人工录入";
         }
-        if (dataSource.equals("CALC")){
+        if (dataSource.equals("CALC")) {
             dataSource = "数据计算";
         }
         holder.fromSiteTv.setText(dataSource);
@@ -192,14 +166,7 @@ public class GignlePointCollectionAdapter
     }
 
     public class PointTitleHolder extends RecyclerView.ViewHolder {
-        /**
-         *
-         */
         private TextView titleNameTv;
-
-        /**
-         * @param itemView itemView
-         */
         public PointTitleHolder(final View itemView) {
             super(itemView);
             titleNameTv = itemView.findViewById(R.id.title_name_tv);
@@ -207,17 +174,8 @@ public class GignlePointCollectionAdapter
     }
 
     public class PointListHolder extends RecyclerView.ViewHolder {
-        /**
-         *
-         */
         private ImageView selectIv;
-        /**
-         *
-         */
         private TextView nameTv;
-        /**
-         *
-         */
         private TextView siteNameTv;
 
         private TextView siteCodeTv;
@@ -229,9 +187,6 @@ public class GignlePointCollectionAdapter
         private TextView fromSiteTv;
 
         private TextView fromTypeTv;
-        /**
-         * @param itemView itemView
-         */
         public PointListHolder(final View itemView) {
             super(itemView);
             selectIv = itemView.findViewById(R.id.select_iv);
@@ -246,48 +201,28 @@ public class GignlePointCollectionAdapter
     }
 
     public class NoneHolder extends RecyclerView.ViewHolder {
-        /**
-         * @param itemView itemView
-         */
         public NoneHolder(final View itemView) {
             super(itemView);
         }
     }
 
-    /**
-     * @return
-     */
     @Override
     public int getItemCount() {
         return mList == null ? 0 : mList.size();
     }
 
-    /**
-     * @param list 数据列表
-     */
     public void addAll(final List<PointList> list) {
         mList.addAll(list);
     }
 
-    /**
-     * 添加单个
-     *
-     * @param entity 要添加的数据
-     */
     public void addItem(final PointList entity) {
         mList.add(entity);
     }
 
-    /**
-     *
-     */
     public void clear() {
         mList.clear();
     }
 
-    /**
-     * @return
-     */
     public Context getContext() {
         return signleCollectionView.getContext();
     }
