@@ -113,7 +113,7 @@ public class FaultManagerListFragment extends Fragment
         seachEdt.setOnEditorActionListener(this);
         noDataFl = view.findViewById(R.id.no_data_fl);
         titilNameTv = view.findViewById(R.id.title_common_tv);
-        titilNameTv.setText(getString(R.string.fault_manager));
+        titilNameTv.setText("缺陷管理");
         screeIv = view.findViewById(R.id.common_iv);
         screeIv.setBackgroundResource(R.drawable.screen_icon);
         screeIv.setVisibility(View.VISIBLE);

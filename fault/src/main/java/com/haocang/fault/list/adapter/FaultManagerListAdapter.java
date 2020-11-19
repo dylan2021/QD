@@ -3,6 +3,7 @@ package com.haocang.fault.list.adapter;
 import android.app.Activity;
 import android.graphics.Color;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -73,12 +74,13 @@ public class FaultManagerListAdapter extends BaseAdapter<FaultManagerEntity> {
         holder.setText(R.id.statu_tv, getStateResource(item.getState()));
         holder.setTextColor(R.id.statu_tv, Color.parseColor(getStateColor(item.getState())));
         FaultRoundArImageView pic = holder.itemView.findViewById(R.id.fault_iv);
+        Log.d("没有数据", "数据" + item.getPictureVideos());
         if (null == holder || null == item.getPictureVideos() || 0 == item.getPictureVideos().size()) {
             Glide.with(activity).load(R.drawable.ic_fault_picture_no).apply(options).into(pic);
         } else {
             Glide.with(activity).load(item.getPictureVideos().get(0).getThumbnailUrl()).apply(options).into(pic);
         }
-        holder.setText(R.id.equi_tv,item.getEquName());
+        holder.setText(R.id.equi_tv, item.getEquName());
         LinearLayout assignmentTv = holder.itemView.findViewById(R.id.assignment_ll);
         if (item.canExcute()) {
             assignmentTv.setVisibility(View.VISIBLE);

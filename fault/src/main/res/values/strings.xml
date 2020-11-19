@@ -20,7 +20,6 @@
     <string name="fault_add_remarks_chars">0/200</string>
     <string name="fault_remark_max_length">200</string>
     <string name="fault_manager_search">搜索缺陷类型/编号</string>
-    <string name="fault_manager">缺陷管理</string>
     <string name="fault_assignment">分  派</string>
 
     <string name="faut_type">缺陷类型</string>
