@@ -123,7 +123,8 @@ public class GignlePointCollectionAdapter
         holder.siteNameTv.setText(entity.getSiteName());
         holder.nameTv.setText(entity.getMpointName());
         holder.siteCodeTv.setText(entity.getMpointId());
-        holder.siteNumTv.setText("当前值:" + entity.getValue() + entity.getUnit());
+        String unit = MyUtils.removeNull(entity.getUnit());
+        holder.siteNumTv.setText("当前值:" + entity.getValue() + unit);
         String datadt = entity.getDatadt();
         if (datadt != null) {
             holder.siteTimeTv.setText(MyUtils.getTimeT8(datadt));

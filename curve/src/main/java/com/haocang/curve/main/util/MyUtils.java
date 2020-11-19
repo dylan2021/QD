@@ -9,6 +9,8 @@ import android.os.Build;
 import android.view.Display;
 import android.view.Surface;
 
+import org.feezu.liuli.timeselector.Utils.TextUtil;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -43,5 +45,9 @@ public class MyUtils {
         calendar.add(Calendar.HOUR_OF_DAY, +8);
         String time = format.format(calendar.getTime());
         return time;
+    }
+
+    public static String removeNull(String unit) {
+        return TextUtil.isEmpty(unit) ? "" : unit;
     }
 }
