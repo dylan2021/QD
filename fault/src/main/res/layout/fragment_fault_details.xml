@@ -150,9 +150,9 @@
                     android:layout_marginRight="10px"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:text="查看"
-                    android:textColor="@color/mainColor"
-                    android:textSize="@dimen/fs16" />
+                    android:text="查看记录"
+                    android:textColor="#a5a5a5"
+                    android:textSize="@dimen/fs14" />
 
                 <View
                     android:layout_width="25px"

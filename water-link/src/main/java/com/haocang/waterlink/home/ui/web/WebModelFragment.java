@@ -1,9 +1,12 @@
 package com.haocang.waterlink.home.ui.web;
 
+import android.net.http.SslError;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -53,6 +56,7 @@ public class WebModelFragment extends Fragment {
         webSettings.setJavaScriptEnabled(true);
         webSettings.setAllowFileAccessFromFileURLs(true);
         webSettings.setAllowUniversalAccessFromFileURLs(true);
+        webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         webSettings.setAppCacheEnabled(true);
         webView.setWebChromeClient(new WebChromeClient());
         webView.setWebViewClient(new WebViewClient() {
@@ -62,6 +66,17 @@ public class WebModelFragment extends Fragment {
                     dialog.cancel();
                 }
                 super.onPageFinished(view, url);
+            }
+
+            @Override
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                // 不要使用super，否则有些手机访问不了，因为包含了一条 handler.cancel()
+                // super.onReceivedSslError(view, handler, error);
+                //handler.cancel(); 默认的处理方式，WebView变成空白页
+                // 接受所有网站的证书，忽略SSL错误，执行访问网页
+                if (handler != null) {
+                    handler.proceed();//忽略证书的错误继续加载页面内容，不会变成空白页面
+                }
             }
         });
         webView.loadUrl("http://www.qdhsdd.com:18106/#/mapapp");

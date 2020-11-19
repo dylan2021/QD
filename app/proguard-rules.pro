@@ -215,3 +215,9 @@
 -keep class vi.com.** {*;}
 -keep class com.baidu.vi.** {*;}
 -dontwarn com.baidu.**
+
+#加载模型数据
+-keep public class android.net.http.SslError
+-dontwarn android.webkit.WebView
+-dontwarn android.net.http.SslError
+-dontwarn Android.webkit.WebViewClient

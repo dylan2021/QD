@@ -98,11 +98,9 @@ public class PictureNewPreviewAdapter extends PagerAdapter {
         PictureInfo entity = fileList.get(position);
         pictureIv = view.findViewById(R.id.picture_iv);
         if (entity.getFileType() == PictureInfo.IMAGE) {
-            Log.d("图片进来", "图片进来1");
             pictureIv.setVisibility(View.VISIBLE);
             Glide.with(context).load(entity.getImgUrl()).apply(options).into(pictureIv);
         } else if (entity.getFileType() == PictureInfo.LOCAL_IMAGE) {
-            Log.d("图片进来", "图片进来2");
             pictureIv.setVisibility(View.VISIBLE);
             Glide.with(context).load(entity.getLocalImgPath()).apply(options).into(pictureIv);
         } else if (entity.getFileType() == PictureInfo.VIDEO || entity.getFileType() == PictureInfo.LOCAL_VIDEO) {
