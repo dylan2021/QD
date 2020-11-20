@@ -67,14 +67,14 @@ public class HomeJumpUtil {
         }
 
         if (fragmentUri.startsWith("/curve")) {
-            fragmentUri = "/curve/SignleCollectionFragment";
-            Map<String, Object> map = new HashMap<>();
-            map.put("fragmentUri", fragmentUri);
-            map.put("main", "main");
             boolean  isOne= "/curve/main".equals(fragmentUri);
             boolean  isTwo= "/curve/two".equals(fragmentUri);
             MangoConst.CURVE_TYPE =  isOne? "1" :isTwo? "2":"3";
 
+            fragmentUri = "/curve/SignleCollectionFragment";
+            Map<String, Object> map = new HashMap<>();
+            map.put("fragmentUri", fragmentUri);
+            map.put("main", "main");
             ARouterUtil.toFragment(map);
             return;
         }

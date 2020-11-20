@@ -107,9 +107,10 @@ public class SignleCollectionPresenterImpl
     public void getPoint(Map<String, Object> map) {
         if (!TextUtils.isEmpty(signleCollectionView.getQueryName())) {
             map.put("queryName", StringUtils.utfCode(signleCollectionView.getQueryName()));
-        }else {
+        } else {
             map.remove("queryName");
         }
+        Log.d("水质查询", "查询: " + map.toString());
         CommonModel<PointList> progressModel = new CommonModelImpl<>();
         Type type = new TypeToken<List<PointList>>() {
         }.getType();
@@ -121,7 +122,7 @@ public class SignleCollectionPresenterImpl
                 .setListListener(new GetListListener<PointList>() {
                     @Override
                     public void success(final List<PointList> list) {
-                        Log.e("PointList",list.toString());
+                        Log.e("PointList", list.toString());
 //                        setList(list);
                         setPointList(list);
                     }
@@ -129,12 +130,12 @@ public class SignleCollectionPresenterImpl
             @Override
             public void error(Response response) {
 
-                Log.e("PointList",response.toString());
+                Log.e("PointList", response.toString());
             }
         }).getList();
     }
 
-    private void setPointList(List<PointList> list){
+    private void setPointList(List<PointList> list) {
         List<PointList> newList = new ArrayList<>();
         List<PointList> selectedList = signleCollectionView.getSelectedPointList();
         if (selectedList != null) {

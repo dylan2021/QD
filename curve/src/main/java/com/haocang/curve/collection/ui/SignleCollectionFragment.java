@@ -122,8 +122,7 @@ public class SignleCollectionFragment extends Fragment implements SignleCollecti
     private List<PointList> selectedPointList;
 
     private void initData() {
-        Type type = new TypeToken<List<PointEntity>>() {
-        }.getType();
+        Type type = new TypeToken<List<PointEntity>>() {}.getType();
         List<PointEntity> selectedPoints = new Gson()
                 .fromJson(context.getIntent().getStringExtra("selectedPointsStr"), type);
         if (selectedPoints != null) {
