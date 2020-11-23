@@ -92,7 +92,7 @@ public class TaskPointDetailActivity extends BaseActivity {
         list.add(new PatrolTaskListDTO("井盖缺失", 132, "河道#34处_9#井"));
         list.add(new PatrolTaskListDTO("污水漫溢", 133, "河道#34处_2#污水厂"));
         list.add(new PatrolTaskListDTO("警示标示", 134, "河道#34处"));
-        list.add(new PatrolTaskListDTO("水质情况", 137, "河道#34处"));
+       // list.add(new PatrolTaskListDTO("水质情况", 137, "河道#34处"));
         adapter.addAll(list);
         adapter.notifyDataSetChanged();
 
