@@ -13,8 +13,8 @@ android {
         applicationId "com.haocang.hsdd"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 200
-        versionName "2.1.2.0006"
+        versionCode 201
+        versionName "2.1.2.0007"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled true
