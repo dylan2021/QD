@@ -2,9 +2,11 @@ package com.haocang.waterlink.login.model.impl;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.haocang.base.config.LibConfig;
+import com.haocang.base.config.LibConstants;
 import com.haocang.base.config.MethodConstants;
 import com.haocang.base.http.AddParameters;
 import com.haocang.base.http.OkHttpClientManager;
@@ -59,6 +61,7 @@ public class LoginModelImpl implements LoginModel, OkHttpClientManager.OnNetwork
         AddParameters addParameters = new AddParameters();
         addParameters.addParam("username", username);
         addParameters.addParam("password", password);
+
         new OkHttpClientManager()
                 .setRequestBody(addParameters.formBody())
                 .setOnNetWorkReponse(this)

@@ -1,9 +1,11 @@
 package com.haocang.waterlink.login.ui;
 
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,7 +33,7 @@ import com.haocang.waterlink.R;
  * 修 改 者：
  * 修改时间：
  */
-public class SetUpIPAddress extends Fragment implements View.OnClickListener {
+public class SetUpIPAddressFragment extends Fragment implements View.OnClickListener {
     private EditText editText;
     public static final String ADDRESS_IP = "https://mg.hc-yun.com:443/";//正式库
     public static final String ADDRESS_IP2 = "https://hcmgysx.hc-yun.com/";//预上线环境
@@ -56,11 +58,13 @@ public class SetUpIPAddress extends Fragment implements View.OnClickListener {
         view.findViewById(R.id.submit_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.isEmpty(editText.getText().toString())) {
-                    ToastUtil.makeText(getActivity(), "请输入IP地址");
+                String ip = editText.getText().toString();
+                if (isNotCorrectIP(ip)) {
+                    ToastUtil.makeText(getActivity(), "请输入正确的IP地址(以'/'结尾)");
                     return;
                 }
-                LibConstants.setAddressIp(editText.getText().toString());
+                LibConstants.setAddressIp(ip);
+                LibConfig.setCookie("");
                 getActivity().finish();
             }
         });
@@ -68,6 +72,13 @@ public class SetUpIPAddress extends Fragment implements View.OnClickListener {
         view.findViewById(R.id.test_Library).setOnClickListener(this);
         view.findViewById(R.id.development_library).setOnClickListener(this);
         view.findViewById(R.id.pre_online).setOnClickListener(this);
+    }
+
+    private boolean isNotCorrectIP(String ip) {
+        if (!TextUtils.isEmpty(ip) && ip.startsWith("http") && ip.endsWith("/")) {
+            return false;
+        }
+        return true;
     }
 
 

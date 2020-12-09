@@ -33,12 +33,10 @@ import com.haocang.messge.service.MessgeService;
 import com.haocang.offline.dao.UserDaoManager;
 import com.haocang.offline.util.OffLineOutApiUtil;
 import com.haocang.waterlink.R;
-import com.haocang.waterlink.home.ui.HomeFragment;
 import com.haocang.waterlink.home.ui.NavigationActivity;
 import com.haocang.waterlink.login.iview.LoginView;
 import com.haocang.waterlink.login.presenter.LoginPresenter;
 import com.haocang.waterlink.login.presenter.impl.LoginPresenterImpl;
-import com.haocang.waterlink.utils.HomeJumpUtil;
 
 import okhttp3.Response;
 
@@ -347,7 +345,7 @@ public class LoginFragment extends Fragment implements LoginView, View.OnClickLi
             long curClickTime = System.currentTimeMillis();
             if ((curClickTime - lastClickTime) <= MIN_CLICK_DELAY_TIME) {
                 Intent intent = new Intent(getActivity(), CommonActivity.class);
-                intent.putExtra("fragmentName", SetUpIPAddress.class.getName());
+                intent.putExtra("fragmentName", SetUpIPAddressFragment.class.getName());
                 startActivity(intent);
             } else {
                 lastClickTime = curClickTime;
