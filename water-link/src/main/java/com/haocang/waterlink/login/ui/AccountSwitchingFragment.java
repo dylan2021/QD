@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,10 +82,13 @@ public class AccountSwitchingFragment extends Fragment implements View.OnClickLi
             @Override
             public void onClick(View view, int i, Object o) {
                 OffLineUserEntity entity = (OffLineUserEntity) o;
-                if (!entity.getTel().equals(AppApplication.getInstance().getUserEntity().getTel())) {
+                Log.d("切换账号", entity.getTel()+",数据:"+entity.getPassword());
+             /*   if (!entity.getTel().equals(AppApplication.getInstance().getUserEntity().getTel())) {
                     LibConfig.setCookie("");
                     accountSwitch(entity);
-                }
+                }*/
+                //LibConfig.setCookie("");
+                accountSwitch(entity);
             }
 
             @Override
@@ -96,24 +100,30 @@ public class AccountSwitchingFragment extends Fragment implements View.OnClickLi
 
     //登录成功
     private void accountSwitch(final OffLineUserEntity entity) {
-        new AutomaticLogonUtils(getActivity()).setAutomaticLogon(new AutomaticLogonUtils.AutomaticLogonInterface() {
+        new AutomaticLogonUtils(getActivity()).setAutomaticLogon(
+                new AutomaticLogonUtils.AutomaticLogonInterface() {
             @Override
             public void loginSuccess() {
                 AppApplication.getInstance().setOnReceiveVoiceListener(null);
                 setConfiguration(entity.getTel(), entity.getPassword());
+          /*      Intent intent = new Intent(getActivity(), NavigationActivity.class);
+                getActivity().startActivity(intent);
+                AppApplication.getInstance().finishAllActivity();*/
+
                 Intent intent = new Intent(getActivity(), NavigationActivity.class);
                 getActivity().startActivity(intent);
-                AppApplication.getInstance().finishAllActivity();
-//                getActivity().finish();
+                getActivity().finish();
             }
 
             @Override
             public void passWordError() {
+                Log.d("切换账号", "passWordError");
                 toFragment();
             }
 
             @Override
             public void userNameError() {
+                Log.d("切换账号", "userNameError");
                 toFragment();
             }
         }).setUserEntity(entity).login();

@@ -43,9 +43,6 @@ public class NavigationActivity extends BaseActivity {
     }
 
     private void initData() {
-        /**
-         * 当前Activity是首页activity，都不需要返回按钮
-         */
         getIntent().putExtra("isHomeActivity", true);
         fragments = new ArrayList<>();
         String[] fragmentName = getResources().getStringArray(R.array.home_menu_name);

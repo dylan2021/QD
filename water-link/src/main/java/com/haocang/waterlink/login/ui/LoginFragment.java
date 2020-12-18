@@ -397,6 +397,7 @@ public class LoginFragment extends Fragment implements LoginView, View.OnClickLi
 
     @Override
     public void setUserInfo(UserEntity entity) {
+        entity.setTel(usernameEt.getText().toString());
         entity.setPassword(passwordEt.getText().toString());
         AppApplication.getInstance().setUserEntity(entity);
         addUserToLocal(entity);
