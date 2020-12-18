@@ -148,7 +148,7 @@ public class LoginFragment extends Fragment implements LoginView, View.OnClickLi
         view.findViewById(R.id.ip_btn).setOnClickListener(this);
 
         //todo 自动登录(调试),后面删掉
-        //presenter.login();
+        presenter.login();
     }
 
 

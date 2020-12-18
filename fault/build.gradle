@@ -109,5 +109,6 @@ dependencies {
 //    implementation project(':off-line')
 
     //新版
-    api 'com.haocang:app-mango-monitor-androidx:0.0.0019-SNAPSHOT@aar'
+    api 'com.haocang:app-mango-monitor-androidx:0.0.0020-SNAPSHOT@aar'
 }
+
