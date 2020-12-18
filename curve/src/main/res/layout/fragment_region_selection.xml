@@ -32,7 +32,7 @@
             android:layout_weight="1"
             android:background="@null"
             android:gravity="center_vertical"
-            android:hint="工艺位置"
+            android:hint="区域位置"
             android:imeOptions="actionSearch"
             android:singleLine="true"
             android:textColor="@color/color_task_ft"
