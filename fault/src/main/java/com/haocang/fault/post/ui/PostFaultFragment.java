@@ -536,6 +536,7 @@ public class PostFaultFragment extends Fragment implements View.OnClickListener,
      */
     @Override
     public void createSuccess(final String id) {
+
         String patrolId = getPatrolId();
         if (!TextUtils.isEmpty(patrolId)) {
             Intent intent = new Intent();

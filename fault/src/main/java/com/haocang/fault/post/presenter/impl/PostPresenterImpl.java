@@ -53,7 +53,7 @@ public class PostPresenterImpl implements PostPresenter, UploadUtil.UploadSucces
     @Override
     public void submit() {
         if (OffLineOutApiUtil.isNetWork()) {
-            if (isEmpty()){
+            if (isEmpty()) {
                 dialog();
             }
             return;
@@ -66,27 +66,24 @@ public class PostPresenterImpl implements PostPresenter, UploadUtil.UploadSucces
     }
 
     private void postFault() {
-
         createFault(postView.getParameter());
-
     }
 
     private void createFault(Map<String, Object> map) {
-        CommonModel<Integer> progressModel
-                = new CommonModelImpl<>();
-        progressModel
-                .setContext(postView.getContexts())
+        CommonModel<Integer> progressModel = new CommonModelImpl<>();
+        progressModel.setContext(postView.getContexts())
                 .setParamMap(postView.getParameter())
                 .setUrl(FaultMethod.FAULT_ADD)
                 .setEntityListener(new GetEntityListener<Integer>() {
                     @Override
                     public void success(Integer id) {
+                        ToastUtil.makeText(postView.getContexts(), "提交成功");
                         postView.createSuccess(id + "");
                     }
 
                     @Override
                     public void fail(String err) {
-
+                        ToastUtil.makeText(postView.getContexts(), "提交失败,请稍后重试");
                     }
                 }).postEntity();
     }
