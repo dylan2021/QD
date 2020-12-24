@@ -1,8 +1,10 @@
 package com.haocang.curve.collection.adapter;
 
 import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,9 +41,11 @@ public class GignleCollectionAdapter
         extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<SignleCurve> mList = new ArrayList<>();
     private SignleCollectionView signleCollectionView;
+
     public GignleCollectionAdapter(final SignleCollectionView view) {
         signleCollectionView = view;
     }
+
     @Override
     public int getItemViewType(final int position) {
         int type = CurveConstans.TYPE_TITLE;
@@ -59,6 +63,7 @@ public class GignleCollectionAdapter
         }
         return type;
     }
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull final ViewGroup parent,
@@ -189,7 +194,9 @@ public class GignleCollectionAdapter
      * @param list 数据列表
      */
     public void addAll(final List<SignleCurve> list) {
-        mList.addAll(list);
+        if (mList != null) {
+            mList.addAll(list);
+        }
     }
 
     /**

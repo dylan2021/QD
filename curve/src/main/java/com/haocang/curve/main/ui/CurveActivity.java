@@ -130,8 +130,6 @@ public class CurveActivity extends BaseActivity implements View.OnClickListener,
         curvePresenter.loadData();
         curveWv.addJavascriptObject(new JsApi(), null);
     }
-
-
     public class JsApi {
         @JavascriptInterface()
         public void addTagging(Object msg) {
@@ -292,7 +290,7 @@ public class CurveActivity extends BaseActivity implements View.OnClickListener,
     @Override
     public void onResume() {
         super.onResume();
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+       // setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 //        ScreenUtil.lockOrientation(this);
 //        ScreenUtil.unlockOrientation(this);
     }
@@ -401,8 +399,6 @@ public class CurveActivity extends BaseActivity implements View.OnClickListener,
             e.printStackTrace();
         }
         curveWv.callHandler("drawLine", new Object[]{array, type});
-
-
     }
 
     @Override

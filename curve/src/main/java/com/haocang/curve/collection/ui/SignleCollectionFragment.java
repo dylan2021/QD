@@ -167,6 +167,7 @@ public class SignleCollectionFragment extends Fragment implements SignleCollecti
         return queryEt.getText().toString();
     }
 
+
     @Override
     public void renderList(final List<SignleCurve> list) {
         mAdapter.clear();

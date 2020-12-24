@@ -10,6 +10,7 @@ import com.haocang.base.base.impl.CommonModelImpl;
 import com.haocang.base.config.MethodConstants;
 import com.haocang.base.utils.GetListListener;
 import com.haocang.base.utils.StringUtils;
+import com.haocang.base.utils.ToastUtil;
 import com.haocang.curve.R;
 import com.haocang.curve.collection.bean.PointList;
 import com.haocang.curve.collection.bean.SignleCurve;
@@ -114,23 +115,20 @@ public class SignleCollectionPresenterImpl
         CommonModel<PointList> progressModel = new CommonModelImpl<>();
         Type type = new TypeToken<List<PointList>>() {
         }.getType();
-        progressModel
-                .setContext(signleCollectionView.getContext())
+        progressModel.setContext(signleCollectionView.getContext())
                 .setParamMap(map)
                 .setListType(type)
                 .setUrl(CurveMethod.POINT)
                 .setListListener(new GetListListener<PointList>() {
                     @Override
                     public void success(final List<PointList> list) {
-                        Log.e("PointList", list.toString());
-//                        setList(list);
                         setPointList(list);
                     }
                 }).setErrorInterface(new CommonModelImpl.ErrorInterface() {
             @Override
             public void error(Response response) {
-
-                Log.e("PointList", response.toString());
+                ToastUtil.makeText(signleCollectionView.getContext(), "请求失败,稍后重试");
+                signleCollectionView.renderList(null);
             }
         }).getList();
     }

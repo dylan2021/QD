@@ -21,6 +21,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.baidu.mapapi.SDKInitializer;
 import com.haocang.base.bean.AppVersion;
 import com.haocang.base.bean.UserEntity;
+import com.haocang.base.utils.CrashHandler;
 import com.haocang.base.utils.MetaDataUtil;
 import com.haocang.base.utils.NetBroadcastReceiver;
 import com.haocang.base.utils.NfcUtil;
@@ -174,6 +175,11 @@ public class AppApplication extends MultiDexApplication {
          */
         userEntity = new UserEntity();
         startReceiver();
+
+
+        //处理程序奔溃问题,直接关闭程序
+        CrashHandler catchHandler = CrashHandler.getInstance();
+        catchHandler.init(getApplicationContext());
     }
 
     public String getMeteData(String metaDataName) {

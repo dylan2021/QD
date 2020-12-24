@@ -123,7 +123,6 @@ dependencies {
     api 'com.haocang:app-haocang-actionanalysis-androidx:0.0.0002-SNAPSHOT@aar'
 
     //版本更新
-    api('com.haocang:app-dsbridge:0.0.0001-SNAPSHOT@aar')
     implementation 'com.github.pinguo-zhouwei:MZBannerView:v2.0.2'
 
     api 'com.github.barteksc:android-pdf-viewer:3.1.0-beta.1'
