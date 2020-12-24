@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.haocang.base.config.AppApplication;
 import com.haocang.base.config.ArouterPathConstants;
 import com.haocang.base.utils.ToastUtil;
 import com.haocang.curve.R;
@@ -170,6 +172,11 @@ public class SignleCollectionFragment extends Fragment implements SignleCollecti
 
     @Override
     public void renderList(final List<SignleCurve> list) {
+        Log.d("曲线查询", "数据: "+mAdapter);
+        if (mAdapter==null) {
+            AppApplication.getInstance().finishAllActivity();
+            return;
+        }
         mAdapter.clear();
         mAdapter.addAll(list);
         mAdapter.notifyDataSetChanged();
@@ -184,6 +191,7 @@ public class SignleCollectionFragment extends Fragment implements SignleCollecti
         mPointAdapter.notifyDataSetChanged();
         pullToRefreshLayout.finishLoadMore();
         pullToRefreshLayout.finishRefresh();
+
     }
 
     /**
@@ -272,6 +280,7 @@ public class SignleCollectionFragment extends Fragment implements SignleCollecti
         }
         postcard.navigation(activity, requestCode);
     }
+
 
     private String getIsHomeJump() {
         return context.getIntent().getStringExtra("main");

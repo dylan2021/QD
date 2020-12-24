@@ -171,6 +171,7 @@ public class OkHttpClientManager {
                         getHeaders(response);
                         if (mResponse.code() == 401) {
                             Log.i("result", "错误码" + response.code() + response.request().url() + "无权限访问---" + TimeUtil.getCurdate());
+                            onNetworkResponse.onNetworkResponse("无权限访问");
                             getHeadersForJump(response);
                         } else if (response.isSuccessful()) {
                             Message message = new Message();

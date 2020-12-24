@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.haocang.base.base.CommonModel;
+import com.haocang.base.config.AppApplication;
 import com.haocang.base.config.LibConfig;
 import com.haocang.base.http.AddParameters;
 import com.haocang.base.http.OkHttpClientManager;
@@ -166,9 +167,9 @@ public class CommonModelImpl<T> implements CommonModel<T> {
         OkHttpClientManager okHttpClientManager = new OkHttpClientManager()
                 .setUrl(mMethodUrl + addParameters.formGet())
                 .setOnNetWorkReponse(new OkHttpClientManager.OnNetworkResponse() {
-
                     @Override
                     public void onNetworkResponse(final String result) {
+                        Log.d("曲线查询", "返回:"+result);
                         try {
                             if (result.contains("items")) {
                                 JSONObject object = new JSONObject(result);
@@ -180,7 +181,8 @@ public class CommonModelImpl<T> implements CommonModel<T> {
                                 mListListener.success(list);
                             }
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            Log.d("曲线查询", "失败:"+result);
+                            AppApplication.getInstance().finishAllActivity();
                         }
                     }
 

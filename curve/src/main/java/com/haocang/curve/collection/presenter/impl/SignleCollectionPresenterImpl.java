@@ -8,7 +8,9 @@ import com.google.gson.reflect.TypeToken;
 import com.haocang.base.base.CommonModel;
 import com.haocang.base.base.impl.CommonModelImpl;
 import com.haocang.base.config.MethodConstants;
+import com.haocang.base.utils.GetEntityListener;
 import com.haocang.base.utils.GetListListener;
+import com.haocang.base.utils.GetListWithTotalListener;
 import com.haocang.base.utils.StringUtils;
 import com.haocang.base.utils.ToastUtil;
 import com.haocang.curve.R;
@@ -67,10 +69,8 @@ public class SignleCollectionPresenterImpl
         }
         CommonModel<SignleCurve> progressModel
                 = new CommonModelImpl<>();
-        Type type = new TypeToken<List<SignleCurve>>() {
-        }.getType();
-        progressModel
-                .setContext(signleCollectionView.getContext())
+        Type type = new TypeToken<List<SignleCurve>>() {}.getType();
+        progressModel.setContext(signleCollectionView.getContext())
                 .setParamMap(map)
                 .setListType(type)
                 .setUrl(CurveMethod.SIGNLE_COLLECTION)
@@ -111,14 +111,13 @@ public class SignleCollectionPresenterImpl
         } else {
             map.remove("queryName");
         }
-        Log.d("水质查询", "查询: " + map.toString());
+        Type type = new TypeToken<List<PointList>>() {}.getType();
         CommonModel<PointList> progressModel = new CommonModelImpl<>();
-        Type type = new TypeToken<List<PointList>>() {
-        }.getType();
         progressModel.setContext(signleCollectionView.getContext())
                 .setParamMap(map)
                 .setListType(type)
                 .setUrl(CurveMethod.POINT)
+                .setHasDialog(false)
                 .setListListener(new GetListListener<PointList>() {
                     @Override
                     public void success(final List<PointList> list) {

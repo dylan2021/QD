@@ -52,7 +52,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import wendu.dsbridge.CompletionHandler;
 import wendu.dsbridge.DWebView;
+import wendu.dsbridge.OnReturnValue;
 
 
 /**
@@ -148,6 +150,16 @@ public class CurveActivity extends BaseActivity implements View.OnClickListener,
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+        }
+        @JavascriptInterface
+        public String testSyn(Object msg)  {
+            return msg + "［syn call］";
+        }
+
+        //for asynchronous invocation
+        @JavascriptInterface
+        public void testAsyn(Object msg, CompletionHandler handler) {
+            handler.complete(msg+" [ asyn call]");
         }
     }
 
@@ -398,7 +410,12 @@ public class CurveActivity extends BaseActivity implements View.OnClickListener,
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        curveWv.callHandler("drawLine", new Object[]{array, type});
+        curveWv.callHandler("drawLine",new Object[]{array,type},new OnReturnValue<Integer>(){
+            @Override
+            public void onValue(Integer retValue) {
+                Log.d("jsbridge","call succeed,return value is "+retValue);
+            }
+        });
     }
 
     @Override
