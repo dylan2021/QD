@@ -6,6 +6,6 @@
     <dimen name="dp_10">20px</dimen>
     <dimen name="dp_2">5px</dimen>
     <dimen name="dp_1">1px</dimen>
-    <dimen name="px_title_size">35px</dimen>
-    <dimen name="px_content_size">34px</dimen>
+    <dimen name="px_title_size">16sp</dimen>
+    <dimen name="px_content_size">15sp</dimen>
 </resources>

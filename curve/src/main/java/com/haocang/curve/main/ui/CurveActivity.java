@@ -124,7 +124,11 @@ public class CurveActivity extends BaseActivity implements View.OnClickListener,
         curveWv = findViewById(R.id.curve_webview);
         curveWv.setBackgroundColor(Color.WHITE);
         curveWv.getSettings().setAppCacheEnabled(false);//是否使用缓存
-        DWebView.setWebContentsDebuggingEnabled(true);
+        //设置调试模式。在调试模式时，发生一些错误时，将会以弹窗形式提示，并且原生API如果触发异常
+        // 将不会被自动捕获，因为在调试阶段应该将问题暴露出来。如果调试模式关闭，错误将不会弹窗，
+        // 并且会自动捕获API触发的异常，防止crash。强烈建议在开发阶段开启调试模式。
+       // DWebView.setWebContentsDebuggingEnabled(true);
+        //curveWv.disableJavascriptDialogBlock(true);
 //        curveWv.loadUrl("http://192.168.30.149:5500/APP");
         curveWv.loadUrl("file:///android_asset/index.html");
         setPoint();
@@ -132,6 +136,7 @@ public class CurveActivity extends BaseActivity implements View.OnClickListener,
         curvePresenter.loadData();
         curveWv.addJavascriptObject(new JsApi(), null);
     }
+
     public class JsApi {
         @JavascriptInterface()
         public void addTagging(Object msg) {
@@ -150,16 +155,6 @@ public class CurveActivity extends BaseActivity implements View.OnClickListener,
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }
-        @JavascriptInterface
-        public String testSyn(Object msg)  {
-            return msg + "［syn call］";
-        }
-
-        //for asynchronous invocation
-        @JavascriptInterface
-        public void testAsyn(Object msg, CompletionHandler handler) {
-            handler.complete(msg+" [ asyn call]");
         }
     }
 
@@ -302,7 +297,7 @@ public class CurveActivity extends BaseActivity implements View.OnClickListener,
     @Override
     public void onResume() {
         super.onResume();
-       // setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        // setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 //        ScreenUtil.lockOrientation(this);
 //        ScreenUtil.unlockOrientation(this);
     }
@@ -410,12 +405,8 @@ public class CurveActivity extends BaseActivity implements View.OnClickListener,
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        curveWv.callHandler("drawLine",new Object[]{array,type},new OnReturnValue<Integer>(){
-            @Override
-            public void onValue(Integer retValue) {
-                Log.d("jsbridge","call succeed,return value is "+retValue);
-            }
-        });
+        Log.d("数据", "数据" + array.toString());
+        curveWv.callHandler("drawLine", new Object[]{array, type});
     }
 
     @Override

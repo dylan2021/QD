@@ -74,8 +74,8 @@ dependencies {
     api 'com.alibaba:arouter-compiler:1.1.4'
     api 'com.github.skydoves:powermenu:2.0.4'
     api 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4'
-    //api('com.haocang:app-dsbridge:0.0.0001-SNAPSHOT@aar')
-    compile 'com.github.wendux:DSBridge-Android:3.0-SNAPSHOT'
+    api('com.haocang:app-dsbridge:0.0.0001-SNAPSHOT@aar')
+    //api 'com.github.wendux:DSBridge-Android:3.0-SNAPSHOT'
 //    implementation  project(path: ':hc-lib-link')
 //    api('com.haocang:app-haocang-skin:0.0.0002-SNAPSHOT@aar')
 //    compile project(path: ':skin-link')

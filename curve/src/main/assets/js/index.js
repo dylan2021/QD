@@ -48,14 +48,14 @@ function washYValue(v) {
 
 // point 点击事件
 var pointClick = function(event){
-    if(dsBridge.hasNativeMethod(ADD_REMARK)){
+/*    if(dsBridge.hasNativeMethod(ADD_REMARK)){
         dsBridge.call(ADD_REMARK, {
             x: event.point.x,
             y: event.point.y,
             mpointId: event.point.mpointId,
             mark: event.point.mark
         });
-    }
+    }*/
 }
 
 // 页面高度初始化
